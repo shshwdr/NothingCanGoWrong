@@ -17,6 +17,8 @@ public TMP_Text titleLabel;
     private Vector3 originalPosition;
     private Transform parentCanvas;
 
+    public bool hideAllButtons;
+
     private WindowManager windowManager;
 
     private Transform taskBarIcon;
@@ -26,9 +28,17 @@ public TMP_Text titleLabel;
         minimizeButton.onClick.AddListener(MinimizeWindow);
         maximizeButton.onClick.AddListener(ToggleMaximize);
         windowRect.sizeDelta = originalSize;
-        windowRect.anchoredPosition = Vector2.zero;
+       // windowRect.anchoredPosition = Vector2.zero;
         parentCanvas = transform.parent;
         windowManager = WindowManager.Instance;
+
+        if (hideAllButtons)
+        {
+            closeButton.gameObject.SetActive(false);
+            minimizeButton.gameObject.SetActive(false);
+            maximizeButton.gameObject.SetActive(false);
+            
+        }
     }
 
     public void Init(string name,Transform taskBarIcon)

@@ -229,6 +229,41 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6711311040424818519, guid: bdc07bfec25c3db4cabd5bd136e70c8b, type: 3}
   m_PrefabInstance: {fileID: 8215917220184762313}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &216089475
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 216089476}
+  m_Layer: 5
+  m_Name: desktopArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &216089476
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216089475}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1373285439}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,6 +499,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705581253}
   m_CullTransparentMesh: 1
+--- !u!1 &847575116
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 847575117}
+  - component: {fileID: 847575118}
+  m_Layer: 0
+  m_Name: ComputerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &847575117
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847575116}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 473.99948, y: 560.3295, z: -6.5635147}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &847575118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847575116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4bdfdd6b23f0414ca9a4676d10c7d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMaxHealth: 100
+  currentPlayerHealth: 100
 --- !u!1 &1373285435
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,6 +641,7 @@ RectTransform:
   m_Children:
   - {fileID: 193935097}
   - {fileID: 1752685567}
+  - {fileID: 216089476}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -578,7 +660,7 @@ GameObject:
   - component: {fileID: 1397640481}
   - component: {fileID: 1397640480}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: WindowManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -596,11 +678,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d34c877c3b15fc24db7c5779ff3482a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  desktopArea: {fileID: 1373285439}
+  desktopArea: {fileID: 216089476}
   taskbarArea: {fileID: 1752685567}
   windowPrefab: {fileID: 5150430554100762204, guid: d88fc17cd7e017442bd2b4abe0a8c55c, type: 3}
   taskbarButtonPrefab: {fileID: 4051622172760539838, guid: d093539ec7d38ca4ab8a6d027a5c3ce3, type: 3}
   defaultAppIcon: {fileID: 0}
+  canvasRect: {fileID: 1373285439}
 --- !u!4 &1397640481
 Transform:
   m_ObjectHideFlags: 0
@@ -729,7 +812,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3290751640383691877, guid: bdc07bfec25c3db4cabd5bd136e70c8b, type: 3}
       propertyPath: m_Name
-      value: DesktopIcon (1)
+      value: antiVirus
       objectReference: {fileID: 0}
     - target: {fileID: 6711311040424818519, guid: bdc07bfec25c3db4cabd5bd136e70c8b, type: 3}
       propertyPath: m_Pivot.x
@@ -811,6 +894,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8023687780841177705, guid: bdc07bfec25c3db4cabd5bd136e70c8b, type: 3}
+      propertyPath: prefab
+      value: 
+      objectReference: {fileID: 5334835282634030073, guid: 9f1ace54b85b3d64fb3a08f2fa7ef2c1, type: 3}
     - target: {fileID: 8023687780841177705, guid: bdc07bfec25c3db4cabd5bd136e70c8b, type: 3}
       propertyPath: appName
       value: Anti Virus
@@ -930,3 +1017,4 @@ SceneRoots:
   - {fileID: 1373285439}
   - {fileID: 582270345}
   - {fileID: 1397640481}
+  - {fileID: 847575117}
