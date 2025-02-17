@@ -28,6 +28,7 @@ public class Virus : MonoBehaviour
 
     public GameObject virusWindowPrefab;
     GameObject virusWindow;
+    public string applicationName = "Virus";
     protected virtual void Start()
     {
         //attackButton.onClick.AddListener(DamageVirus);
@@ -39,7 +40,7 @@ public class Virus : MonoBehaviour
 
     void createWindow()
     {
-       virusWindow =  WindowManager.Instance. OpenApplication("Worm Virus", virusWindowPrefab);
+       virusWindow =  WindowManager.Instance. OpenApplication(applicationName, virusWindowPrefab,true);
        virusWindow.GetComponent<VirusWindowController>().Init(this);
     }
 
@@ -55,6 +56,7 @@ public class Virus : MonoBehaviour
         if (virusHealth <= 0)
         {
             Destroy(gameObject);
+            WindowManager.Instance.CloseApplication(virusWindow.GetComponent<WindowController>().id);
             Destroy(virusWindow);
         }
     }

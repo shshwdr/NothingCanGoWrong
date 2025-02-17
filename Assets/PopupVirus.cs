@@ -24,7 +24,7 @@ public class PopupVirus : MonoBehaviour
          popupTimer += Time.deltaTime;
          if (popupTimer > popupTime)
          {
-             WindowManager.Instance.OpenApplication("Ads"+id,minionPrefab);
+             WindowManager.Instance.OpenApplication("Ads",minionPrefab,true);
              id++;
              popupTimer = 0;
          }

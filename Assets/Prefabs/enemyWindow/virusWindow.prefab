@@ -8,6 +8,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4006841644467149094, guid: d88fc17cd7e017442bd2b4abe0a8c55c, type: 3}
+      propertyPath: enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4006841644467149094, guid: d88fc17cd7e017442bd2b4abe0a8c55c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4006841644467149094, guid: d88fc17cd7e017442bd2b4abe0a8c55c, type: 3}
+      propertyPath: moveSpeed
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 4786813811385115619, guid: d88fc17cd7e017442bd2b4abe0a8c55c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

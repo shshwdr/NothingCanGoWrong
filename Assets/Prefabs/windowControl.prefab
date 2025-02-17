@@ -359,6 +359,7 @@ GameObject:
   - component: {fileID: 8414941741596988492}
   - component: {fileID: 700316626575236958}
   - component: {fileID: 2763612077518044857}
+  - component: {fileID: 4006841644467149094}
   m_Layer: 5
   m_Name: windowControl
   m_TagString: Untagged
@@ -437,12 +438,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31603e377ab9b0948af0ac32f2fe15a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 
   windowRect: {fileID: 6047055281435768238}
   closeButton: {fileID: 7056530506930185567}
   minimizeButton: {fileID: 5386264928137774455}
   maximizeButton: {fileID: 6124418209668657063}
   titleLabel: {fileID: 9037148615728387093}
   hideAllButtons: 0
+--- !u!114 &4006841644467149094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5150430554100762204}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a367088b37e5d7449a9b2a20c44dacda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveType: 0
+  moveSpeed: 100
+  jumpInterval: 1.5
+  jumpDistance: 200
 --- !u!1 &5159256366008592906
 GameObject:
   m_ObjectHideFlags: 0

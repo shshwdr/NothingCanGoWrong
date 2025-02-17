@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class DesktopIcon : MonoBehaviour
 {
     public string appName;
+    
     private WindowManager windowManager;
 
     public GameObject prefab;

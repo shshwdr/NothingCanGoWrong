@@ -6,7 +6,8 @@ using UnityEngine.EventSystems;
 
 public class WindowController : MonoBehaviour, IDragHandler, IPointerDownHandler
 {
-    private string id;
+    [HideInInspector]
+    public string id;
     public RectTransform windowRect; // 窗口 RectTransform
     public Button closeButton;
     public Button minimizeButton;
@@ -41,10 +42,10 @@ public TMP_Text titleLabel;
         }
     }
 
-    public void Init(string name,Transform taskBarIcon)
+    public void Init(string name,string appId,Transform taskBarIcon)
     {
         titleLabel.text = name;
-        id = name;
+        id = appId;
         this.taskBarIcon = taskBarIcon;
     }
 

@@ -12,21 +12,33 @@ public class WindowManager : Singleton<WindowManager>
 
     private Dictionary<string, GameObject> openWindows = new Dictionary<string, GameObject>();
     private Dictionary<string, GameObject> taskbarButtons = new Dictionary<string, GameObject>();
-
+    private int id;
     public RectTransform canvasRect;
-    public GameObject OpenApplication(string appName,GameObject prefab = null)
+    public GameObject OpenApplication(string appName, GameObject prefab = null, bool forceOpenNew = false)
     {
         // 如果应用已打开，则显示它
         if (prefab == null)
         {
             prefab = windowPrefab;
         }
-        if (openWindows.ContainsKey(appName))
+
+        string appID = appName;
+        if (openWindows.ContainsKey(appID) )
         {
-            openWindows[appName].SetActive(true);
+            if (!forceOpenNew)
+            {
+                
+                openWindows[appID].SetActive(true);
             
-            return openWindows[appName];
+                return openWindows[appID];
+            }
+            else
+            {
+                appID += id;
+                id++;
+            }
         }
+        
 
         // 创建新窗口
         GameObject newWindow = Instantiate(prefab, desktopArea);
@@ -40,15 +52,16 @@ public class WindowManager : Singleton<WindowManager>
         popupRect.anchoredPosition = safePosition;
         
         // 添加到打开窗口列表
-        openWindows[appName] = newWindow;
+        openWindows[appID] = newWindow;
 
         // 创建任务栏按钮
         GameObject newTaskbarButton = Instantiate(taskbarButtonPrefab, taskbarArea);
+        
         //newTaskbarButton.transform.Find("Text").GetComponent<Text>().text = appName;
-        newTaskbarButton.GetComponent<Button>().onClick.AddListener(() => ToggleWindow(appName));
+        newTaskbarButton.GetComponent<Button>().onClick.AddListener(() => ToggleWindow(appID));
 
-        newWindow.GetComponent<WindowController>().Init(appName,newTaskbarButton.transform);
-        taskbarButtons[appName] = newTaskbarButton;
+        newWindow.GetComponent<WindowController>().Init(appName,appID,newTaskbarButton.transform);
+        taskbarButtons[appID] = newTaskbarButton;
         return newWindow;
     }
     private Vector2 GetSafeRandomPosition(Vector2 popupSize)

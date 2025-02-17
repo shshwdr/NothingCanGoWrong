@@ -83,6 +83,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3818348548300092181, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
+      propertyPath: moveType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3818348548300092181, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3818348548300092181, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
+      propertyPath: moveSpeed
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4686130883771615696, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -101,7 +113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4907894125250243695, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
       propertyPath: m_Name
-      value: popupMinionVirusWindow Variant
+      value: popupMinionVirusWindow
       objectReference: {fileID: 0}
     - target: {fileID: 5804333171421618077, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
       propertyPath: m_Pivot.x
@@ -224,8 +236,31 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5804333171421618077, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7593888202126938052}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4907894125250243695, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3912183421944582344}
   m_SourcePrefab: {fileID: 100100000, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
+--- !u!1 &5535553186758714419 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4907894125250243695, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
+  m_PrefabInstance: {fileID: 634563342057113692}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3912183421944582344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5535553186758714419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16bd8570e3d4cef4fb02852172dec185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progress: {fileID: 5721054847076206203}
+  damageTime: 5
+  damage: 5
 --- !u!224 &6360008166659758017 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5804333171421618077, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
@@ -336,6 +371,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18a8f6b6efe18cc4cb93f2363c589b98, type: 3}
+--- !u!114 &5721054847076206203 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5112120981503066668, guid: 18a8f6b6efe18cc4cb93f2363c589b98, type: 3}
+  m_PrefabInstance: {fileID: 690356829184509015}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdcd23a20b91ce8418374f2675411e0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7593888202126938052 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6986854288240708499, guid: 18a8f6b6efe18cc4cb93f2363c589b98, type: 3}

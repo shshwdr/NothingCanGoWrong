@@ -48,8 +48,8 @@ MonoBehaviour:
   virusMaxHealth: 100
   virusHealth: 30
   attackDamage: 5
-  attackInterval: 7
-  getDamageInterval: 3
+  attackInterval: 13
+  getDamageInterval: 5
   corruptionInterval: 30
   lastAttackTime: 0
   lastGetAttackTime: 0
