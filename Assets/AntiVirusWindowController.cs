@@ -39,12 +39,13 @@ public class AntiVirusWindowController : MonoBehaviour
         
         spawnButton.onClick.AddListener(() =>
         {
-            addAntiVirusBug();
+            
+            addAntiVirusBug(true);
         });
         
     }
 
-    public void addAntiVirusBug()
+    public void addAntiVirusBug(bool useAmmo)
     {
         if (ammoCount <= 0)
         {
@@ -55,11 +56,14 @@ public class AntiVirusWindowController : MonoBehaviour
         {
             virus.PickItem().SpawnPrefab(5);
             spawnAntiTimer = 0;
-            
-            
-            ammoCount -= 1;
-            ammoCount = Mathf.Clamp(ammoCount, 0, ammoMax);
-            ammo.SetHP(ammoCount, ammoMax);
+
+            if (useAmmo)
+            {
+                
+                ammoCount -= 1;
+                ammoCount = Mathf.Clamp(ammoCount, 0, ammoMax);
+                ammo.SetHP(ammoCount, ammoMax);
+            }
         }
     }
 
@@ -69,9 +73,9 @@ public class AntiVirusWindowController : MonoBehaviour
          spawnAntiTimer += Time.deltaTime;
          if (spawnAntiTimer > spawnAntiInterval)
          {
-             addAntiVirusBug();
-             addAntiVirusBug();
-             addAntiVirusBug();
+             addAntiVirusBug(false);
+             addAntiVirusBug(false);
+             addAntiVirusBug(false);
          }
          
          spawnButton.interactable = ammoCount > 0;
