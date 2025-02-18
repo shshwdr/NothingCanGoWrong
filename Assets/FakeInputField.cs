@@ -1,0 +1,85 @@
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
+public class FakeInputField : MonoBehaviour, ISelectHandler, IDeselectHandler
+{
+    public TMP_InputField inputField; // 绑定 UI 的 InputField
+    public string predefinedText = "Hello, World!"; // 预设文本
+    private int currentIndex = 0; // 记录当前显示到第几个字符
+    private bool isFocused = false; // 是否处于焦点状态
+    public ChatWindowController chatWindowController;
+    void Start()
+    {
+        inputField.text = ""; // 清空输入框
+        inputField.readOnly = false; // 设置为只读，避免真实输入
+        inputField.onValueChanged.AddListener(BlockRealInput);
+    }
+
+    void Update()
+    {
+        if (isFocused && AnyKeyPressed()) // 仅在 `InputField` 选中时响应按键
+        {
+            SimulateTyping();
+        }
+    }
+
+    /// <summary>
+    /// 检测键盘是否按下（替代 `Input.anyKeyDown`）
+    /// </summary>
+    private bool AnyKeyPressed()
+    {
+        return Input.inputString.Length > 0; // 检测任何键盘输入（不受 `EventSystem` 影响）
+    }
+
+    /// <summary>
+    /// 模拟输入文字
+    /// </summary>
+    private void SimulateTyping()
+    {
+        if (currentIndex < predefinedText.Length)
+        {
+            inputField.text += predefinedText[currentIndex]; // 逐个添加预设文字
+            currentIndex++;
+        }
+        else
+        {
+            chatWindowController.updateInputArrow(true);
+        }
+    }
+
+    /// <summary>
+    /// 当 `InputField` 被选中（点击、Tab 切换）时，允许输入
+    /// </summary>
+    public void OnSelect(BaseEventData eventData)
+    {
+        isFocused = true;
+    }
+    private void BlockRealInput(string input)
+    {
+        // 始终强制回到当前已输入的预设文本
+        inputField.text = predefinedText.Substring(0, currentIndex);
+        inputField.caretPosition = currentIndex; // 确保光标始终在末尾
+    }
+    /// <summary>
+    /// 当 `InputField` 失去焦点（点击外部）时，停止输入
+    /// </summary>
+    public void OnDeselect(BaseEventData eventData)
+    {
+        isFocused = false;
+    }
+
+    public bool isFinishedType()
+    {
+        return currentIndex >= predefinedText.Length;
+    }
+
+    public void Clear()
+    {
+        inputField.textComponent.text = "";
+        inputField.text = "";
+        currentIndex = 0;
+        predefinedText = "";
+    }
+}

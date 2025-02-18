@@ -98,7 +98,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7867045611388378974}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -108,11 +108,11 @@ RectTransform:
   - {fileID: 1877806851077985794}
   - {fileID: 6738188619382734435}
   - {fileID: 7637381302319093946}
-  m_Father: {fileID: 9002690976868290220}
+  m_Father: {fileID: 5172450666005055277}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 44.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &651657595902235433
@@ -387,7 +387,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 5804333171421618077, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 7758265660499924508, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5616213119824748720}
     m_AddedComponents:
@@ -398,6 +398,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 8133114753420533521}
   m_SourcePrefab: {fileID: 100100000, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
+--- !u!224 &5172450666005055277 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7758265660499924508, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
+  m_PrefabInstance: {fileID: 3198358355471192369}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7529612095361858910 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4907894125250243695, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
@@ -432,14 +437,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cacccd6c3cf154f4c834f0bc57d2b94e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnArea: {fileID: 9002690976868290220}
+  spawnArea: {fileID: 5172450666005055277}
   prefabToSpawn: {fileID: 5305163498098984080, guid: 01d8adb5c8935f44ca99336e7e75cc88, type: 3}
   spawnCount: 5
---- !u!224 &9002690976868290220 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5804333171421618077, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
-  m_PrefabInstance: {fileID: 3198358355471192369}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4428322853403997680
 PrefabInstance:
   m_ObjectHideFlags: 0

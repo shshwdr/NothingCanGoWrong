@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progress: {fileID: 5721054847076206203}
-  damageTime: 5
+  damageTime: 10
   damage: 5
 --- !u!224 &6360008166659758017 stripped
 RectTransform:

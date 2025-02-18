@@ -48,7 +48,7 @@ MonoBehaviour:
   virusMaxHealth: 100
   virusHealth: 30
   attackDamage: 5
-  attackInterval: 13
+  attackInterval: 23
   getDamageInterval: 20
   corruptionInterval: 30
   lastAttackTime: 0
@@ -69,5 +69,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc65f48f419567488e3e4efd8ef924e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popupTime: 4
+  popupTime: 7
   minionPrefab: {fileID: 5535553186758714419, guid: 012ee20de773f8d42ab682b6551f864a, type: 3}

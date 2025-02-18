@@ -173,6 +173,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealthBar: {fileID: 6797405942106291534}
   scanButton: {fileID: 7888001383048709508}
+  spawnAntiTimer: 0
+  spawnAntiInterval: 10
 --- !u!224 &6816287769816549387 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6047055281435768238, guid: d88fc17cd7e017442bd2b4abe0a8c55c, type: 3}

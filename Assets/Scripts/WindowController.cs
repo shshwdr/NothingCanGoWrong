@@ -28,7 +28,7 @@ public TMP_Text titleLabel;
         closeButton.onClick.AddListener(CloseWindow);
         minimizeButton.onClick.AddListener(MinimizeWindow);
         maximizeButton.onClick.AddListener(ToggleMaximize);
-        windowRect.sizeDelta = originalSize;
+        //windowRect.sizeDelta = originalSize;
        // windowRect.anchoredPosition = Vector2.zero;
         parentCanvas = transform.parent;
         windowManager = WindowManager.Instance;
