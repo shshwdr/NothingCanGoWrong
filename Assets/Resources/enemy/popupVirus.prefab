@@ -49,13 +49,14 @@ MonoBehaviour:
   virusHealth: 30
   attackDamage: 5
   attackInterval: 13
-  getDamageInterval: 5
+  getDamageInterval: 20
   corruptionInterval: 30
   lastAttackTime: 0
   lastGetAttackTime: 0
   spawnTime: 0
   actionMode: -1
   virusWindowPrefab: {fileID: 7529612095361858910, guid: b1c271e7357815540909d2a638291d85, type: 3}
+  applicationName: Virus
 --- !u!114 &3231562702246367029
 MonoBehaviour:
   m_ObjectHideFlags: 0

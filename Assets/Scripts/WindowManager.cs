@@ -60,6 +60,8 @@ public class WindowManager : Singleton<WindowManager>
         //newTaskbarButton.transform.Find("Text").GetComponent<Text>().text = appName;
         newTaskbarButton.GetComponent<Button>().onClick.AddListener(() => ToggleWindow(appID));
 
+        newTaskbarButton.GetComponent<TaskbarButton>().Init(appName);
+
         newWindow.GetComponent<WindowController>().Init(appName,appID,newTaskbarButton.transform);
         taskbarButtons[appID] = newTaskbarButton;
         return newWindow;

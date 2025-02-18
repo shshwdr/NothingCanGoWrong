@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class VirusWindowController : MonoBehaviour
 {
-    private Virus virus;
+    [HideInInspector]
+    public Virus virus;
     // public Text virusHealthText;
 
     public HPBar attackProgressBar;
@@ -37,36 +38,36 @@ public class VirusWindowController : MonoBehaviour
         }
         //玩家攻击病毒
         //if (virus.actionMode == 1)
-        {
-            beAttackProgressBar.SetHP(timeNow - virus.lastGetAttackTime,virus.getDamageInterval);
-            
-                
-                if (timeNow - virus.lastGetAttackTime > virus.getDamageInterval)
-                {
-                    if (virus.actionMode == 0)
-                    {
-                    virus.DamageVirus();
-                    }
-                    virus.lastGetAttackTime = timeNow;
-                    UpdateUI();
-                }
-        }
-        
-        
-        // 病毒定期攻击玩家
-        {
+        // {
+        //     beAttackProgressBar.SetHP(timeNow - virus.lastGetAttackTime,virus.getDamageInterval);
+        //     
+        //         
+        //         if (timeNow - virus.lastGetAttackTime > virus.getDamageInterval)
+        //         {
+        //             if (virus.actionMode == 0)
+        //             {
+        //             virus.DamageVirus();
+        //             }
+        //             virus.lastGetAttackTime = timeNow;
+        //             UpdateUI();
+        //         }
+        // }
+        //
+        //
+        // // 病毒定期攻击玩家
+        // {
             attackProgressBar.SetHP(timeNow - virus.lastAttackTime,virus.attackInterval);
             if (timeNow - virus.lastAttackTime > virus.attackInterval)
             {
-
-                if (virus.actionMode != 1)
+        
+                //if (virus.actionMode != 1)
                 {
                     virus.AttackPlayer();
                 }
                 virus.lastAttackTime = timeNow;
-                UpdateUI();
+                //UpdateUI();
             }
-        }
+        //}
 
     }
 

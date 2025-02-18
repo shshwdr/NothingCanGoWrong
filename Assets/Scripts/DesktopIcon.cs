@@ -16,5 +16,7 @@ public TMP_Text nameLabel;
         windowManager = FindObjectOfType<WindowManager>();
         GetComponent<Button>().onClick.AddListener(() => windowManager.OpenApplication(appName,prefab));
         
+        
+        GetComponent<Image>().sprite = SpriteUtils.GetIcon(appName);
     }
 }
