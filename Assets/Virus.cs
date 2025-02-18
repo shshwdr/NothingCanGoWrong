@@ -52,7 +52,7 @@ public class Virus : MonoBehaviour
     public virtual void DamageVirus()
     {
         virusHealth -= 10;
-        virusWindowPrefab.GetComponent<VirusWindowController>().hpProgressBar.SetHP(virusHealth, virusMaxHealth);
+        virusWindow.GetComponent<VirusWindowController>().hpProgressBar.SetHP(virusHealth, virusMaxHealth);
         if (virusHealth <= 0)
         {
             Destroy(gameObject);

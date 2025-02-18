@@ -640,6 +640,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chatCharacters: []
   reddot: {fileID: 0}
+  generateChatTimeMin: 10
+  generateChatTimeMax: 30
+  generateChatTime: 3
   hasUnfinishedChat: 0
 --- !u!4 &760350849
 Transform:

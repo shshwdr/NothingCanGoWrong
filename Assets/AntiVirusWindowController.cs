@@ -11,6 +11,7 @@ public class AntiVirusWindowController : MonoBehaviour
     public HPBar playerHealthBar;
 
     public Button scanButton;
+    public Button spawnButton;
 
     public float spawnAntiTimer = 0;
     public float spawnAntiInterval = 3;
@@ -28,6 +29,21 @@ public class AntiVirusWindowController : MonoBehaviour
             Instantiate(Resources.Load<GameObject>( "enemy/popupVirus"),null);
         });
         
+        spawnButton.onClick.AddListener(() =>
+        {
+            addAntiVirusBug();
+        });
+        
+    }
+
+    public void addAntiVirusBug()
+    {
+        var virus = FindObjectsOfType<UIPrefabSpawner>().ToList();
+        if (virus.Count > 0)
+        {
+            virus.PickItem().SpawnPrefab(5);
+            spawnAntiTimer = 0;
+        }
     }
 
     // Update is called once per frame
@@ -36,12 +52,7 @@ public class AntiVirusWindowController : MonoBehaviour
          spawnAntiTimer += Time.deltaTime;
          if (spawnAntiTimer > spawnAntiInterval)
          {
-             var virus = FindObjectsOfType<UIPrefabSpawner>().ToList();
-             if (virus.Count > 0)
-             {
-                 virus.PickItem().SpawnPrefab(5);
-                 spawnAntiTimer = 0;
-             }
+             addAntiVirusBug();
          }
     }
 }
