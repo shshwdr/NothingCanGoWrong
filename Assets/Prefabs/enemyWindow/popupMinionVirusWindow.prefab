@@ -93,7 +93,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3818348548300092181, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
       propertyPath: moveSpeed
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4686130883771615696, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
       propertyPath: m_AnchorMax.y
@@ -259,8 +259,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progress: {fileID: 5721054847076206203}
-  damageTime: 10
-  damage: 5
+  damageTime: 5
+  damage: 0
 --- !u!224 &6360008166659758017 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5804333171421618077, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}

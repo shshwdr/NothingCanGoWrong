@@ -213,10 +213,10 @@ MonoBehaviour:
   scanButton: {fileID: 7888001383048709508}
   spawnButton: {fileID: 2705136156544751007}
   spawnAntiTimer: 0
-  spawnAntiInterval: 10
+  spawnAntiInterval: 10000
   ammo: {fileID: 616233365849384624}
   ammoMax: 5
-  ammoRefillTime: 5
+  ammoRefillTime: 7.5
 --- !u!224 &6816287769816549387 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6047055281435768238, guid: d88fc17cd7e017442bd2b4abe0a8c55c, type: 3}
@@ -245,6 +245,10 @@ PrefabInstance:
     - target: {fileID: 6449831100749284187, guid: 18a8f6b6efe18cc4cb93f2363c589b98, type: 3}
       propertyPath: m_Name
       value: hp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6449831100749284187, guid: 18a8f6b6efe18cc4cb93f2363c589b98, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6986854288240708499, guid: 18a8f6b6efe18cc4cb93f2363c589b98, type: 3}
       propertyPath: m_Pivot.x
