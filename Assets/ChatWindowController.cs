@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Pool;
 using TMPro;
 using UnityEngine;
@@ -109,7 +110,7 @@ public class ChatWindowController : MonoBehaviour
 
     private void Update()
     {
-        foreach (var characterID in ChatManager.Instance.chatCharacters)
+        foreach (var characterID in ChatManager.Instance.chatCharacters.ToList())
         {
             var canInput = ChatManager.Instance.chatDataMap[characterID].LastItem().isFinished == false &&
                            ChatManager.Instance.chatDataMap[characterID].LastItem().type == ChatType.respond;
@@ -122,7 +123,9 @@ public class ChatWindowController : MonoBehaviour
                 {
                     lastItem.angryTimer = 0;
                     lastItem.isFinished = true;
+                    input.GetComponent<FakeInputField>().Clear();
                     ChatManager.Instance.failedRespond(characterID);
+                    
                     //EventPool.Trigger("UpdateChat");
                 }
                 else

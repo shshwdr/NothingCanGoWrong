@@ -103,6 +103,8 @@ public class ChatManager : Singleton<ChatManager>
     public void failedRespond(string characterId)
     {
         
+        ComputerManager.Instance.InflictDamage(5);
+        
         var lastChat = chatDataMap[characterId].LastItem();
         ChatData data = new ChatData()
             { text = "I'm angry.", sender = lastChat.sender, type = ChatType.respond, isFinished = true };

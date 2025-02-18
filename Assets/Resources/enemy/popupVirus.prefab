@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d6fb7a43f8fb0446be0f719d509c4f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  virusMaxHealth: 100
+  virusMaxHealth: 150
   virusHealth: 30
   attackDamage: 5
   attackInterval: 23

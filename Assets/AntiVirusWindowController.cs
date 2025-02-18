@@ -15,10 +15,18 @@ public class AntiVirusWindowController : MonoBehaviour
 
     public float spawnAntiTimer = 0;
     public float spawnAntiInterval = 3;
+
+    public HPBar ammo;
+
+    public int ammoMax = 5;
+    private int ammoCount = 0;
+    public float ammoRefillTime = 2;
+    private float ammoRefillTimer = 0;
     
     // Start is called before the first frame update
     void Start()
     {
+        ammoCount = ammoMax;
         playerHealthBar.SetHP(ComputerManager.Instance.currentPlayerHealth, ComputerManager.Instance.playerMaxHealth);
         EventPool.OptIn("OnPlayerHealthChange", () =>
         {
@@ -38,11 +46,20 @@ public class AntiVirusWindowController : MonoBehaviour
 
     public void addAntiVirusBug()
     {
+        if (ammoCount <= 0)
+        {
+            return;
+        }
         var virus = FindObjectsOfType<UIPrefabSpawner>().ToList();
         if (virus.Count > 0)
         {
             virus.PickItem().SpawnPrefab(5);
             spawnAntiTimer = 0;
+            
+            
+            ammoCount -= 1;
+            ammoCount = Mathf.Clamp(ammoCount, 0, ammoMax);
+            ammo.SetHP(ammoCount, ammoMax);
         }
     }
 
@@ -53,6 +70,19 @@ public class AntiVirusWindowController : MonoBehaviour
          if (spawnAntiTimer > spawnAntiInterval)
          {
              addAntiVirusBug();
+             addAntiVirusBug();
+             addAntiVirusBug();
+         }
+         
+         spawnButton.interactable = ammoCount > 0;
+         
+         ammoRefillTimer += Time.deltaTime;
+         if (ammoRefillTimer > ammoRefillTime)
+         {
+             ammoRefillTimer = 0;
+             ammoCount += 1;
+             ammoCount = Mathf.Clamp(ammoCount, 0, ammoMax);
+             ammo.SetHP(ammoCount, ammoMax);
          }
     }
 }
