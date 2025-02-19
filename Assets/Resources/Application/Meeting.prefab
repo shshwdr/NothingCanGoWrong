@@ -606,7 +606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   focusProgress: {fileID: 377997180547897888}
   progressIncreaseWhenOnTop: 10
-  progressDecreaseWhenNotOnTop: -10
+  progressDecreaseWhenNotOnTop: -5
   meetingTime: 20
   finishedOB: {fileID: 7672844913177309499}
   finishedHideOB: {fileID: 1895289400150612823}

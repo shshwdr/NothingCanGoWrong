@@ -23,6 +23,7 @@ public class AntiVirusWindowController : MonoBehaviour
     public float ammoRefillTime = 2;
     private float ammoRefillTimer = 0;
 
+    public bool allBugsAtOnce = true;
     public float antivirusBugLifeTime = 5;
     
     // Start is called before the first frame update
@@ -56,16 +57,43 @@ public class AntiVirusWindowController : MonoBehaviour
         var virus = FindObjectsOfType<UIPrefabSpawner>().ToList();
         if (virus.Count > 0)
         {
-            virus.PickItem().SpawnPrefab(antivirusBugLifeTime);
-            spawnAntiTimer = 0;
-
-            if (useAmmo)
+            //Spend all the ammo at once and spawns bugs
+            if(allBugsAtOnce)
             {
-                
-                ammoCount -= 1;
-                ammoCount = Mathf.Clamp(ammoCount, 0, ammoMax);
-                ammo.SetHP(ammoCount, ammoMax);
+                UIPrefabSpawner mainVirusItem = virus.PickItem();
+
+                for (int i = 0; i < ammoCount; i++)
+                {
+                    mainVirusItem.SpawnPrefab(antivirusBugLifeTime);
+                }
+
+                spawnAntiTimer = 0;
+
+                if (useAmmo)
+                {                
+                    ammoCount -= ammoCount;
+                    ammoCount = Mathf.Clamp(ammoCount, 0, ammoMax);
+                    ammo.SetHP(ammoCount, ammoMax);
+                }
             }
+
+            //Spend one ammo to spawn one bug
+            else
+            {
+                print("None");
+
+                virus.PickItem().SpawnPrefab(antivirusBugLifeTime);
+                spawnAntiTimer = 0;
+
+                if (useAmmo)
+                {
+                
+                    ammoCount -= 1;
+                    ammoCount = Mathf.Clamp(ammoCount, 0, ammoMax);
+                    ammo.SetHP(ammoCount, ammoMax);
+                }
+            }
+
         }
     }
 
