@@ -22,6 +22,8 @@ public class AntiVirusWindowController : MonoBehaviour
     private int ammoCount = 0;
     public float ammoRefillTime = 2;
     private float ammoRefillTimer = 0;
+
+    public float antivirusBugLifeTime = 5;
     
     // Start is called before the first frame update
     void Start()
@@ -54,7 +56,7 @@ public class AntiVirusWindowController : MonoBehaviour
         var virus = FindObjectsOfType<UIPrefabSpawner>().ToList();
         if (virus.Count > 0)
         {
-            virus.PickItem().SpawnPrefab(5);
+            virus.PickItem().SpawnPrefab(antivirusBugLifeTime);
             spawnAntiTimer = 0;
 
             if (useAmmo)
