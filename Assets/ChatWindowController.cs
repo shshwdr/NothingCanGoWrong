@@ -53,7 +53,10 @@ public class ChatWindowController : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        foreach (var characterID in ChatManager.Instance.chatCharacters)
+
+        var charactersOrder =
+            ChatManager.Instance.chatCharacters.OrderBy(x => !ChatManager.Instance.chatDataMap[x].LastItem().isFinished);
+        foreach (var characterID in charactersOrder)
         {
             var characterInfo =  CSVLoader.Instance.CharacterInfoMap[characterID];
             var characterName = characterInfo.name;
@@ -80,7 +83,7 @@ public class ChatWindowController : MonoBehaviour
             foreach (var chatData in ChatManager.Instance.chatDataMap[selectedCharacter])
             {
                 var chatContent = Instantiate(chatContentCell, content);
-                chatContent.GetComponent<ChatCell>().Init(chatData);
+                chatContent.GetComponent<ChatCell>().Init(chatData,this);
             }
 
             var canInput = ChatManager.Instance.chatDataMap[selectedCharacter].LastItem().isFinished == false &&
@@ -112,21 +115,15 @@ public class ChatWindowController : MonoBehaviour
     {
         foreach (var characterID in ChatManager.Instance.chatCharacters.ToList())
         {
-            var canInput = ChatManager.Instance.chatDataMap[characterID].LastItem().isFinished == false &&
-                           ChatManager.Instance.chatDataMap[characterID].LastItem().type == ChatType.respond;
+            var canInput = ChatManager.Instance.chatDataMap[characterID].LastItem().isFinished == false;
             var lastItem = ChatManager.Instance.chatDataMap[characterID].LastItem();
             if (canInput)
             {
                 chatIconMap[characterID].GetComponentInChildren<HPBar>().gameObject.SetActive(true);
-                lastItem.angryTimer+=Time.deltaTime;
-                if (lastItem.angryTimer > lastItem.angryTime)
+                
+                if (lastItem.isFailed == true)
                 {
-                    lastItem.angryTimer = 0;
-                    lastItem.isFinished = true;
                     input.GetComponent<FakeInputField>().Clear();
-                    ChatManager.Instance.failedRespond(characterID);
-                    
-                    //EventPool.Trigger("UpdateChat");
                 }
                 else
                 {
@@ -138,5 +135,22 @@ public class ChatWindowController : MonoBehaviour
                 chatIconMap[characterID].GetComponentInChildren<HPBar>(true).gameObject.SetActive(false);
             }
         }
+    }
+
+    public bool takeFile()
+    {
+        if (selectedCharacter == null)
+        {
+            return false;
+        }
+
+        if (ChatManager.Instance.chatCharacters.Contains(selectedCharacter))
+        {
+            var lastChat = ChatManager.Instance.chatDataMap[selectedCharacter].LastItem();
+            var canInput = !lastChat.isFinished && lastChat.type == ChatType.download;
+            return canInput;
+        }
+
+        return false;
     }
 }

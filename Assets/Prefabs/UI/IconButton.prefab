@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 8007723811066079490}
   - component: {fileID: 664713906000440858}
   - component: {fileID: 4657443833073438915}
+  - component: {fileID: -337630155785793304}
   m_Layer: 5
   m_Name: IconButton
   m_TagString: Untagged
@@ -215,6 +216,19 @@ MonoBehaviour:
   nameLabel: {fileID: 6901427370092922614}
   redDot: {fileID: 471124266360740844}
   button: {fileID: 664713906000440858}
+--- !u!114 &-337630155785793304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5978902967346369834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &7513962900803419446
 GameObject:
   m_ObjectHideFlags: 0

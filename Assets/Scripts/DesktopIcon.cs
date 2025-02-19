@@ -5,16 +5,20 @@ using UnityEngine.UI;
 public class DesktopIcon : MonoBehaviour
 {
     public string appName;
-    
+    public string actualName;
     private WindowManager windowManager;
 
-    public GameObject prefab;
 public TMP_Text nameLabel;
-    void Start()
+public GameObject finishedIcon;
+
+    public void Init( string actualName, string appName)
     {
-        nameLabel.text = appName;
+        nameLabel.text = actualName;
+        this.appName = appName;
+        this.actualName = actualName;
         windowManager = FindObjectOfType<WindowManager>();
-        GetComponent<Button>().onClick.AddListener(() => windowManager.OpenApplication(appName,prefab));
+        GameObject prefab = Resources.Load<GameObject>("Application/"+appName);
+        GetComponent<Button>().onClick.AddListener(() => windowManager.OpenApplication(appName,actualName,prefab));
         
         
         GetComponent<Image>().sprite = SpriteUtils.GetIcon(appName);

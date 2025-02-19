@@ -191,6 +191,7 @@ GameObject:
   - component: {fileID: 4391230036404003290}
   - component: {fileID: 5528390022423868938}
   - component: {fileID: 8136487637253836691}
+  - component: {fileID: 6399572429310963235}
   m_Layer: 5
   m_Name: InputField (TMP)
   m_TagString: Untagged
@@ -369,6 +370,19 @@ MonoBehaviour:
   inputField: {fileID: 5528390022423868938}
   predefinedText: Hello, World!
   chatWindowController: {fileID: 1039118322220364987}
+--- !u!114 &6399572429310963235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422859278239647006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &2532738739598588222
 GameObject:
   m_ObjectHideFlags: 0
@@ -1080,7 +1094,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5150430554100762204, guid: d88fc17cd7e017442bd2b4abe0a8c55c, type: 3}
       propertyPath: m_Name
-      value: chat
+      value: Chat
       objectReference: {fileID: 0}
     - target: {fileID: 6047055281435768238, guid: d88fc17cd7e017442bd2b4abe0a8c55c, type: 3}
       propertyPath: m_Pivot.x

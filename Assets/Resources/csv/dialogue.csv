@@ -1,3 +1,5 @@
 ﻿id,text,speaker,type,otherEvent,next,respond
 respond0,"Hi you must be the new guy, welcome!",,1,,,Thanks!
 respond1,Can you do xxx for me,,1,,,Sure!
+download0,Please edit this file and send back to me.,,2,,,Here you are!
+download1,This file requires some change.,,2,,,Done!

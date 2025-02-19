@@ -14,7 +14,7 @@ public class WindowManager : Singleton<WindowManager>
     private Dictionary<string, GameObject> taskbarButtons = new Dictionary<string, GameObject>();
     private int id;
     public RectTransform canvasRect;
-    public GameObject OpenApplication(string appName, GameObject prefab = null, bool forceOpenNew = false)
+    public GameObject OpenApplication(string appName,string actualName, GameObject prefab = null, bool forceOpenNew = false)
     {
         // 如果应用已打开，则显示它
         if (prefab == null)
@@ -62,7 +62,7 @@ public class WindowManager : Singleton<WindowManager>
 
         newTaskbarButton.GetComponent<TaskbarButton>().Init(appName);
 
-        newWindow.GetComponent<WindowController>().Init(appName,appID,newTaskbarButton.transform);
+        newWindow.GetComponent<WindowController>().Init(appName,actualName,appID,newTaskbarButton.transform);
         taskbarButtons[appID] = newTaskbarButton;
         return newWindow;
     }
@@ -104,6 +104,16 @@ public class WindowManager : Singleton<WindowManager>
         {
             bool isActive = openWindows[appName].activeSelf;
             openWindows[appName].SetActive(!isActive);
+
+            if (!isActive)
+            {
+                openWindows[appName].GetComponent<WindowController>().SetToTop();
+            }
+            else
+            {
+                openWindows[appName].GetComponent<WindowController>().SetToBottom();
+            }
+            
         }
     }
 }

@@ -5,7 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class WindowController : MonoBehaviour, IDragHandler, IPointerDownHandler
-{
+{ 
+    public Button fullWindow;
     [HideInInspector]
     public string id;
     public RectTransform windowRect; // 窗口 RectTransform
@@ -23,11 +24,25 @@ public TMP_Text titleLabel;
     private WindowManager windowManager;
 
     private Transform taskBarIcon;
+    
+    public void SetToTop()
+    {
+        transform.SetAsLastSibling(); // 将当前 UI 置顶
+    }
+    public void SetToBottom()
+    {
+        transform.SetAsFirstSibling();
+    }
     void Start()
     {
         closeButton.onClick.AddListener(CloseWindow);
         minimizeButton.onClick.AddListener(MinimizeWindow);
         maximizeButton.onClick.AddListener(ToggleMaximize);
+        fullWindow.onClick.AddListener(() =>
+        {
+            transform.SetAsLastSibling(); // 将当前 UI 置顶
+
+        });
         //windowRect.sizeDelta = originalSize;
        // windowRect.anchoredPosition = Vector2.zero;
         parentCanvas = transform.parent;
@@ -42,9 +57,9 @@ public TMP_Text titleLabel;
         }
     }
 
-    public void Init(string name,string appId,Transform taskBarIcon)
+    public void Init(string name,string actualName,string appId,Transform taskBarIcon)
     {
-        titleLabel.text = name;
+        titleLabel.text = actualName;
         id = appId;
         this.taskBarIcon = taskBarIcon;
     }

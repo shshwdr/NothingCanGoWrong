@@ -40,7 +40,7 @@ public class Virus : MonoBehaviour
 
     void createWindow()
     {
-       virusWindow =  WindowManager.Instance. OpenApplication(applicationName, virusWindowPrefab,true);
+       virusWindow =  WindowManager.Instance. OpenApplication(applicationName, applicationName, virusWindowPrefab,true);
        virusWindow.GetComponent<VirusWindowController>().Init(this);
     }
 
@@ -52,12 +52,13 @@ public class Virus : MonoBehaviour
     public virtual void DamageVirus()
     {
         virusHealth -= 10;
+        virusWindow.GetComponent<VirusWindowController>().TakeDamage();
         virusWindow.GetComponent<VirusWindowController>().hpProgressBar.SetHP(virusHealth, virusMaxHealth);
         if (virusHealth <= 0)
         {
             Destroy(gameObject);
-            WindowManager.Instance.CloseApplication(virusWindow.GetComponent<WindowController>().id);
             Destroy(virusWindow);
+            virusWindow.GetComponent<VirusWindowController>().Die();
         }
     }
 

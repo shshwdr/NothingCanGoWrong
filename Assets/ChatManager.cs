@@ -21,12 +21,18 @@ public class ChatData
 
     public float angryTime = 20;
     public float angryTimer = 0;
+    public bool isFailed;
+}
+
+public class ChatCharacterStatus
+{
+    public int status = 0;
 }
 public class ChatManager : Singleton<ChatManager>
 {
     public Dictionary<string, List<ChatData>> chatDataMap = new Dictionary<string, List<ChatData>>();
     public List<string> chatCharacters = new List<string>();
-    public GameObject reddot;
+   // public Dictionary<string, ChatCharacterStatus> chatCharacterStatusMap = new Dictionary<string, ChatCharacterStatus>();
 
     public float generateChatTimeMin = 6;
     public float generateChatTimeMax = 20;
@@ -48,22 +54,89 @@ public class ChatManager : Singleton<ChatManager>
         {
             generateChatTimer = 0;
             generateChatTime  = Random.Range(generateChatTimeMin, generateChatTimeMax);
-            GenerateRespondChat();
+
+            var id = Random.Range(2, 3);
+            switch (id)
+            {
+                case 1:
+                    GenerateRespondChat();
+                    break;
+                    case 2:
+                        GenerateDownloadChat();
+                    break;
+            }
+        }
+        
+        foreach (var characterID in ChatManager.Instance.chatCharacters.ToList())
+        {
+            var lastItem = ChatManager.Instance.chatDataMap[characterID].LastItem();
+            var notFinished = lastItem.isFinished == false;
+            if (notFinished)
+            {
+                
+                lastItem.angryTimer+=Time.deltaTime;
+                if (lastItem.angryTimer > lastItem.angryTime)
+                {
+                    lastItem.angryTimer = 0;
+                    lastItem.isFailed = true;
+                    ChatManager.Instance.failedRespond(characterID);
+                    
+                    //EventPool.Trigger("UpdateChat");
+                }
+                else
+                {
+                }
+            }
+            else
+            {
+            }
         }
     }
 
-    void GenerateRespondChat()
+    CharacterInfo randomSpeaker()
     {
-        var selectChat = CSVLoader.Instance.DialogueInfoMap[1].RandomItem();
+        
         var npcs = CSVLoader.Instance.NPCs;
         npcs = npcs.Where(x => !chatDataMap.ContainsKey(x.id) || chatDataMap[x.id].LastItem().isFinished ).ToList();
         if (npcs.Count == 0)
         {
-            return;
+            return null;
         }
         var speaker = npcs.RandomItem();
+        return speaker;
+    }
+
+    void GenerateRespondChat()
+    {
+        var speaker = randomSpeaker();
+        if (speaker == null)
+        {
+            return;
+        }
+
+        var type = ChatType.chat;
+        var selectChat = CSVLoader.Instance.DialogueInfoMap[(int)(type)].RandomItem();
+        GenerateChat(type, selectChat.text, speaker, selectChat,false);
+    }
+
+    void GenerateDownloadChat()
+    {
+        var speaker = randomSpeaker();
+        if (speaker == null)
+        {
+            return;
+        }
+
+        var type = ChatType.download;
+        var selectChat = CSVLoader.Instance.DialogueInfoMap[(int)(type)].RandomItem();
+        GenerateChat(ChatType.chat, selectChat.text, speaker, selectChat,true);
+        GenerateChat(ChatType.download,"",speaker,selectChat,false);
+    }
+    
+    void GenerateChat(ChatType type,string text, CharacterInfo speaker, DialogueInfo selectChat,bool isFinished)
+    {
         ChatData data = new ChatData()
-            { text = selectChat.text, sender = speaker, type = ChatType.respond, isFinished = false, dialogueInfo = selectChat};
+            { text = text, sender = speaker, type = type, isFinished = isFinished, dialogueInfo = selectChat, angryTime = type == ChatType.chat?20:100};
         if (!chatDataMap.ContainsKey(speaker.id))
         {
             chatDataMap.Add(speaker.id, new List<ChatData>());
@@ -103,7 +176,7 @@ public class ChatManager : Singleton<ChatManager>
     public void failedRespond(string characterId)
     {
         
-        ComputerManager.Instance.InflictDamage(5);
+        //ComputerManager.Instance.InflictDamage(5);
         
         var lastChat = chatDataMap[characterId].LastItem();
         ChatData data = new ChatData()
@@ -112,5 +185,61 @@ public class ChatManager : Singleton<ChatManager>
         chatDataMap[characterId].Add(data);
         addChat(characterId);
         EventPool.Trigger("UpdateChat");
+    }
+
+    public void addFile(string fileName,bool isFinished)
+    {
+        var characterId = FindObjectOfType<ChatWindowController>().selectedCharacter;
+        if (characterId != "")
+        {
+            var lastChat = chatDataMap[characterId].LastItem();
+            var playerInfo = CSVLoader.Instance.CharacterInfoMap["player"];
+            var characterInfo = CSVLoader.Instance.CharacterInfoMap[characterId];
+            {
+                ChatData data = new ChatData()
+                {
+                    text = "" /*lastChat.dialogueInfo.respond*/, sender = playerInfo, type = ChatType.download,
+                    isFinished = true
+                };
+
+                chatDataMap[characterId].Add(data);
+                addChat(characterId);
+                EventPool.Trigger("UpdateChat");
+            }
+            
+            if (fileName.Contains(characterInfo.name))
+            {
+                if (isFinished)
+                {
+                    
+                    ChatData data = new ChatData()
+                        { text = "Great!", sender = lastChat.sender, type = ChatType.chat, isFinished = true };
+        
+                    chatDataMap[characterId].Add(data);
+                    addChat(characterId);
+                    EventPool.Trigger("UpdateChat");
+                }
+                else
+                {
+                    
+                    ChatData data = new ChatData()
+                        { text = "It is NOT finished!!!", sender = lastChat.sender, type = ChatType.chat, isFinished = true };
+        
+                    chatDataMap[characterId].Add(data);
+                    addChat(characterId);
+                    EventPool.Trigger("UpdateChat");
+                }
+            }
+            else
+            {
+                
+                ChatData data = new ChatData()
+                    { text = "This is not the file I want.", sender = lastChat.sender, type = ChatType.chat, isFinished = true };
+        
+                chatDataMap[characterId].Add(data);
+                addChat(characterId);
+                EventPool.Trigger("UpdateChat");
+            }
+        }
     }
 }

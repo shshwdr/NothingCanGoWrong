@@ -19,13 +19,30 @@ public class VirusWindowController : MonoBehaviour
         this.virus = virus;
         UpdateUI();
     }
+
+    public void Die()
+    {
+        
+        GetComponent<VirusAnimationController>().PlayAnimation("Death",false);
+        StartCoroutine(StartCoroutine(0.5f));
+    }
+    
+    IEnumerator StartCoroutine(float time)
+    {
+        yield return new WaitForSeconds(time);
+        WindowManager.Instance.CloseApplication(GetComponent<WindowController>().id);
+    }
     void Start()
     {
         
-        attackProgressBar.GetComponentInChildren<Button>().onClick.AddListener(OnAttackButton);
-        beAttackProgressBar.GetComponentInChildren<Button>().onClick.AddListener(OnDefenseButton);
+        // attackProgressBar.GetComponentInChildren<Button>().onClick.AddListener(OnAttackButton);
+        // beAttackProgressBar.GetComponentInChildren<Button>().onClick.AddListener(OnDefenseButton);
     }
 
+    public void TakeDamage()
+    {
+        GetComponent<VirusAnimationController>().PlayAnimation("Hurt",false);
+    }
     protected virtual void Update()
     {
         float timeNow = Time.time;
@@ -71,18 +88,18 @@ public class VirusWindowController : MonoBehaviour
 
     }
 
-    public void OnAttackButton()
-    {
-        virus.actionMode = 1;
-        attackProgressBar.GetComponentInChildren<SelectableItem>().OnSelect(true);
-        beAttackProgressBar.GetComponentInChildren<SelectableItem>().OnSelect(false);
-    }
-    public void OnDefenseButton()
-    {
-        virus.actionMode = 0;
-        attackProgressBar.GetComponentInChildren<SelectableItem>().OnSelect(false);
-        beAttackProgressBar.GetComponentInChildren<SelectableItem>().OnSelect(true);
-    }
+    // public void OnAttackButton()
+    // {
+    //     virus.actionMode = 1;
+    //     attackProgressBar.GetComponentInChildren<SelectableItem>().OnSelect(true);
+    //     beAttackProgressBar.GetComponentInChildren<SelectableItem>().OnSelect(false);
+    // }
+    // public void OnDefenseButton()
+    // {
+    //     virus.actionMode = 0;
+    //     attackProgressBar.GetComponentInChildren<SelectableItem>().OnSelect(false);
+    //     beAttackProgressBar.GetComponentInChildren<SelectableItem>().OnSelect(true);
+    // }
     
     protected void UpdateUI()
     {
