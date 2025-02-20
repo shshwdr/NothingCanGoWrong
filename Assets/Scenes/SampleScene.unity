@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 88363876}
   - component: {fileID: 88363875}
   - component: {fileID: 88363874}
+  - component: {fileID: 88363877}
   m_Layer: 0
   m_Name: clip
   m_TagString: Untagged
@@ -228,6 +229,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &88363877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88363873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aee7610734bd1745a1b8c0044702395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &193935096
 GameObject:
   m_ObjectHideFlags: 0
