@@ -9,7 +9,8 @@ public class MeetingWindowController : MonoBehaviour
     public HPBar focusProgress;
     private RectTransform rect;
     private float progress = 100;
-    private float maxProgress = 100;
+    public float maxProgress = 100;
+    public float difficultScale = 1;
     public float progressIncreaseWhenOnTop = 1;
     public float progressDecreaseWhenNotOnTop = -0.5f;
 
@@ -48,7 +49,7 @@ public class MeetingWindowController : MonoBehaviour
         }
         else
         {
-             progress += progressDecreaseWhenNotOnTop * Time.deltaTime;
+             progress += progressDecreaseWhenNotOnTop * difficultScale * Time.deltaTime;
         }
 
         progress = math.clamp(progress, 0, maxProgress);

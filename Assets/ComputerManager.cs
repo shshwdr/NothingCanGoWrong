@@ -21,6 +21,10 @@ public class ComputerManager : Singleton<ComputerManager>
     /// </summary>
     public void InflictDamage(int damage)
     {
+        if (LevelManager.Instance.isFinished)
+        {
+            return;
+        }
         currentPlayerHealth -= damage;
         if (currentPlayerHealth < 0) currentPlayerHealth = 0;
         UpdateUI();
@@ -28,6 +32,8 @@ public class ComputerManager : Singleton<ComputerManager>
         if (currentPlayerHealth <= 0)
         {
             Debug.Log("💀 玩家电脑崩溃！");
+            LevelManager.Instance.isFinished = true;
+            FindObjectOfType<GameOver>(true).gameObject.SetActive(true);
         }
     }
 

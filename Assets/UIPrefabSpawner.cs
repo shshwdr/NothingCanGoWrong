@@ -30,8 +30,14 @@ public class UIPrefabSpawner : MonoBehaviour
         
         newPrefab.GetComponent<Button>().onClick.AddListener(() =>
         {
-            Destroy(newPrefab);
+            newPrefab.GetComponent<ImageAnimationController>().Play();
+            newPrefab.GetComponent<Button>().interactable = false;
+            Destroy(newPrefab,1);
             GetComponent<VirusWindowController>().virus.DamageVirus();
+            if (FindObjectOfType<ClipAnimationController>())
+            {
+                FindObjectOfType<ClipAnimationController>().PlayAttackAnim();
+            }
         });
         Destroy(newPrefab, destroyTime);
         RectTransform prefabRect = newPrefab.GetComponent<RectTransform>();

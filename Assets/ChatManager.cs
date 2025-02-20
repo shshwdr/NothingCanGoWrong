@@ -149,7 +149,7 @@ public class ChatManager : Singleton<ChatManager>
    public void GenerateChat(ChatType type,string text, CharacterInfo speaker, DialogueInfo selectChat,bool isFinished,bool noAngry = false)
     {
         var angryTime = type == ChatType.chat ? 20 : 100;
-        if (!noAngry)
+        if (noAngry)
         {
             angryTime = -1;
         }

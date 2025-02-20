@@ -112,11 +112,7 @@ public TMP_Text titleLabel;
 
     public void OnDrag(PointerEventData eventData)
     {
-        
-        Vector3 delta = new Vector3(eventData.delta.x, eventData.delta.y, 0);
-        Vector3 worldDelta = Camera.main.ScreenToWorldPoint(transform.position + delta) - Camera.main.ScreenToWorldPoint(transform.position);
-
-        transform.position += worldDelta;
+        transform.position += (Vector3)eventData.delta;
     }
 
     public void OnPointerDown(PointerEventData eventData)

@@ -12,23 +12,26 @@ public class FakePDF : MonoBehaviour
 public IEnumerator OpenPDF()
 {
     yield return new WaitForSeconds(1);
-    var glitchEffect = FindObjectOfType<GlitchEffect>();
-
-    glitchEffect.StartGlitch();
-    yield return new WaitForSeconds(0.3f);
-    glitchEffect.StartGlitch();
-    yield return new WaitForSeconds(0.4f);
-    glitchEffect.StartGlitch();
-    yield return new WaitForSeconds(0.2f);
-    glitchEffect.StartGlitch();
-    yield return new WaitForSeconds(0.3f);
-    glitchEffect.StartGlitch();
-    yield return new WaitForSeconds(0.1f);
-    glitchEffect.StartGlitch();
-    yield return new WaitForSeconds(0.2f);
-    glitchEffect.StopGlitch();
+    FindObjectOfType<UIScreenShake>().StartShake();
+    FindObjectOfType<UIScreenFlash>().StartFlash();
+    yield return new WaitForSeconds(1);
+    // var glitchEffect = FindObjectOfType<GlitchEffect>();
+    //
+    // glitchEffect.StartGlitch();
+    // yield return new WaitForSeconds(0.3f);
+    // glitchEffect.StartGlitch();
+    // yield return new WaitForSeconds(0.4f);
+    // glitchEffect.StartGlitch();
+    // yield return new WaitForSeconds(0.2f);
+    // glitchEffect.StartGlitch();
+    // yield return new WaitForSeconds(0.3f);
+    // glitchEffect.StartGlitch();
+    // yield return new WaitForSeconds(0.1f);
+    // glitchEffect.StartGlitch();
+    // yield return new WaitForSeconds(0.2f);
+    // glitchEffect.StopGlitch();
     
-    yield return new WaitForSeconds(0.5f);
+    //yield return new WaitForSeconds(0.5f);
     
     
     DeskTop.Instance. AddDesktopIcon("Chat");
@@ -36,7 +39,7 @@ public IEnumerator OpenPDF()
     ChatManager.Instance.GenerateDialogue("tutorial1_chat");
 
     WindowManager.Instance.CloseApplication("fakePDF");
-    DeskTop.Instance.RemoveDesktopIcon("fakePDF");
+    DeskTop.Instance.RemoveDesktopIcon("Onboarding");
 }
     // Update is called once per frame
     void Update()

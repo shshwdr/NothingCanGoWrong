@@ -10,6 +10,9 @@ public class VirusData
     public string id;
     public float spawnTime;
     public int level;
+    public int hp;
+    public int stayTime;
+    public int otherValues;
 }
 public class LevelManager : Singleton<LevelManager>
 {
@@ -23,7 +26,7 @@ public class LevelManager : Singleton<LevelManager>
     
     List<VirusData> virusDataList = new List<VirusData>();
     public float gameTime ;
-
+    public LevelInfo currentLevelInfo;
     private void Start()
     {
         LoadLevel(GameManager.Instance.level);
@@ -58,18 +61,22 @@ public class LevelManager : Singleton<LevelManager>
 
     public void StartGame()
     {
-        var levelInfo = CSVLoader.Instance.LevelInfoDict[level];
-        ChatManager.Instance.generateChatTime = levelInfo.chatInterval[0];
-        ChatManager.Instance.generateChatTimeMin = levelInfo.chatInterval[1];
-        ChatManager.Instance.generateChatTimeMax = levelInfo.chatInterval[2];
+        currentLevelInfo = CSVLoader.Instance.LevelInfoDict[level];
+        ChatManager.Instance.generateChatTime = currentLevelInfo.chatInterval[0];
+        ChatManager.Instance.generateChatTimeMin = currentLevelInfo.chatInterval[1];
+        ChatManager.Instance.generateChatTimeMax = currentLevelInfo.chatInterval[2];
 
-        for (int i = 0; i < levelInfo.virus.Count; i += 3)
+        MeetingManager.Instance.generateChatTime = currentLevelInfo.meeting[0];
+        MeetingManager.Instance.generateChatTimeMin = currentLevelInfo.meeting[1];
+        MeetingManager.Instance.generateChatTimeMax = currentLevelInfo.meeting[2];
+        for (int i = 0; i < currentLevelInfo.virus.Count; i += 5)
         {
             virusDataList.Add(new VirusData
             {
-                id = levelInfo.virus[i],
-                level = int.Parse(levelInfo.virus[i + 1]),
-                spawnTime = int.Parse(levelInfo.virus[i + 2]),
+                id = currentLevelInfo.virus[i],
+                spawnTime = int.Parse(currentLevelInfo.virus[i + 1]),
+                hp = int.Parse(currentLevelInfo.virus[i + 2]),
+                stayTime = int.Parse    (currentLevelInfo.virus[i + 3]),
             });
         }
         
@@ -79,6 +86,15 @@ public class LevelManager : Singleton<LevelManager>
 
     private void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Restart();
+        }
+        if (!isStarted || isFinished)
+        {
+            return;
+        }
         if (isStarted)
         {
             gameTimer += Time.deltaTime;
@@ -87,6 +103,8 @@ public class LevelManager : Singleton<LevelManager>
         if (gameTimer > gameTime)
         {
             isFinished = true;
+            if( FindObjectOfType<ClipAnimationController>())
+            FindObjectOfType<ClipAnimationController>().PlayEndOfDay();
             //GameManager.Instance.NextLevel();
         }
 
@@ -95,15 +113,23 @@ public class LevelManager : Singleton<LevelManager>
             if (gameTimer > virusDataList[0].spawnTime)
             {
                 var virusData = virusDataList[0];
-                virusDataList.RemoveAt(0);
                 CreateVirus(virusData.id);
+                virusDataList.RemoveAt(0);
             }
         }
     }
 
     public void CreateVirus(string virusId)
     {
+        var virusData = virusDataList[0];
         FindObjectOfType<ClipAnimationController>().PlayDetectAnim();
-        Instantiate(Resources.Load<GameObject>( "enemy/"+virusId),null);
+        var virus = Instantiate(Resources.Load<GameObject>( "enemy/"+virusId),null);
+        virus.GetComponent<Virus>().virusMaxHealth = virusData.hp;
+        virus.GetComponent<Virus>().corruptionInterval = virusData.stayTime;
+    }
+
+    public void Restart()
+    {
+        GameManager.Instance.RestartLevel();
     }
 }

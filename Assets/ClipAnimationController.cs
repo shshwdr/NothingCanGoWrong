@@ -12,7 +12,7 @@ public class ClipAnimationController : MonoBehaviour
     public float fidgeTimeMin = 5;
     public float fidgeTimeMax = 10;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         
         animator = GetComponent<Animator>();
@@ -37,13 +37,34 @@ public class ClipAnimationController : MonoBehaviour
         idleTime = 0f; // 重置 Idle 计时
     }
 
+    public void PlayStart()
+    {
+        
+        animator.SetTrigger("talk");
+        GetComponentInParent<ClipController>().ShowDialogue("clip_start",10);
+    }
     public void PlayDetectAnim()
     {
         animator.SetTrigger("detect");
+        GetComponentInParent<ClipController>().ShowDialogue("clip_detect");
     }
     public void PlayAttackAnim()
     {
         animator.SetTrigger("attack");
+        GetComponentInParent<ClipController>().ShowDialogue("clip_attack",5);
+    }
+
+    public void PlayWin()
+    {
+        animator.SetTrigger("talk");
+        GetComponentInParent<ClipController>().ShowDialogue("clip_win",10);
+    }
+    
+    
+    public void PlayEndOfDay()
+    {
+        animator.SetTrigger("talk");
+        GetComponentInParent<ClipController>().ShowDialogue("clip_endDay",20);
     }
     void ScheduleNextFidget()
     {

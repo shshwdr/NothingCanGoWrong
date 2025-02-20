@@ -44,7 +44,7 @@ tutorial1_chat5,"Alright, I've helped you install the antivirus. Please open it 
 tutorial1_chat6,You can see when will a day ends and how productive you are in antivirus program.,hr,-1,,tutorial1_chat7,I see.,
 tutorial1_chat7,"By the way, when your colleagues message you, remember to respond promptly.",hr,-1,,tutorial1_chat8,I'll make sure to say hi when they reach out.,
 tutorial1_chat8,"Perfect. Welcome again, and have a great first day!",hr,-1,startgame,,Thanks! Looking forward to a productive day ahead.,
-clip,Your computer looks fine so far—no obvious issues.,clip,-1,,,,
+clip_start,Morning. Your computer looks fine so far.,clip,-1,,,,
 clip_detect,"Virus detected! Press “Spawn” to generate target points on the virus, then click each point to attack.",clip,-1,,,,
 clip_win,That was a fair win! Nice job taking it down.,clip,-1,,,,
 clip_attack,Keep going! Attack the virus until it’s completely gone.,clip,-1,,,,

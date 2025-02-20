@@ -33,6 +33,8 @@ public class AntiVirusWindowController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+        DeskTop.Instance.pet.SetActive(true);
         dayLevel.text =   "Day " + LevelManager.Instance.level;
         if (FindObjectOfType<ChatWindowController>())
         {
@@ -57,9 +59,16 @@ public class AntiVirusWindowController : MonoBehaviour
         
         shutdownButton.onClick.AddListener(() =>
         {
-            GameManager.Instance.NextLevel();
+            Camera.main.GetComponent<ShutdownBlit>().StartShutdown();
+            StartCoroutine(startNext());
         });
         
+    }
+
+    IEnumerator startNext()
+    {
+        yield return new WaitForSeconds(1);
+        GameManager.Instance.NextLevel();
     }
 
     public void addAntiVirusBug(bool useAmmo)

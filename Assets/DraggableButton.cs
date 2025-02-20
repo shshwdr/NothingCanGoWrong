@@ -74,7 +74,7 @@ public class DraggableButton : MonoBehaviour, IDragHandler, IBeginDragHandler, I
         }
         else
         {
-            rectTransform.anchoredPosition = originalPosition; // 复位到原始位置
+           // rectTransform.anchoredPosition = originalPosition; // 复位到原始位置
         }
     }
 

@@ -30,6 +30,7 @@ public class LevelInfo
     public float totalTime;
     public List<string> virus;
     public List<int> chatInterval;
+    public List<float> meeting;
 }
 
 public class CSVLoader : Singleton<CSVLoader>

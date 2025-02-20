@@ -55,7 +55,7 @@ public class ChatWindowController : MonoBehaviour
         }
 
         var charactersOrder =
-            ChatManager.Instance.chatCharacters.OrderBy(x => !ChatManager.Instance.chatDataMap[x].LastItem().isFinished);
+            ChatManager.Instance.chatCharacters.OrderBy(x => ChatManager.Instance.chatDataMap[x].LastItem().isFinished);
         foreach (var characterID in charactersOrder)
         {
             var characterInfo =  CSVLoader.Instance.CharacterInfoMap[characterID];

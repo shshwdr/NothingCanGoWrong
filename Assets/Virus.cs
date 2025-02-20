@@ -56,6 +56,9 @@ public class Virus : MonoBehaviour
         virusWindow.GetComponent<VirusWindowController>().hpProgressBar.SetHP(virusHealth, virusMaxHealth);
         if (virusHealth <= 0)
         {
+            
+            if( FindObjectOfType<ClipAnimationController>())
+                FindObjectOfType<ClipAnimationController>().PlayWin();
             Destroy(gameObject);
             Destroy(virusWindow);
             virusWindow.GetComponent<VirusWindowController>().Die();

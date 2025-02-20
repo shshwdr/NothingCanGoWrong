@@ -1,4 +1,4 @@
-﻿day,chatType,tutorial,chatInterval,totalTime,virus
-1,1,tutorial0,4|8|10,120,trojan|1|10
-2,1,,4|8|10,120,trojan|1|10
-3,1,,4|8|10,120,trojan|1|10
+﻿day,chatType,tutorial,chatInterval,totalTime,virus,meeting,comment
+1,1,tutorial0,4|8|10,120,trojan|10|60|80,180|20|30|10|100|1,meeting:first meeting spawn time|meeting spawn min time|meeting spawn max time|meeting time|meeting max progress|meeting decrease scale(larger means harder)
+2,1,,4|8|10,120,trojan|10|60|80,4|25|30|20|50|1,virus: name|when to spawn|hp|corruption time
+3,1,,4|8|10,120,trojan|10|60|80,4|25|30|20|100|2,

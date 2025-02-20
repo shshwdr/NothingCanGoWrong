@@ -6,6 +6,7 @@ public class DeskTop : Singleton<DeskTop>
 {
 public Transform desktopParent;
 public GameObject desktopIcon;
+public GameObject pet;
 
 public Dictionary<string, GameObject> desktopIcons = new Dictionary<string, GameObject>();
 public void AddDesktopIcon(string appName)
