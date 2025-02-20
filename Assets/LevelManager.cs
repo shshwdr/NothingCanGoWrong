@@ -79,7 +79,13 @@ public class LevelManager : Singleton<LevelManager>
                 stayTime = int.Parse    (currentLevelInfo.virus[i + 3]),
             });
         }
-        
+
+        StartCoroutine(startEnumerator());
+    }
+
+    IEnumerator startEnumerator()
+    {
+        yield return new WaitForSeconds(2);
         
         isStarted = true;
     }

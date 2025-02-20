@@ -27,6 +27,7 @@ public class CharacterInfo
 public class LevelInfo
 {
     public int day;
+    public int chatType;
     public float totalTime;
     public List<string> virus;
     public List<int> chatInterval;

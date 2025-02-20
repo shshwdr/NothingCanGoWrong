@@ -61,7 +61,7 @@ public class ChatManager : Singleton<ChatManager>
             generateChatTimer = 0;
             generateChatTime  = Random.Range(generateChatTimeMin, generateChatTimeMax);
 
-            var id = Random.Range(1, 2);
+            var id = Random.Range(1, LevelManager.Instance.currentLevelInfo.chatType+1);
             switch (id)
             {
                 case 1:

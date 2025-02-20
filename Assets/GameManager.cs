@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    public int level = 2;
+    public int level = 1;
     void Awake()
     {
         CSVLoader.Instance.Init();
@@ -19,13 +19,27 @@ public class GameManager : Singleton<GameManager>
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            NextLevel();
+        }else 
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            PreviousLevel();
+        }
         
     }
     public void NextLevel()
     {
         level++;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        LevelManager.Instance.LoadLevel(level);
+    }
+
+    public void PreviousLevel()
+    {
+        level--;
+        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void RestartLevel()
     {
