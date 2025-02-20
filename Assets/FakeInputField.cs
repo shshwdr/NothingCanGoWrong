@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -38,14 +39,27 @@ public class FakeInputField : MonoBehaviour, ISelectHandler, IDeselectHandler
     /// </summary>
     private void SimulateTyping()
     {
-        if (currentIndex < predefinedText.Length)
+        if (predefinedText != null && predefinedText.Length > 0)
         {
-            inputField.text += predefinedText[currentIndex]; // 逐个添加预设文字
-            currentIndex++;
+            
+            if (currentIndex < predefinedText.Length)
+            {
+                inputField.text += predefinedText[currentIndex]; // 逐个添加预设文字
+                var addCount = math.max(1, (int)math.ceil( predefinedText.Length / 8f));
+                currentIndex+= addCount;
+                if (currentIndex >= predefinedText.Length)
+                {
+                    currentIndex = predefinedText.Length;
+                }
+            }
+            else
+            {
+                chatWindowController.updateInputArrow(true);
+            }
         }
         else
         {
-            chatWindowController.updateInputArrow(true);
+            inputField.text = "";
         }
     }
 
@@ -77,9 +91,9 @@ public class FakeInputField : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     public void Clear()
     {
+        currentIndex = 0;
         inputField.textComponent.text = "";
         inputField.text = "";
-        currentIndex = 0;
         predefinedText = "";
     }
 }

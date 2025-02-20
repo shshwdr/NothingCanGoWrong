@@ -17,6 +17,10 @@ public class MeetingManager : MonoBehaviour
 
     void Update()
     {
+        if (!LevelManager.Instance.isStarted)
+        {
+            return;
+        }
         generateChatTimer += Time.deltaTime;
         if (generateChatTimer > generateChatTime)
         {

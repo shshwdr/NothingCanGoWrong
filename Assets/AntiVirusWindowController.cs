@@ -29,16 +29,20 @@ public class AntiVirusWindowController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (FindObjectOfType<ChatWindowController>())
+        {
+            FindObjectOfType<ChatWindowController>().UpdateInputStates();
+        }
         ammoCount = ammoMax;
         playerHealthBar.SetHP(ComputerManager.Instance.currentPlayerHealth, ComputerManager.Instance.playerMaxHealth);
         EventPool.OptIn("OnPlayerHealthChange", () =>
         {
             playerHealthBar.SetHP(ComputerManager.Instance.currentPlayerHealth, ComputerManager.Instance.playerMaxHealth);
         });
-        scanButton.onClick.AddListener(() =>
-        {
-            Instantiate(Resources.Load<GameObject>( "enemy/popupVirus"),null);
-        });
+        // scanButton.onClick.AddListener(() =>
+        // {
+        //     Instantiate(Resources.Load<GameObject>( "enemy/popupVirus"),null);
+        // });
         
         spawnButton.onClick.AddListener(() =>
         {

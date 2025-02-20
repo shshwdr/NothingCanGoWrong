@@ -32,9 +32,18 @@ public class ClipAnimationController : MonoBehaviour
     }
     void PlayRandomFidget()
     {
-        int fidgetIndex = Random.Range(1, 4); // 1, 2, 3
+        int fidgetIndex = Random.Range(0, 4); // 1, 2, 3
         animator.SetTrigger("idle"+fidgetIndex);
         idleTime = 0f; // 重置 Idle 计时
+    }
+
+    public void PlayDetectAnim()
+    {
+        animator.SetTrigger("detect");
+    }
+    public void PlayAttackAnim()
+    {
+        animator.SetTrigger("attack");
     }
     void ScheduleNextFidget()
     {

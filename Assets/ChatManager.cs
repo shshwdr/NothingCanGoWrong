@@ -16,6 +16,7 @@ public class ChatData
     public string text;
     public CharacterInfo sender;
     public ChatType type;
+    
     public bool isFinished;
     public DialogueInfo dialogueInfo;
 
@@ -28,6 +29,7 @@ public class ChatCharacterStatus
 {
     public int status = 0;
 }
+
 public class ChatManager : Singleton<ChatManager>
 {
     public Dictionary<string, List<ChatData>> chatDataMap = new Dictionary<string, List<ChatData>>();
@@ -49,13 +51,17 @@ public class ChatManager : Singleton<ChatManager>
     // Update is called once per frame
     void Update()
     {
+        if (!LevelManager.Instance.isStarted)
+        {
+            return;
+        }
         generateChatTimer += Time.deltaTime;
         if (generateChatTimer > generateChatTime)
         {
             generateChatTimer = 0;
             generateChatTime  = Random.Range(generateChatTimeMin, generateChatTimeMax);
 
-            var id = Random.Range(2, 3);
+            var id = Random.Range(1, 2);
             switch (id)
             {
                 case 1:
@@ -71,7 +77,7 @@ public class ChatManager : Singleton<ChatManager>
         {
             var lastItem = ChatManager.Instance.chatDataMap[characterID].LastItem();
             var notFinished = lastItem.isFinished == false;
-            if (notFinished)
+            if (notFinished && lastItem.angryTime>0)
             {
                 
                 lastItem.angryTimer+=Time.deltaTime;
@@ -132,11 +138,23 @@ public class ChatManager : Singleton<ChatManager>
         GenerateChat(ChatType.chat, selectChat.text, speaker, selectChat,true);
         GenerateChat(ChatType.download,"",speaker,selectChat,false);
     }
-    
-    void GenerateChat(ChatType type,string text, CharacterInfo speaker, DialogueInfo selectChat,bool isFinished)
+
+    public void GenerateDialogue(string key)
     {
+        var selectChat = CSVLoader.Instance.DialogueInfoMapById[key];
+        var speaker = CSVLoader.Instance.CharacterInfoMap[selectChat.speaker];
+        GenerateChat(ChatType.respond, selectChat.text, speaker, selectChat,false,true);
+    }
+    
+   public void GenerateChat(ChatType type,string text, CharacterInfo speaker, DialogueInfo selectChat,bool isFinished,bool noAngry = false)
+    {
+        var angryTime = type == ChatType.chat ? 20 : 100;
+        if (!noAngry)
+        {
+            angryTime = -1;
+        }
         ChatData data = new ChatData()
-            { text = text, sender = speaker, type = type, isFinished = isFinished, dialogueInfo = selectChat, angryTime = type == ChatType.chat?20:100};
+            { text = text, sender = speaker, type = type, isFinished = isFinished, dialogueInfo = selectChat, angryTime = angryTime};
         if (!chatDataMap.ContainsKey(speaker.id))
         {
             chatDataMap.Add(speaker.id, new List<ChatData>());
@@ -171,6 +189,30 @@ public class ChatManager : Singleton<ChatManager>
         addChat(characterId);
         EventPool.Trigger("UpdateChat");
         
+        if (lastChat.dialogueInfo.next != "")
+        {
+            StartCoroutine(chatNext(lastChat.dialogueInfo.next));
+        }
+        if (lastChat.dialogueInfo.otherEvent != "")
+        {
+            switch (lastChat.dialogueInfo.otherEvent)
+            {
+                case "startgame":
+                    LevelManager.Instance.StartGame();
+                    break;
+                case "installAnti":
+                    DeskTop.Instance. AddDesktopIcon("Anti Virus");
+                    break;
+            }
+        }
+        
+    }
+
+    IEnumerator chatNext(string key)
+    {
+        yield return new WaitForSeconds(1);
+        
+        ChatManager.Instance.GenerateDialogue(key);
     }
 
     public void failedRespond(string characterId)
@@ -181,6 +223,9 @@ public class ChatManager : Singleton<ChatManager>
         var lastChat = chatDataMap[characterId].LastItem();
         ChatData data = new ChatData()
             { text = "I'm angry.", sender = lastChat.sender, type = ChatType.respond, isFinished = true };
+        
+        LevelManager.Instance.ReduceProductive(10);
+        
         
         chatDataMap[characterId].Add(data);
         addChat(characterId);
@@ -222,6 +267,7 @@ public class ChatManager : Singleton<ChatManager>
                 else
                 {
                     
+                    LevelManager.Instance.ReduceProductive(10);
                     ChatData data = new ChatData()
                         { text = "It is NOT finished!!!", sender = lastChat.sender, type = ChatType.chat, isFinished = true };
         
@@ -233,6 +279,7 @@ public class ChatManager : Singleton<ChatManager>
             else
             {
                 
+                LevelManager.Instance.ReduceProductive(10);
                 ChatData data = new ChatData()
                     { text = "This is not the file I want.", sender = lastChat.sender, type = ChatType.chat, isFinished = true };
         

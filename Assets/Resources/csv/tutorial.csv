@@ -1,1 +1,6 @@
-﻿id,text,speaker,type,otherEvent,next,respond
+﻿id,text,speaker,type,otherEvent,isEnd,next,respond
+tutorial1_start,,,,createFirstDoc,1,,
+tutorial1_chat,Welcome aboard! We're excited to have you join the team.,hr,0,,,,"Thank you! I'm really excited to be her, I have a question about the onboarding document…"
+tutorial1_chat2,Onboarding document? That's odd—I don't recall sending one.,hr,0,,,,But…
+tutorial1_chat2,Delete it quickly! I hope you haven't opened it?,hr,0,,,,Uh…No…
+tutorial1_clip,,,,,,,

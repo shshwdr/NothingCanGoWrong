@@ -86,8 +86,23 @@ public class ChatWindowController : MonoBehaviour
                 chatContent.GetComponent<ChatCell>().Init(chatData,this);
             }
 
-            var canInput = ChatManager.Instance.chatDataMap[selectedCharacter].LastItem().isFinished == false &&
-                           ChatManager.Instance.chatDataMap[selectedCharacter].LastItem().type == ChatType.respond;
+           var lastItem=  ChatManager.Instance.chatDataMap[selectedCharacter].LastItem();
+            var canInput = lastItem.isFinished == false &&
+                           lastItem.type == ChatType.respond;
+
+            if (lastItem.dialogueInfo!=null && lastItem.dialogueInfo.respondCheck != null && lastItem.dialogueInfo.respondCheck.Length > 0)
+            {
+                switch (lastItem.dialogueInfo.respondCheck )
+                {
+                    case "openAnti":
+                        if (!FindObjectOfType<AntiVirusWindowController>())
+                        {
+                            canInput = false;
+                        }
+                        break;
+                }
+            }
+            
             input.interactable = canInput;
             sendButton.gameObject.SetActive(canInput);
             if (canInput)
@@ -103,6 +118,36 @@ public class ChatWindowController : MonoBehaviour
             
             sendButton.gameObject. SetActive(false);
             input.interactable = false;
+        }
+    }
+
+    public void UpdateInputStates()
+    {
+        var lastItem=  ChatManager.Instance.chatDataMap[selectedCharacter].LastItem();
+        
+        var canInput = lastItem.isFinished == false &&
+                       lastItem.type == ChatType.respond;
+        if (lastItem.dialogueInfo!=null && lastItem.dialogueInfo.respondCheck != null && lastItem.dialogueInfo.respondCheck.Length > 0)
+        {
+            switch (lastItem.dialogueInfo.respondCheck )
+            {
+                case "openAnti":
+                    if (!FindObjectOfType<AntiVirusWindowController>())
+                    {
+                        canInput = false;
+                    }
+                    break;
+            }
+        }
+        
+        input.interactable = canInput;
+        sendButton.gameObject.SetActive(canInput);
+        if (canInput)
+        {
+            input.GetComponent<FakeInputField>().predefinedText = ChatManager.Instance.chatDataMap[selectedCharacter]
+                .LastItem().dialogueInfo.respond;
+            var canSend = canInput && input.GetComponent<FakeInputField>().isFinishedType();
+            sendButton.interactable =(canSend);
         }
     }
 

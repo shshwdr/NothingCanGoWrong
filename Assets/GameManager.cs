@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
+    public int level = 1;
     void Awake()
     {
         CSVLoader.Instance.Init();
+        LevelManager.Instance.LoadLevel(level);
     }
     // Start is called before the first frame update
     void Start()
@@ -18,5 +21,15 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+    public void NextLevel()
+    {
+        level++;
+        LevelManager.Instance.LoadLevel(level);
+    }
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //LevelManager.Instance.LoadLevel(level);
     }
 }

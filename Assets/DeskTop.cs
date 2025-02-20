@@ -12,6 +12,15 @@ public void AddDesktopIcon(string appName)
 {
     AddDesktopIcon(appName, appName);
 }
+
+public void RemoveDesktopIcon(string appName)
+{
+    if (desktopIcons.ContainsKey(appName))
+    {
+        Destroy(desktopIcons[appName]);
+        desktopIcons.Remove(appName);
+    }
+}
     public void AddDesktopIcon(string appName, string actualName)
     {
         GameObject icon = Instantiate(desktopIcon, desktopParent);
@@ -22,9 +31,6 @@ public void AddDesktopIcon(string appName)
     // Start is called before the first frame update
     void Start()
     {
-        AddDesktopIcon("My Computer");
-        AddDesktopIcon("Chat");
-        AddDesktopIcon("Anti Virus");
     }
 
     // Update is called once per frame
