@@ -1,5 +1,38 @@
 ﻿id,text,speaker,type,otherEvent,next,respond
-respond0,"Hi you must be the new guy, welcome!",,1,,,Thanks!
-respond1,Can you do xxx for me,,1,,,Sure!
-download0,Please edit this file and send back to me.,,2,,,Here you are!
-download1,This file requires some change.,,2,,,Done!
+respond0,"Hi, how's your day going?",,1,,,"Pretty good, thanks! How about you?"
+respond1,Do you have a moment to discuss this task?,,1,,,"Sure, what do you need?"
+respond2,Can you help me understand this report?,,1,,,Of course! Let me take a look.
+respond3,That was a great presentation!,,1,,,Thanks! I really appreciate it.
+respond4,Let's grab lunch together.,,1,,,Sounds good! Where should we go?
+respond5,We have a meeting in 10 minutes.,,1,,,"Got it, I’ll be there."
+respond6,I like your idea in the meeting earlier.,,1,,,Thanks! Glad you found it useful.
+respond7,Could you explain this part again?,,1,,,Sure! Here’s how it works…
+respond8,Do you think this approach will work?,,1,,,"I think so, but we might need some adjustments."
+respond9,Thanks for your help earlier.,,1,,,No problem! Happy to help.
+respond10,I think we should update this process.,,1,,,That makes sense. Let’s discuss it.
+respond11,Do you need any help with your workload?,,1,,,I appreciate it! I think I’m good for now.
+respond12,Have you seen the latest project update?,,1,,,"Yes, I just reviewed it. Looks interesting!"
+respond13,What do you think of this design?,,1,,,It looks great! Maybe we could tweak a few things.
+respond14,Can you take a look at this error?,,1,,,Sure! Let me debug it.
+respond15,We have a deadline coming up soon.,,1,,,"Yeah, let’s make sure everything is on track."
+respond16,How was your weekend?,,1,,,It was great! How about yours?
+respond17,I need your opinion on this feature.,,1,,,"Alright, let’s go over it together."
+download0,Please review this document and send it back.,,2,,,Here you go! Let me know if you need any changes.
+download1,Can you update this spreadsheet?,,2,,,Done! Let me know if it looks good.
+download2,Fix the formatting in this report.,,2,,,All set! I’ve cleaned up the layout.
+download3,Add these details to the file.,,2,,,Added! Check if it’s correct.
+download4,The document needs a revision.,,2,,,Revised and sent back. Let me know if it’s okay.
+download5,Please correct the typos in this text.,,2,,,Fixed! It should be error-free now.
+download6,Merge these changes into the document.,,2,,,Merged and updated! Check if it’s all good.
+download7,Remove unnecessary sections from this file.,,2,,,Cleaned up! Let me know if anything else needs tweaking.
+download8,Can you summarize this report?,,2,,,Done! Here’s a concise summary.
+download9,Please translate this document.,,2,,,Translation complete! Let me know if you need adjustments.
+download10,This file needs restructuring.,,2,,,Reformatted and organized! Check it out.
+download11,Update the figures in the spreadsheet.,,2,,,Updated! Let me know if you need further edits.
+download12,Can you add more details to this section?,,2,,,Expanded the section! Hope this works.
+download13,Convert this file to PDF.,,2,,,Done! Here’s the PDF version.
+download14,Make the text more concise.,,2,,,Edited! It’s more to the point now.
+download15,Please proofread this article.,,2,,,Proofreading complete! Ready for review.
+download16,We need a new version of this file.,,2,,,Created a new version! Let me know if changes are needed.
+download17,Update the references in this document.,,2,,,References updated! Take a look.
+download18,The charts need to be redone.,,2,,,Charts are updated! Let me know if any revisions are needed.
