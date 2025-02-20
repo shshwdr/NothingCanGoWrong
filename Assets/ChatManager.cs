@@ -120,7 +120,7 @@ public class ChatManager : Singleton<ChatManager>
             return;
         }
 
-        var type = ChatType.chat;
+        var type = ChatType.respond;
         var selectChat = CSVLoader.Instance.DialogueInfoMap[(int)(type)].RandomItem();
         GenerateChat(type, selectChat.text, speaker, selectChat,false);
     }

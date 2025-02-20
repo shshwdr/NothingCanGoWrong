@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Pool;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,8 @@ public class AntiVirusWindowController : MonoBehaviour
     public float spawnAntiTimer = 0;
     public float spawnAntiInterval = 3;
 
+    public Button shutdownButton;
+
     public HPBar ammo;
 
     public int ammoMax = 5;
@@ -25,10 +28,12 @@ public class AntiVirusWindowController : MonoBehaviour
 
     public bool allBugsAtOnce = true;
     public float antivirusBugLifeTime = 5;
+    public TMP_Text dayLevel;
     
     // Start is called before the first frame update
     void Start()
     {
+        dayLevel.text =   "Day " + LevelManager.Instance.level;
         if (FindObjectOfType<ChatWindowController>())
         {
             FindObjectOfType<ChatWindowController>().UpdateInputStates();
@@ -48,6 +53,11 @@ public class AntiVirusWindowController : MonoBehaviour
         {
             
             addAntiVirusBug(true);
+        });
+        
+        shutdownButton.onClick.AddListener(() =>
+        {
+            GameManager.Instance.NextLevel();
         });
         
     }
@@ -104,6 +114,9 @@ public class AntiVirusWindowController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        //shutdownButton.gameObject.SetActive(LevelManager.Instance.isFinished);
+        
          spawnAntiTimer += Time.deltaTime;
          if (spawnAntiTimer > spawnAntiInterval)
          {

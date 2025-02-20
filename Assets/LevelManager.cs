@@ -13,15 +13,21 @@ public class VirusData
 }
 public class LevelManager : Singleton<LevelManager>
 {
+    public bool isFinished = false;
     public float gameTimer = 0;
     public bool isStarted = false;
-    public int level = 1;
+    public int level ;
 
     public int productiveMax = 100;
     public float productive = 100;
     
     List<VirusData> virusDataList = new List<VirusData>();
-    public float gameTime => CSVLoader.Instance.LevelInfoDict[level].totalTime;
+    public float gameTime ;
+
+    private void Start()
+    {
+        LoadLevel(GameManager.Instance.level);
+    }
 
     public void ReduceProductive(int value)
     {
@@ -30,6 +36,8 @@ public class LevelManager : Singleton<LevelManager>
     }
     public void LoadLevel(int levelName)
     {
+        isFinished = false;
+        gameTime = CSVLoader.Instance.LevelInfoDict[level].totalTime;
         level = levelName;
         gameTimer = 0;
         productive = productiveMax;
@@ -44,6 +52,7 @@ public class LevelManager : Singleton<LevelManager>
             DeskTop.Instance. AddDesktopIcon("My Computer");
             DeskTop.Instance. AddDesktopIcon("Chat");
             DeskTop.Instance. AddDesktopIcon("Anti Virus");
+            StartGame();
         }
     }
 
@@ -77,6 +86,7 @@ public class LevelManager : Singleton<LevelManager>
 
         if (gameTimer > gameTime)
         {
+            isFinished = true;
             //GameManager.Instance.NextLevel();
         }
 

@@ -46,5 +46,6 @@ tutorial1_chat7,"By the way, when your colleagues message you, remember to respo
 tutorial1_chat8,"Perfect. Welcome again, and have a great first day!",hr,-1,startgame,,Thanks! Looking forward to a productive day ahead.,
 clip,Your computer looks fine so far—no obvious issues.,clip,-1,,,,
 clip_detect,"Virus detected! Press “Spawn” to generate target points on the virus, then click each point to attack.",clip,-1,,,,
-clip_win,That was a fair win! Nice job taking it down.,,-1,,,,
-clip_attack,Keep going! Attack the virus until it’s completely gone.,,-1,,,,
+clip_win,That was a fair win! Nice job taking it down.,clip,-1,,,,
+clip_attack,Keep going! Attack the virus until it’s completely gone.,clip,-1,,,,
+clip_endDay,"It's the end of a day, you can shut down the computer now!",clip,-1,,,,

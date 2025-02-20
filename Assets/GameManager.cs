@@ -5,11 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    public int level = 1;
+    public int level = 2;
     void Awake()
     {
         CSVLoader.Instance.Init();
-        LevelManager.Instance.LoadLevel(level);
     }
     // Start is called before the first frame update
     void Start()
@@ -25,6 +24,7 @@ public class GameManager : Singleton<GameManager>
     public void NextLevel()
     {
         level++;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         LevelManager.Instance.LoadLevel(level);
     }
     public void RestartLevel()
