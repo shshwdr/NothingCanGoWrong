@@ -22,6 +22,7 @@ public class AntiVirusWindowController : MonoBehaviour
     public HPBar ammo;
 
     public int ammoMax = 5;
+    public int ammoStart = 0;
     private int ammoCount = 0;
     public float ammoRefillTime = 2;
     private float ammoRefillTimer = 0;
@@ -40,7 +41,7 @@ public class AntiVirusWindowController : MonoBehaviour
         {
             FindObjectOfType<ChatWindowController>().UpdateInputStates();
         }
-        ammoCount = ammoMax;
+        ammoCount = ammoStart;
         playerHealthBar.SetHP(ComputerManager.Instance.currentPlayerHealth, ComputerManager.Instance.playerMaxHealth);
         EventPool.OptIn("OnPlayerHealthChange", () =>
         {
