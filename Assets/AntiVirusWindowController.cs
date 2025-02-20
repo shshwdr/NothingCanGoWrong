@@ -124,7 +124,7 @@ public class AntiVirusWindowController : MonoBehaviour
     void Update()
     {
         
-        //shutdownButton.gameObject.SetActive(LevelManager.Instance.isFinished);
+        shutdownButton.gameObject.SetActive(LevelManager.Instance.isFinished);
         
          spawnAntiTimer += Time.deltaTime;
          if (spawnAntiTimer > spawnAntiInterval)
