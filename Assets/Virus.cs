@@ -29,6 +29,8 @@ public class Virus : MonoBehaviour
     public GameObject virusWindowPrefab;
     GameObject virusWindow;
     public string applicationName = "Virus";
+
+    private FMOD.Studio.EventInstance instance;
     protected virtual void Start()
     {
         //attackButton.onClick.AddListener(DamageVirus);
@@ -36,6 +38,7 @@ public class Virus : MonoBehaviour
         virusHealth = virusMaxHealth;
 
         createWindow();
+        instance = LevelManager.Instance.GetGameplayMusicInstance();
     }
 
     void createWindow()
@@ -62,6 +65,8 @@ public class Virus : MonoBehaviour
             Destroy(gameObject);
             Destroy(virusWindow);
             virusWindow.GetComponent<VirusWindowController>().Die();
+
+            instance.setParameterByName("Game Mode", 0);
         }
     }
 

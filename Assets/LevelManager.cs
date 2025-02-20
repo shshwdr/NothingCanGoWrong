@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using FMOD.Studio;
 using Pool;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -27,9 +28,20 @@ public class LevelManager : Singleton<LevelManager>
     List<VirusData> virusDataList = new List<VirusData>();
     public float gameTime ;
     public LevelInfo currentLevelInfo;
+
+    private FMOD.Studio.EventInstance gameplayMusic;
+
     private void Start()
     {
         LoadLevel(GameManager.Instance.level);
+ 
+        gameplayMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Music/mus_gameplay");
+        gameplayMusic.start();
+    }
+
+    public FMOD.Studio.EventInstance GetGameplayMusicInstance()
+    {
+        return gameplayMusic;
     }
 
     public void ReduceProductive(int value)
@@ -112,6 +124,9 @@ public class LevelManager : Singleton<LevelManager>
             if( FindObjectOfType<ClipAnimationController>())
             FindObjectOfType<ClipAnimationController>().PlayEndOfDay();
             //GameManager.Instance.NextLevel();
+
+            gameplayMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            gameplayMusic.release();
         }
 
         if (virusDataList.Count > 0)
@@ -127,6 +142,8 @@ public class LevelManager : Singleton<LevelManager>
 
     public void CreateVirus(string virusId)
     {
+        gameplayMusic.setParameterByName("Game Mode", 1);
+
         var virusData = virusDataList[0];
         FindObjectOfType<ClipAnimationController>().PlayDetectAnim();
         var virus = Instantiate(Resources.Load<GameObject>( "enemy/"+virusId),null);
@@ -137,5 +154,8 @@ public class LevelManager : Singleton<LevelManager>
     public void Restart()
     {
         GameManager.Instance.RestartLevel();
+
+        gameplayMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        gameplayMusic.release();
     }
 }

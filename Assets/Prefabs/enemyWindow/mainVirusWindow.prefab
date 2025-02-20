@@ -509,6 +509,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetImage: {fileID: 3571851414290655984}
   frameRate: 0.3
+  gameplayMusic:
+    Guid:
+      Data1: 981587257
+      Data2: 1148174516
+      Data3: 230720902
+      Data4: -2038333236
+    Path: event:/Music/mus_gameplay
 --- !u!1001 &4428322853403997680
 PrefabInstance:
   m_ObjectHideFlags: 0
