@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    public int level = 5;
+    public int level = 6;
     public bool finishVirusAttackTutorial = false;
     void Awake()
     {

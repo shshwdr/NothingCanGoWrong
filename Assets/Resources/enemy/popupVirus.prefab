@@ -53,6 +53,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5411311432015511951, guid: b7ca85fb9149b3442a614f80ed8d1ce1, type: 3}
+      propertyPath: animationName
+      value: Popup
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411311432015511951, guid: b7ca85fb9149b3442a614f80ed8d1ce1, type: 3}
       propertyPath: applicationName
       value: Popup Virus
       objectReference: {fileID: 0}

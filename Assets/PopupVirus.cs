@@ -24,9 +24,17 @@ public class PopupVirus : MonoBehaviour
          popupTimer += Time.deltaTime;
          if (popupTimer > popupTime)
          {
-             WindowManager.Instance.OpenApplication("Ads","Ads",minionPrefab,true,true);
+             GetComponent<Virus>().virusWindow.GetComponent<VirusAnimationController>().PlayAnimation("Attack",false);
+             StartCoroutine(test());
              id++;
              popupTimer = 0;
          }
+    }
+
+    IEnumerator test()
+    {
+        yield return new WaitForSeconds(1);
+        
+        WindowManager.Instance.OpenApplication("Ads","Ads",minionPrefab,true,true);
     }
 }

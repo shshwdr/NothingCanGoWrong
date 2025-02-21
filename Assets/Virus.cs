@@ -31,7 +31,7 @@ public class Virus : MonoBehaviour
     public GameObject virusWindowPrefab;
     public GameObject virusWindow;
     public string applicationName = "Virus";
-
+    public string animationName = "Trojan";
     private FMOD.Studio.EventInstance instance;
 
     public bool canBeAttacked()
@@ -64,6 +64,7 @@ public class Virus : MonoBehaviour
 
     public void AddProgress(int value)
     {
+        virusWindow.GetComponent<VirusAnimationController>().PlayAnimation("PowerUp",false);
         spawnTime -= value;
        // virusWindow.GetComponent<VirusWindowController>().
     }
@@ -94,11 +95,15 @@ public class Virus : MonoBehaviour
             if( FindObjectOfType<ClipAnimationController>())
                 FindObjectOfType<ClipAnimationController>().PlayWin();
             Destroy(gameObject);
-            Destroy(virusWindow);
+            //Destroy(virusWindow);
             isDead = true;
             virusWindow.GetComponent<VirusWindowController>().Die();
 
-            instance.setParameterByName("Game Mode", 0);
+            LevelManager.Instance.virusList.Remove(this);
+            if (LevelManager.Instance.virusList.Count <= 0)
+            {
+                instance.setParameterByName("Game Mode", 0);
+            }
         }
     }
 

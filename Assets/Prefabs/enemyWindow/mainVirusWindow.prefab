@@ -59,7 +59,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -584,7 +584,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetImage: {fileID: 3571851414290655984}
-  frameRate: 0.3
+  frameRate: 0.2
+  animationName: Trojan
 --- !u!114 &8741713859342360515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -600,7 +601,6 @@ MonoBehaviour:
   spawnArea: {fileID: 5172450666005055277}
   prefabToSpawn: {fileID: 5305163498098984080, guid: 01d8adb5c8935f44ca99336e7e75cc88, type: 3}
   spawnCount: 5
-  tutorialAttack: {fileID: 0}
 --- !u!1001 &4428322853403997680
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -106,7 +106,7 @@ public class LevelManager : Singleton<LevelManager>
         MeetingManager.Instance.generateChatTime = currentLevelInfo.meeting[0];
         MeetingManager.Instance.generateChatTimeMin = currentLevelInfo.meeting[1];
         MeetingManager.Instance.generateChatTimeMax = currentLevelInfo.meeting[2];
-        for (int i = 0; i < currentLevelInfo.virus.Count; i += 5)
+        for (int i = 0; i < currentLevelInfo.virus.Count; i += 4)
         {
             virusDataList.Add(new VirusData
             {

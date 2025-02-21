@@ -17,6 +17,8 @@ public class VirusWindowController : MonoBehaviour
     public void Init(Virus virus)
     {
         this.virus = virus;
+        GetComponent<VirusAnimationController>().animationName = virus.animationName;
+        GetComponent<VirusAnimationController>().LoadAnimations();
         UpdateUI();
     }
 
@@ -33,7 +35,7 @@ public class VirusWindowController : MonoBehaviour
     {
         
         GetComponent<VirusAnimationController>().PlayAnimation("Death",false);
-        StartCoroutine(StartCoroutine(1f));
+        StartCoroutine(StartCoroutine(1f + GetComponent<VirusAnimationController>().getAnimationTime("Death")));
     }
     
     IEnumerator StartCoroutine(float time)
@@ -54,6 +56,10 @@ public class VirusWindowController : MonoBehaviour
     }
     protected virtual void Update()
     {
+        if (virus==null || virus.isDead)
+        {
+            return;
+        }
         float timeNow = Time.time;
 
         progressProgressBar.SetHP(timeNow - virus.spawnTime,virus.corruptionInterval);
