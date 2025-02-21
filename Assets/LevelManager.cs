@@ -130,7 +130,7 @@ public class LevelManager : Singleton<LevelManager>
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Backspace))
+        if (Input.GetKeyDown(KeyCode.Home))
         {
             Restart();
         }

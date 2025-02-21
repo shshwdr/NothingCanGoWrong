@@ -31,7 +31,7 @@ public class WormVirus : MonoBehaviour
         popupTimer += Time.deltaTime;
         if (popupTimer > spawnTime)
         {
-            if (!currentWindow)
+            if (!mainWindow)
             {
                 mainWindow = GetComponent<Virus>().virusWindow.GetComponent<WindowController>();
                 currentWindow = mainWindow;

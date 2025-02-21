@@ -29,6 +29,23 @@ public TMP_Text titleLabel;
     private WindowManager windowManager;
 
     private Transform taskBarIcon;
+
+    public bool isRansomed = false;
+
+    public void Ransom()
+    {
+        GetComponentInChildren<Lock>(true).Init();
+        isRansomed = true;
+        lockPanel.SetActive(true);
+        
+        
+    }
+
+    public void Unlock()
+    {
+        isRansomed = false;
+        lockPanel.SetActive(false);
+    }
     
     public void SetToTop()
     {

@@ -2,4 +2,5 @@ day,chatType,chatInterval,totalTime,virus,meeting,angry,comment
 1,1,5|10|18,120,trojan|20|100|100,180|20|30|10|100|1,15|30,meeting:first meeting spawn time|meeting spawn min time|meeting spawn max time|meeting time|meeting max progress|meeting decrease scale(larger means harder)
 2,2,5|10|18,150,popupVirus|10|150|130,180|30|60|20|100|1,15|30,virus: name|when to spawn|hp|corruption time
 3,2,5|10|18,150,popupVirus|10|150|130,30|30|60|20|100|1,15|30,chat:first chat spawn time|chat spawn min time|chat spawn max time
-4,2,5|10|18,150,wormVirus|10|15|130,1800|30|60|20|100|1,15|30,angry: angry time for chat and meeting
+4,2,5|10|18,150,wormVirus|10|50|130,1800|30|60|20|100|1,15|30,angry: angry time for chat and meeting
+5,2,5|10|18,150,ransomVirus|5|50|130,1800|30|60|20|100|1,15|30,angry: angry time for chat and meeting
