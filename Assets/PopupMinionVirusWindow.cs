@@ -8,20 +8,34 @@ public class PopupMinionVirusWindow : MonoBehaviour
     public float damageTime = 5;
      float damageTimer = 0;
     public int damage = 5;
+
+    private Virus virus;
+
+    private WindowMover mover;
     // Start is called before the first frame update
     void Start()
     {
-         
+        virus = FindObjectOfType<PopupVirus>().GetComponent<Virus>();
+        mover = GetComponent<WindowMover>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (virus && !virus.isDead && virus.hpRatio < 0.5)
+        {
+            mover.enabled = true;
+        }
+        
         progress.SetHP(damageTimer, damageTime);
          damageTimer += Time.deltaTime;
          if (damageTimer > damageTime)
          {
-             ComputerManager.Instance.InflictDamage(damage);
+             if (virus&& !virus.isDead)
+             {
+                 virus.AddProgress(10);
+             }
+             //ComputerManager.Instance.InflictDamage(damage);
              damageTimer = 0;
          }
     }

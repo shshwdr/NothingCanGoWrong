@@ -47,7 +47,43 @@ public class ClipAnimationController : MonoBehaviour
     {
         animator.SetTrigger("detect");
         GetComponentInParent<ClipController>().ShowDialogue("clip_detect");
+        StartCoroutine(detectNext());
     }
+
+    public void PlayDetectAnim3()
+    {
+        
+        animator.SetTrigger("talk");
+        GetComponentInParent<ClipController>().ShowDialogue("clip_detect3",-1);
+    }
+    IEnumerator detectNext()
+    {
+        yield return new WaitForSeconds(5);
+        
+        animator.SetTrigger("talk");
+        GetComponentInParent<ClipController>().ShowDialogue("clip_detect2",-1);
+        if (!GameManager.Instance.finishVirusAttackTutorial)
+        {
+            //Time.timeScale = 0;
+            if (!FindObjectOfType<AntiVirusWindowController>())
+            {
+                DeskTop.Instance.openIcon("Anti Virus");
+                StartCoroutine(test());
+            }
+            else
+            {
+                FindObjectOfType<AntiVirusWindowController>().ShowTutorialSpawn();
+            }
+        }
+    }
+
+    IEnumerator test()
+    {
+        yield return new WaitForSeconds(1);
+        
+        FindObjectOfType<AntiVirusWindowController>().ShowTutorialSpawn();
+    }
+    
     public void PlayAttackAnim()
     {
         animator.SetTrigger("attack");

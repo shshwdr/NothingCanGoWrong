@@ -17,7 +17,7 @@ public class MeetingManager : Singleton<MeetingManager>
 
     void Update()
     {
-        if (!LevelManager.Instance.isStarted)
+        if (!LevelManager.Instance.isStarted || LevelManager.Instance.isFinished)
         {
             return;
         }

@@ -23,6 +23,7 @@ public class ChatData
     public float angryTime = 10;
     public float angryTimer = 0;
     public bool isFailed;
+    public bool isRead = false;
 }
 
 public class ChatCharacterStatus
@@ -42,6 +43,21 @@ public class ChatManager : Singleton<ChatManager>
     private float generateChatTimer = 0;
 
     public bool hasUnfinishedChat = false;
+
+    public bool hasUnreadMessage()
+    {
+        foreach (var characterID in ChatManager.Instance.chatCharacters)
+        {
+            var isRead = ChatManager.Instance.chatDataMap[characterID].LastItem().isRead;
+            if (!isRead)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -51,7 +67,7 @@ public class ChatManager : Singleton<ChatManager>
     // Update is called once per frame
     void Update()
     {
-        if (!LevelManager.Instance.isStarted)
+        if (!LevelManager.Instance.isStarted || LevelManager.Instance.isFinished)
         {
             return;
         }
@@ -143,18 +159,38 @@ public class ChatManager : Singleton<ChatManager>
     {
         var selectChat = CSVLoader.Instance.DialogueInfoMapById[key];
         var speaker = CSVLoader.Instance.CharacterInfoMap[selectChat.speaker];
-        GenerateChat(ChatType.respond, selectChat.text, speaker, selectChat,false,true);
+
+        if (selectChat.respond != null && selectChat.respond.Length > 0)
+        {
+            
+            GenerateChat(ChatType.respond, selectChat.text, speaker, selectChat,false,true);
+        }
+        else
+        {
+            GenerateChat(ChatType.respond, selectChat.text, speaker, selectChat,true,true);
+            if (selectChat.next != "")
+            {
+                StartCoroutine(chatNext(selectChat.next));
+            }
+        }
+        
     }
     
    public void GenerateChat(ChatType type,string text, CharacterInfo speaker, DialogueInfo selectChat,bool isFinished,bool noAngry = false)
     {
-        var angryTime = type == ChatType.chat ? 20 : 100;
+        var angryTime = type == ChatType.chat ? LevelManager.Instance.currentLevelInfo.angry[0] : LevelManager.Instance.currentLevelInfo.angry[1];
         if (noAngry)
         {
             angryTime = -1;
         }
         ChatData data = new ChatData()
             { text = text, sender = speaker, type = type, isFinished = isFinished, dialogueInfo = selectChat, angryTime = angryTime};
+
+        if (FindObjectOfType<ChatWindowController>())
+        {
+            data.isRead = speaker.id == FindObjectOfType<ChatWindowController>().selectedCharacter;
+        }
+       
         if (!chatDataMap.ContainsKey(speaker.id))
         {
             chatDataMap.Add(speaker.id, new List<ChatData>());
@@ -176,6 +212,7 @@ public class ChatManager : Singleton<ChatManager>
         }
         chatCharacters.Insert(0, characterId);
 
+        EventPool.Trigger("UpdateDot");
     }
 
     public void respond(string characterId)
@@ -184,6 +221,8 @@ public class ChatManager : Singleton<ChatManager>
         var playerInfo = CSVLoader.Instance.CharacterInfoMap["player"];
         ChatData data = new ChatData()
             { text = lastChat.dialogueInfo.respond, sender = playerInfo, type = ChatType.respond, isFinished = true };
+        
+        data.isRead = lastChat.sender.id == FindObjectOfType<ChatWindowController>().selectedCharacter;
         
         chatDataMap[characterId].Add(data);
         addChat(characterId);
@@ -202,6 +241,9 @@ public class ChatManager : Singleton<ChatManager>
                     break;
                 case "installAnti":
                     DeskTop.Instance. AddDesktopIcon("Anti Virus");
+                    break;
+                case "installFake":
+                    DeskTop.Instance. AddDesktopIcon("fakePDF","Onboarding");
                     break;
             }
         }
@@ -224,6 +266,7 @@ public class ChatManager : Singleton<ChatManager>
         ChatData data = new ChatData()
             { text = "I'm angry.", sender = lastChat.sender, type = ChatType.respond, isFinished = true };
         
+        data.isRead = lastChat.sender.id == FindObjectOfType<ChatWindowController>().selectedCharacter;
         LevelManager.Instance.ReduceProductive(10);
         
         
@@ -247,6 +290,7 @@ public class ChatManager : Singleton<ChatManager>
                     isFinished = true
                 };
 
+                data.isRead = lastChat.sender.id == FindObjectOfType<ChatWindowController>().selectedCharacter;
                 chatDataMap[characterId].Add(data);
                 addChat(characterId);
                 EventPool.Trigger("UpdateChat");
@@ -260,6 +304,7 @@ public class ChatManager : Singleton<ChatManager>
                     ChatData data = new ChatData()
                         { text = "Great!", sender = lastChat.sender, type = ChatType.chat, isFinished = true };
         
+                    data.isRead = lastChat.sender.id == FindObjectOfType<ChatWindowController>().selectedCharacter;
                     chatDataMap[characterId].Add(data);
                     addChat(characterId);
                     EventPool.Trigger("UpdateChat");
@@ -271,6 +316,7 @@ public class ChatManager : Singleton<ChatManager>
                     ChatData data = new ChatData()
                         { text = "It is NOT finished!!!", sender = lastChat.sender, type = ChatType.chat, isFinished = true };
         
+                    data.isRead = lastChat.sender.id == FindObjectOfType<ChatWindowController>().selectedCharacter;
                     chatDataMap[characterId].Add(data);
                     addChat(characterId);
                     EventPool.Trigger("UpdateChat");
@@ -283,6 +329,7 @@ public class ChatManager : Singleton<ChatManager>
                 ChatData data = new ChatData()
                     { text = "This is not the file I want.", sender = lastChat.sender, type = ChatType.chat, isFinished = true };
         
+                data.isRead = lastChat.sender.id == FindObjectOfType<ChatWindowController>().selectedCharacter;
                 chatDataMap[characterId].Add(data);
                 addChat(characterId);
                 EventPool.Trigger("UpdateChat");

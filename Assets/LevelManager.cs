@@ -31,6 +31,7 @@ public class LevelManager : Singleton<LevelManager>
 
     private FMOD.Studio.EventInstance gameplayMusic;
 
+    public List<Virus> virusList = new List<Virus>();
     private void Start()
     {
         LoadLevel(GameManager.Instance.level);
@@ -54,17 +55,32 @@ public class LevelManager : Singleton<LevelManager>
         isFinished = false;
         gameTime = CSVLoader.Instance.LevelInfoDict[level].totalTime;
         level = levelName;
+        currentLevelInfo = CSVLoader.Instance.LevelInfoDict[level];
         gameTimer = 0;
         productive = productiveMax;
         virusDataList = new List<VirusData>();
         if (levelName == 1)
         {
-            DeskTop.Instance. AddDesktopIcon("fakePDF","Onboarding");
+            DeskTop.Instance. AddDesktopIcon("Chat");
+            ChatManager.Instance.GenerateDialogue("tutorial1_chat1");
+            //DeskTop.Instance. AddDesktopIcon("fakePDF","Onboarding");
+        }else if (levelName == 2)
+        {
+            
+            DeskTop.Instance. AddDesktopIcon("Chat");
+            DeskTop.Instance. AddDesktopIcon("Anti Virus");
+            ChatManager.Instance.GenerateDialogue("tutorial2_chat1");
+        }else if (levelName == 3)
+        {
+            
+            DeskTop.Instance. AddDesktopIcon("Chat");
+            DeskTop.Instance. AddDesktopIcon("Anti Virus");
+            ChatManager.Instance.GenerateDialogue("tutorial3_chat1");
         }
         else
         {
             
-            DeskTop.Instance. AddDesktopIcon("My Computer");
+            //DeskTop.Instance. AddDesktopIcon("My Computer");
             DeskTop.Instance. AddDesktopIcon("Chat");
             DeskTop.Instance. AddDesktopIcon("Anti Virus");
             StartGame();
@@ -73,7 +89,6 @@ public class LevelManager : Singleton<LevelManager>
 
     public void StartGame()
     {
-        currentLevelInfo = CSVLoader.Instance.LevelInfoDict[level];
         ChatManager.Instance.generateChatTime = currentLevelInfo.chatInterval[0];
         ChatManager.Instance.generateChatTimeMin = currentLevelInfo.chatInterval[1];
         ChatManager.Instance.generateChatTimeMax = currentLevelInfo.chatInterval[2];
@@ -124,9 +139,7 @@ public class LevelManager : Singleton<LevelManager>
             if( FindObjectOfType<ClipAnimationController>())
             FindObjectOfType<ClipAnimationController>().PlayEndOfDay();
             //GameManager.Instance.NextLevel();
-
-            gameplayMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-            gameplayMusic.release();
+            StopMusic();
         }
 
         if (virusDataList.Count > 0)
@@ -140,6 +153,12 @@ public class LevelManager : Singleton<LevelManager>
         }
     }
 
+    public void StopMusic()
+    {
+        
+        gameplayMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        gameplayMusic.release();
+    }
     public void CreateVirus(string virusId)
     {
         gameplayMusic.setParameterByName("Game Mode", 1);
@@ -149,6 +168,7 @@ public class LevelManager : Singleton<LevelManager>
         var virus = Instantiate(Resources.Load<GameObject>( "enemy/"+virusId),null);
         virus.GetComponent<Virus>().virusMaxHealth = virusData.hp;
         virus.GetComponent<Virus>().corruptionInterval = virusData.stayTime;
+        virusList.Add(virus.GetComponent<Virus>());
     }
 
     public void Restart()

@@ -22,8 +22,11 @@ public class ClipController : MonoBehaviour
     {
         dialogueBubble.SetActive(true);
         dialogueText.text = info.text;
-        yield return new WaitForSeconds(time);
-        dialogueBubble.SetActive(false);
+        if (time > 0)
+        {
+            yield return new WaitForSeconds(time);
+            dialogueBubble.SetActive(false);
+        }
     }
 
     public void ShowDialogue(string key,float time = 10)

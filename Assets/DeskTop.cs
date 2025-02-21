@@ -22,6 +22,14 @@ public void RemoveDesktopIcon(string appName)
         desktopIcons.Remove(appName);
     }
 }
+
+public void openIcon(string appName)
+{
+    if (desktopIcons.ContainsKey(appName))
+    {
+        desktopIcons[appName].GetComponent<DesktopIcon>().OpenApplication();
+    }
+}
     public void AddDesktopIcon(string appName, string actualName)
     {
         GameObject icon = Instantiate(desktopIcon, desktopParent);

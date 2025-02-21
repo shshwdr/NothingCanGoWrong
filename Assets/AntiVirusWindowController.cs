@@ -18,7 +18,7 @@ public class AntiVirusWindowController : MonoBehaviour
     public float spawnAntiInterval = 3;
 
     public Button shutdownButton;
-
+    public GameObject spawnGo;
     public HPBar ammo;
 
     public int ammoMax = 5;
@@ -30,10 +30,20 @@ public class AntiVirusWindowController : MonoBehaviour
     public bool allBugsAtOnce = true;
     public float antivirusBugLifeTime = 5;
     public TMP_Text dayLevel;
+
+    public GameObject tutorialSpawn;
+    
+
+    public void ShowTutorialSpawn()
+    {
+        tutorialSpawn.SetActive(true);
+    }
     
     // Start is called before the first frame update
     void Start()
     {
+        
+        spawnGo.SetActive(LevelManager.Instance.currentLevelInfo.day != 1);
         
         DeskTop.Instance.pet.SetActive(true);
         dayLevel.text =   "Day " + LevelManager.Instance.level;
@@ -54,8 +64,9 @@ public class AntiVirusWindowController : MonoBehaviour
         
         spawnButton.onClick.AddListener(() =>
         {
-            
+            tutorialSpawn.SetActive(false);
             addAntiVirusBug(true);
+
         });
         
         shutdownButton.onClick.AddListener(() =>
@@ -88,7 +99,14 @@ public class AntiVirusWindowController : MonoBehaviour
 
                 for (int i = 0; i < ammoCount; i++)
                 {
-                    mainVirusItem.SpawnPrefab(antivirusBugLifeTime);
+                    var go = mainVirusItem.SpawnPrefab(antivirusBugLifeTime);
+                    
+                    if(i == 0 && !GameManager.Instance.finishVirusAttackTutorial)
+            {
+                
+                FindObjectOfType<ClipAnimationController>().PlayDetectAnim3();
+                go.transform.Find("tutorialAttack").gameObject.SetActive(true);
+            }
                 }
 
                 spawnAntiTimer = 0;
@@ -124,6 +142,39 @@ public class AntiVirusWindowController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (!LevelManager.Instance.isStarted || LevelManager.Instance.isFinished)
+        {
+            return;
+        }
+        
+        if (LevelManager.Instance.virusList.Count > 0)
+        {
+            
+            if (LevelManager.Instance.level == 1)
+            {
+                spawnGo.SetActive(LevelManager.Instance.currentLevelInfo.day != 1);
+            }
+
+            bool hasAttackableVirus = false;
+            foreach (var virus in LevelManager.Instance.virusList)
+            {
+                if (virus && !virus.isDead)
+                {
+                    hasAttackableVirus = true;
+                    break;
+                }   
+            }
+
+            spawnButton.interactable = hasAttackableVirus && ammoCount > 0;
+            
+        }
+        else
+        {
+            spawnButton.interactable = false;
+            
+        }
+        
         
         shutdownButton.gameObject.SetActive(LevelManager.Instance.isFinished);
         

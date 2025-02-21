@@ -18,7 +18,7 @@ public class Productive : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        dayRemain.SetHP(LevelManager.Instance.gameTimer, LevelManager.Instance.gameTime);
+        dayRemain.SetHP(LevelManager.Instance.gameTime - LevelManager.Instance.gameTimer, LevelManager.Instance.gameTime);
     }
     public void UpdateProductive()
     {

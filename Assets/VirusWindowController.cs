@@ -73,33 +73,20 @@ public class VirusWindowController : MonoBehaviour
         //
         // // 病毒定期攻击玩家
         // {
-            attackProgressBar.SetHP(timeNow - virus.lastAttackTime,virus.attackInterval);
-            if (timeNow - virus.lastAttackTime > virus.attackInterval)
+           // attackProgressBar.SetHP(timeNow - virus.lastAttackTime,virus.attackInterval);
+            if (timeNow - virus.spawnTime > virus.attackInterval)
             {
         
                 //if (virus.actionMode != 1)
                 {
                     virus.AttackPlayer();
                 }
-                virus.lastAttackTime = timeNow;
                 //UpdateUI();
             }
         //}
 
     }
 
-    // public void OnAttackButton()
-    // {
-    //     virus.actionMode = 1;
-    //     attackProgressBar.GetComponentInChildren<SelectableItem>().OnSelect(true);
-    //     beAttackProgressBar.GetComponentInChildren<SelectableItem>().OnSelect(false);
-    // }
-    // public void OnDefenseButton()
-    // {
-    //     virus.actionMode = 0;
-    //     attackProgressBar.GetComponentInChildren<SelectableItem>().OnSelect(false);
-    //     beAttackProgressBar.GetComponentInChildren<SelectableItem>().OnSelect(true);
-    // }
     
     protected void UpdateUI()
     {

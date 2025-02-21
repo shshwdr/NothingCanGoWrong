@@ -7,6 +7,7 @@ public class UIPrefabSpawner : MonoBehaviour
     public GameObject prefabToSpawn; // 需要生成的 Prefab
     public int spawnCount = 5;       // 生成数量（可选）
 
+    public GameObject tutorialAttack;
     // void Start()
     // {
     //     for (int i = 0; i < spawnCount; i++)
@@ -15,15 +16,21 @@ public class UIPrefabSpawner : MonoBehaviour
     //     }
     // }
 
+    public void ShowTutorialAttack()
+    {
+        tutorialAttack.SetActive(true);
+    }
     /// <summary>
     /// 生成 Prefab，并确保不会超出 `RectTransform` 边界
     /// </summary>
-    public void SpawnPrefab(float destroyTime)
+    public GameObject SpawnPrefab(float destroyTime)
     {
+        
+        
         if (spawnArea == null || prefabToSpawn == null)
         {
             Debug.LogError("❌ SpawnArea 或 PrefabToSpawn 未设置！");
-            return;
+            return null;
         }
 
         GameObject newPrefab = Instantiate(prefabToSpawn, spawnArea,transform);
@@ -32,6 +39,9 @@ public class UIPrefabSpawner : MonoBehaviour
         {
             newPrefab.GetComponent<ImageAnimationController>().Play();
             newPrefab.GetComponent<Button>().interactable = false;
+            Time.timeScale = 1;
+            GameManager.Instance.finishVirusAttackTutorial = true;
+            
             Destroy(newPrefab,1);
             GetComponent<VirusWindowController>().virus.DamageVirus();
             if (FindObjectOfType<ClipAnimationController>())
@@ -47,6 +57,7 @@ public class UIPrefabSpawner : MonoBehaviour
 
         // 设置 Prefab 位置
         prefabRect.anchoredPosition = safePosition;
+        return newPrefab;
     }
 
     /// <summary>

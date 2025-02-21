@@ -44,6 +44,8 @@ public class ChatWindowController : MonoBehaviour
     }
 
     private Dictionary<string, GameObject> chatIconMap = new Dictionary<string, GameObject>();
+    
+    
     public void UpdateView()
     {
         //input.GetComponent<FakeInputField>().Clear();
@@ -63,13 +65,18 @@ public class ChatWindowController : MonoBehaviour
             var icon = Instantiate(sideBarIcon, sideBar);
             icon.GetComponent<IconButton>().nameLabel.text = characterName;
             icon.GetComponent<IconButton>().image.sprite = characterInfo.icon;
-            icon.GetComponent<IconButton>().redDot.SetActive(false);//ChatManager.Instance.chatDataMap[characterID].LastItem().isFinished == false);
+            var isRead = ChatManager.Instance.chatDataMap[characterID].LastItem().isRead;
+            icon.GetComponent<IconButton>().redDot.SetActive(!isRead);//ChatManager.Instance.chatDataMap[characterID].LastItem().isFinished == false);
             icon.GetComponent<IconButton>().button.onClick.AddListener(() =>
             {
                 selectedCharacter = characterID;
+                ChatManager.Instance.chatDataMap[characterID].LastItem().isRead = true;
                 UpdateViewAll();
+                
+                EventPool.Trigger("UpdateDot");
             });
             chatIconMap[characterID]= icon;
+            
         }
         
         //content
@@ -123,6 +130,10 @@ public class ChatWindowController : MonoBehaviour
 
     public void UpdateInputStates()
     {
+        if (!chatIconMap.ContainsKey(selectedCharacter))
+        {
+            return;
+        }
         var lastItem=  ChatManager.Instance.chatDataMap[selectedCharacter].LastItem();
         
         var canInput = lastItem.isFinished == false &&

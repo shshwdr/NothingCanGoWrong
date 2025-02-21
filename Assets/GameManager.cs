@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : Singleton<GameManager>
 {
     public int level = 1;
+    public bool finishVirusAttackTutorial = false;
     void Awake()
     {
         CSVLoader.Instance.Init();
@@ -32,6 +33,7 @@ public class GameManager : Singleton<GameManager>
     public void NextLevel()
     {
         level++;
+        LevelManager.Instance.StopMusic();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -39,10 +41,12 @@ public class GameManager : Singleton<GameManager>
     {
         level--;
         
+        LevelManager.Instance.StopMusic();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void RestartLevel()
     {
+        LevelManager.Instance.StopMusic();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         //LevelManager.Instance.LoadLevel(level);
     }

@@ -14,7 +14,9 @@ public class WindowManager : Singleton<WindowManager>
     private Dictionary<string, GameObject> taskbarButtons = new Dictionary<string, GameObject>();
     private int id;
     public RectTransform canvasRect;
-    public GameObject OpenApplication(string appName,string actualName, GameObject prefab = null, bool forceOpenNew = false)
+
+    public GameObject OpenApplication(string appName, string actualName, GameObject prefab = null,
+        bool forceOpenNew = false, bool randomPosition = false)
     {
         // 如果应用已打开，则显示它
         if (prefab == null)
@@ -46,10 +48,19 @@ public class WindowManager : Singleton<WindowManager>
         RectTransform popupRect = newWindow.GetComponent<RectTransform>();
         // 计算弹窗大小
         Vector2 popupSize = popupRect.sizeDelta;
-        Vector2 safePosition = GetSafeRandomPosition(popupSize);
 
-        // 设置弹窗位置
-        popupRect.anchoredPosition = safePosition;
+        if (randomPosition)
+        {
+            
+            Vector2 safePosition = GetSafeRandomPosition(popupSize);
+
+            // 设置弹窗位置
+            popupRect.anchoredPosition = safePosition;
+        }
+        else
+        {
+            popupRect.anchoredPosition = new Vector2(0, 0);
+        }
         
         // 添加到打开窗口列表
         openWindows[appID] = newWindow;

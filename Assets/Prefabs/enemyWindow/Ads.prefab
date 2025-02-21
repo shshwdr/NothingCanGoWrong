@@ -93,7 +93,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3818348548300092181, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
       propertyPath: moveSpeed
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4686130883771615696, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
       propertyPath: m_AnchorMax.y
@@ -113,7 +113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4907894125250243695, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
       propertyPath: m_Name
-      value: popupMinionVirusWindow
+      value: Ads
       objectReference: {fileID: 0}
     - target: {fileID: 5804333171421618077, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
       propertyPath: m_Pivot.x

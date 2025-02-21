@@ -34,9 +34,9 @@ public IEnumerator OpenPDF()
     //yield return new WaitForSeconds(0.5f);
     
     
-    DeskTop.Instance. AddDesktopIcon("Chat");
+    //DeskTop.Instance. AddDesktopIcon("Chat");
 
-    ChatManager.Instance.GenerateDialogue("tutorial1_chat");
+    ChatManager.Instance.GenerateDialogue("tutorial1_chat3");
 
     WindowManager.Instance.CloseApplication("fakePDF");
     DeskTop.Instance.RemoveDesktopIcon("Onboarding");
