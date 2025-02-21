@@ -20,7 +20,7 @@ public class ChatData
     public bool isFinished;
     public DialogueInfo dialogueInfo;
 
-    public float angryTime = 20;
+    public float angryTime = 10;
     public float angryTimer = 0;
     public bool isFailed;
 }

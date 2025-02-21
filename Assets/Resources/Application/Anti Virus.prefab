@@ -232,9 +232,10 @@ MonoBehaviour:
   shutdownButton: {fileID: 5167215923041917747}
   ammo: {fileID: 616233365849384624}
   ammoMax: 5
+  ammoStart: 0
   ammoRefillTime: 7.5
   allBugsAtOnce: 1
-  antivirusBugLifeTime: 3
+  antivirusBugLifeTime: 5
   dayLevel: {fileID: 6380066015679026173}
 --- !u!114 &3461738976441517425
 MonoBehaviour:
