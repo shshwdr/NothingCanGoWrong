@@ -154,7 +154,7 @@ public class AntiVirusWindowController : MonoBehaviour
             
             if (LevelManager.Instance.level == 1)
             {
-                spawnGo.SetActive(LevelManager.Instance.currentLevelInfo.day != 1);
+                spawnGo.SetActive(true);
             }
 
             bool hasAttackableVirus = false;
