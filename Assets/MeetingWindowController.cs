@@ -18,15 +18,18 @@ public class MeetingWindowController : MonoBehaviour
     public float meetingTime = 10;
     
     public GameObject finishedOB;
+    public GameObject failedOB;
     public GameObject finishedHideOB;
 
     private bool isFinished = false;
+    private bool isFailed= false;
     // Start is called before the first frame update
     void Start()
     {
          rect = GetComponent<RectTransform>();
          progress = maxProgress;
          finishedOB.SetActive(false);
+         failedOB.SetActive(false);
     }
 
     // Update is called once per frame
@@ -42,6 +45,7 @@ public class MeetingWindowController : MonoBehaviour
             finishedOB.SetActive(true);
             finishedHideOB.SetActive(false);
             isFinished = true;
+            GetComponent<WindowController>().ShowButtons();
         }
         if (IsOnTop())
         {
@@ -54,6 +58,17 @@ public class MeetingWindowController : MonoBehaviour
 
         progress = math.clamp(progress, 0, maxProgress);
         focusProgress.SetHP(progress, maxProgress);
+
+        if (progress <= 0)
+        {
+            isFinished = true;
+            isFailed = true;
+            failedOB.SetActive(true);
+
+            GetComponent<WindowController>().ShowButtons();
+            
+            LevelManager.Instance.ReduceProductive(10);
+        }
     }
     public bool IsOnTop()
     {

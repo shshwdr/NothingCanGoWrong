@@ -41,6 +41,13 @@ public TMP_Text titleLabel;
         
     }
 
+    public void ShowButtons()
+    {
+        
+        closeButton.gameObject.SetActive(true);
+        minimizeButton.gameObject.SetActive(true);
+        maximizeButton.gameObject.SetActive(true);
+    }
     public void Unlock()
     {
         isRansomed = false;
