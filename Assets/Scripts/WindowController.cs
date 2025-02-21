@@ -7,6 +7,11 @@ using UnityEngine.EventSystems;
 public class WindowController : MonoBehaviour, IDragHandler, IPointerDownHandler
 { 
     public Button fullWindow;
+    
+    public RectTransform content;
+
+    public GameObject lockPanel;
+    
     [HideInInspector]
     public string id;
     public RectTransform windowRect; // 窗口 RectTransform
@@ -35,6 +40,7 @@ public TMP_Text titleLabel;
     }
     void Start()
     {
+        lockPanel.SetActive(false);
         closeButton.onClick.AddListener(CloseWindow);
         minimizeButton.onClick.AddListener(MinimizeWindow);
         maximizeButton.onClick.AddListener(ToggleMaximize);

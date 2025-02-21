@@ -222,6 +222,7 @@ public class ChatManager : Singleton<ChatManager>
         ChatData data = new ChatData()
             { text = lastChat.dialogueInfo.respond, sender = playerInfo, type = ChatType.respond, isFinished = true };
         
+        if(FindObjectOfType<ChatWindowController>())
         data.isRead = lastChat.sender.id == FindObjectOfType<ChatWindowController>().selectedCharacter;
         
         chatDataMap[characterId].Add(data);
@@ -266,6 +267,7 @@ public class ChatManager : Singleton<ChatManager>
         ChatData data = new ChatData()
             { text = "I'm angry.", sender = lastChat.sender, type = ChatType.respond, isFinished = true };
         
+        if(FindObjectOfType<ChatWindowController>())
         data.isRead = lastChat.sender.id == FindObjectOfType<ChatWindowController>().selectedCharacter;
         LevelManager.Instance.ReduceProductive(10);
         
@@ -290,6 +292,7 @@ public class ChatManager : Singleton<ChatManager>
                     isFinished = true
                 };
 
+                if(FindObjectOfType<ChatWindowController>())
                 data.isRead = lastChat.sender.id == FindObjectOfType<ChatWindowController>().selectedCharacter;
                 chatDataMap[characterId].Add(data);
                 addChat(characterId);
@@ -304,6 +307,7 @@ public class ChatManager : Singleton<ChatManager>
                     ChatData data = new ChatData()
                         { text = "Great!", sender = lastChat.sender, type = ChatType.chat, isFinished = true };
         
+                    if(FindObjectOfType<ChatWindowController>())
                     data.isRead = lastChat.sender.id == FindObjectOfType<ChatWindowController>().selectedCharacter;
                     chatDataMap[characterId].Add(data);
                     addChat(characterId);
@@ -312,10 +316,11 @@ public class ChatManager : Singleton<ChatManager>
                 else
                 {
                     
-                    LevelManager.Instance.ReduceProductive(10);
+                    LevelManager.Instance.ReduceProductive(20);
                     ChatData data = new ChatData()
                         { text = "It is NOT finished!!!", sender = lastChat.sender, type = ChatType.chat, isFinished = true };
         
+                    if(FindObjectOfType<ChatWindowController>())
                     data.isRead = lastChat.sender.id == FindObjectOfType<ChatWindowController>().selectedCharacter;
                     chatDataMap[characterId].Add(data);
                     addChat(characterId);
@@ -325,10 +330,11 @@ public class ChatManager : Singleton<ChatManager>
             else
             {
                 
-                LevelManager.Instance.ReduceProductive(10);
+                LevelManager.Instance.ReduceProductive(20);
                 ChatData data = new ChatData()
                     { text = "This is not the file I want.", sender = lastChat.sender, type = ChatType.chat, isFinished = true };
         
+                if(FindObjectOfType<ChatWindowController>())
                 data.isRead = lastChat.sender.id == FindObjectOfType<ChatWindowController>().selectedCharacter;
                 chatDataMap[characterId].Add(data);
                 addChat(characterId);

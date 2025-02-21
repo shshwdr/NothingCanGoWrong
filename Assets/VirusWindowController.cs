@@ -20,11 +20,20 @@ public class VirusWindowController : MonoBehaviour
         UpdateUI();
     }
 
+    public void HideVirus()
+    {
+        GetComponent<VirusAnimationController>().targetImage.gameObject.SetActive(false);
+    }
+    public void ShowVirus()
+    {
+        GetComponent<VirusAnimationController>().targetImage.gameObject.SetActive(true);
+    }
+
     public void Die()
     {
         
         GetComponent<VirusAnimationController>().PlayAnimation("Death",false);
-        StartCoroutine(StartCoroutine(0.5f));
+        StartCoroutine(StartCoroutine(1f));
     }
     
     IEnumerator StartCoroutine(float time)

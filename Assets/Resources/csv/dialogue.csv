@@ -60,3 +60,5 @@ tutorial2_chat4,Your colleagues will send you a few files to work on.,hr,-1,,tut
 tutorial2_chat5,"Please download them, make any necessary edits, and re-upload them to whoever sent them.",hr,-1,,tutorial2_chat6,,
 tutorial2_chat6,It shouldn’t be too difficult—enjoy your day!,hr,-1,startgame,,Can't wait to start working!,
 tutorial3_chat1,WIP tutorial about meeting,hr,-1,startgame,,ok,
+end_lowProductive,We’ve received a report indicating that you have not been fully focused on your assigned responsibilities. ,hr,-1,,end_lowProductive2,,
+end_lowProductive2,"As a result, we must terminate your employment, effective immediately.",hr,-1,endgame,,,

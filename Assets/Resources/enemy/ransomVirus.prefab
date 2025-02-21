@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2703898581161409938, guid: b7ca85fb9149b3442a614f80ed8d1ce1, type: 3}
       propertyPath: m_Name
-      value: trojan
+      value: ransomVirus
       objectReference: {fileID: 0}
     - target: {fileID: 3482648257323164869, guid: b7ca85fb9149b3442a614f80ed8d1ce1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5411311432015511951, guid: b7ca85fb9149b3442a614f80ed8d1ce1, type: 3}
       propertyPath: applicationName
-      value: Trojan Virus
+      value: Ransom Virus
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

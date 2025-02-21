@@ -8,11 +8,11 @@ namespace PoolExample
     {
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                // Triggering an event can be done from anywhere in your code.
-                EventPool.Trigger<string, int, float>("MousePos", Input.mousePosition.x.ToString(), Mathf.RoundToInt(Input.mousePosition.y), Input.mousePosition.z);
-            }
+            // if (Input.GetKeyDown(KeyCode.S))
+            // {
+            //     // Triggering an event can be done from anywhere in your code.
+            //     EventPool.Trigger<string, int, float>("MousePos", Input.mousePosition.x.ToString(), Mathf.RoundToInt(Input.mousePosition.y), Input.mousePosition.z);
+            // }
         }
 
         private void OnEnable()

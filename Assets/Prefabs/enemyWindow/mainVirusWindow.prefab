@@ -526,7 +526,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3799507632836564719, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7758265660499924508, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
@@ -538,10 +539,10 @@ PrefabInstance:
       addedObject: {fileID: 5042253703145584613}
     - targetCorrespondingSourceObject: {fileID: 4907894125250243695, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8133114753420533521}
+      addedObject: {fileID: 1177510426833614630}
     - targetCorrespondingSourceObject: {fileID: 4907894125250243695, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1177510426833614630}
+      addedObject: {fileID: 8741713859342360515}
   m_SourcePrefab: {fileID: 100100000, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
 --- !u!224 &5172450666005055277 stripped
 RectTransform:
@@ -570,21 +571,6 @@ MonoBehaviour:
   beAttackProgressBar: {fileID: 8900650937856325596}
   hpProgressBar: {fileID: 749438347752587964}
   progressProgressBar: {fileID: 5763131789212111109}
---- !u!114 &8133114753420533521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7529612095361858910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cacccd6c3cf154f4c834f0bc57d2b94e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnArea: {fileID: 5172450666005055277}
-  prefabToSpawn: {fileID: 5305163498098984080, guid: 01d8adb5c8935f44ca99336e7e75cc88, type: 3}
-  spawnCount: 5
 --- !u!114 &1177510426833614630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -599,6 +585,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetImage: {fileID: 3571851414290655984}
   frameRate: 0.3
+--- !u!114 &8741713859342360515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7529612095361858910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c73cced6c0843c42be2d80320ae4190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnArea: {fileID: 5172450666005055277}
+  prefabToSpawn: {fileID: 5305163498098984080, guid: 01d8adb5c8935f44ca99336e7e75cc88, type: 3}
+  spawnCount: 5
+  tutorialAttack: {fileID: 0}
 --- !u!1001 &4428322853403997680
 PrefabInstance:
   m_ObjectHideFlags: 0

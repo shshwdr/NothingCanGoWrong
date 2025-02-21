@@ -43,6 +43,7 @@ public class AntiVirusWindowController : MonoBehaviour
     void Start()
     {
         
+        updateAmmoCount();
         spawnGo.SetActive(LevelManager.Instance.currentLevelInfo.day != 1);
         
         DeskTop.Instance.pet.SetActive(true);
@@ -89,13 +90,13 @@ public class AntiVirusWindowController : MonoBehaviour
         {
             return;
         }
-        var virus = FindObjectsOfType<UIPrefabSpawner>().ToList();
+        var virus = FindObjectsOfType<TargetPointSpawner>().ToList();
         if (virus.Count > 0)
         {
             //Spend all the ammo at once and spawns bugs
             if(allBugsAtOnce)
             {
-                UIPrefabSpawner mainVirusItem = virus.PickItem();
+                TargetPointSpawner mainVirusItem = virus.PickItem();
 
                 for (int i = 0; i < ammoCount; i++)
                 {
@@ -159,7 +160,7 @@ public class AntiVirusWindowController : MonoBehaviour
             bool hasAttackableVirus = false;
             foreach (var virus in LevelManager.Instance.virusList)
             {
-                if (virus && !virus.isDead)
+                if (virus && virus.canBeAttacked())
                 {
                     hasAttackableVirus = true;
                     break;
@@ -193,8 +194,14 @@ public class AntiVirusWindowController : MonoBehaviour
          {
              ammoRefillTimer = 0;
              ammoCount += 1;
-             ammoCount = Mathf.Clamp(ammoCount, 0, ammoMax);
-             ammo.SetHP(ammoCount, ammoMax);
+             updateAmmoCount();
          }
+    }
+
+    void updateAmmoCount()
+    {
+        
+        ammoCount = Mathf.Clamp(ammoCount, 0, ammoMax);
+        ammo.SetHP(ammoCount, ammoMax);
     }
 }

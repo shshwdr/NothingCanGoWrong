@@ -66,6 +66,10 @@ public class ChatWindowController : MonoBehaviour
             icon.GetComponent<IconButton>().nameLabel.text = characterName;
             icon.GetComponent<IconButton>().image.sprite = characterInfo.icon;
             var isRead = ChatManager.Instance.chatDataMap[characterID].LastItem().isRead;
+            if (selectedCharacter == characterID)
+            {
+                icon.GetComponent<IconButton>().Select();
+            }
             icon.GetComponent<IconButton>().redDot.SetActive(!isRead);//ChatManager.Instance.chatDataMap[characterID].LastItem().isFinished == false);
             icon.GetComponent<IconButton>().button.onClick.AddListener(() =>
             {

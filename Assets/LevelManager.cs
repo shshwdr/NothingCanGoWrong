@@ -49,6 +49,16 @@ public class LevelManager : Singleton<LevelManager>
     {
          productive -= value;
          EventPool.Trigger("UpdateProductive");
+
+
+         if (productive <= 0)
+         {
+             
+             FindObjectOfType<GameOver>(true).gameObject.SetActive(true);
+             FindObjectOfType<GameOver>(true).image.sprite = FindObjectOfType<GameOver>(true).fired;
+             LevelManager.Instance.isFinished = true;
+             //ChatManager.Instance.GenerateDialogue();
+         }
     }
     public void LoadLevel(int levelName)
     {
@@ -120,7 +130,7 @@ public class LevelManager : Singleton<LevelManager>
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.Backspace))
         {
             Restart();
         }
@@ -164,7 +174,11 @@ public class LevelManager : Singleton<LevelManager>
         gameplayMusic.setParameterByName("Game Mode", 1);
 
         var virusData = virusDataList[0];
-        FindObjectOfType<ClipAnimationController>().PlayDetectAnim();
+        if (FindObjectOfType<ClipAnimationController>())
+        {
+            
+            FindObjectOfType<ClipAnimationController>().PlayDetectAnim();
+        }
         var virus = Instantiate(Resources.Load<GameObject>( "enemy/"+virusId),null);
         virus.GetComponent<Virus>().virusMaxHealth = virusData.hp;
         virus.GetComponent<Virus>().corruptionInterval = virusData.stayTime;

@@ -10,6 +10,8 @@ public class ChatCell : MonoBehaviour
 
     public TMP_Text text;
 
+    public Image dialogueBubbleBK;
+    public Sprite playerBK;
     public Button fileButton;
     public TMP_Text fileName;
 
@@ -39,18 +41,19 @@ public class ChatCell : MonoBehaviour
                     fileButton.interactable = false;
                 });
             }
-            text.gameObject.SetActive(false);
+            text.transform.parent.gameObject.SetActive(false);
         }
         else
         {
             fileButton.gameObject.SetActive(false);
-            text.gameObject.SetActive(true);
+            text.transform.parent.gameObject.SetActive(true);
             
         }
 
         if (isPlayer)
         {
             icon.GetComponent<RectTransform>().SetAsLastSibling();
+            dialogueBubbleBK.sprite = playerBK;
         }
     }
 }

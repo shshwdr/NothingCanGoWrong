@@ -22,17 +22,36 @@ public class Virus : MonoBehaviour
 //     [HideInInspector]
 //     public float lastGetAttackTime;
 
-    WindowController windowController;
+   // WindowController windowController;
     
     [HideInInspector]
     public float spawnTime = 0;
     public int actionMode = -1;//0 attack, 1 defense
 
     public GameObject virusWindowPrefab;
-    GameObject virusWindow;
+    public GameObject virusWindow;
     public string applicationName = "Virus";
 
     private FMOD.Studio.EventInstance instance;
+
+    public bool canBeAttacked()
+    {
+        var res = true;
+        if (isDead)
+        {
+            res = false;
+        }
+
+        if (GetComponent<WormVirus>())
+        {
+            if (!GetComponent<WormVirus>().canBeAttacked())
+            {
+                res = false;
+            }
+        }
+
+        return res;
+    }
     protected virtual void Start()
     {
         //attackButton.onClick.AddListener(DamageVirus);

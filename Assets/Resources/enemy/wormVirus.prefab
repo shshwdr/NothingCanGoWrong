@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2703898581161409938, guid: b7ca85fb9149b3442a614f80ed8d1ce1, type: 3}
       propertyPath: m_Name
-      value: trojan
+      value: wormVirus
       objectReference: {fileID: 0}
     - target: {fileID: 3482648257323164869, guid: b7ca85fb9149b3442a614f80ed8d1ce1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -54,10 +54,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5411311432015511951, guid: b7ca85fb9149b3442a614f80ed8d1ce1, type: 3}
       propertyPath: applicationName
-      value: Trojan Virus
+      value: Worm Virus
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2703898581161409938, guid: b7ca85fb9149b3442a614f80ed8d1ce1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 32053575012193488}
+    - targetCorrespondingSourceObject: {fileID: 2703898581161409938, guid: b7ca85fb9149b3442a614f80ed8d1ce1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2884197020398976164}
   m_SourcePrefab: {fileID: 100100000, guid: b7ca85fb9149b3442a614f80ed8d1ce1, type: 3}
+--- !u!1 &1244693275560035816 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2703898581161409938, guid: b7ca85fb9149b3442a614f80ed8d1ce1, type: 3}
+  m_PrefabInstance: {fileID: 3801078353081677946}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &32053575012193488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244693275560035816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b38e19f734b3c8c438d8a28b138b35f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnTime: 10
+  currentWindow: {fileID: 0}
+  mainWindow: {fileID: 0}
+--- !u!114 &2884197020398976164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244693275560035816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ead9563102d406e4cbef722c923f1d8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnArea: {fileID: 0}
+  prefabToSpawn: {fileID: 2146977602679987516, guid: c319fe5895ca4ea479cbc0bf9e7a1cef, type: 3}

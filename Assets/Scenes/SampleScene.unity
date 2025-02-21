@@ -570,7 +570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1609135189553734370, guid: 2cd37f503ce6e7e4b91b4db0fdbfd6ad, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1609135189553734370, guid: 2cd37f503ce6e7e4b91b4db0fdbfd6ad, type: 3}
       propertyPath: m_AnchorMin.x
@@ -578,15 +578,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1609135189553734370, guid: 2cd37f503ce6e7e4b91b4db0fdbfd6ad, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1609135189553734370, guid: 2cd37f503ce6e7e4b91b4db0fdbfd6ad, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 224
+      value: 448
       objectReference: {fileID: 0}
     - target: {fileID: 1609135189553734370, guid: 2cd37f503ce6e7e4b91b4db0fdbfd6ad, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 63
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 1609135189553734370, guid: 2cd37f503ce6e7e4b91b4db0fdbfd6ad, type: 3}
       propertyPath: m_LocalPosition.x
@@ -622,7 +622,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1609135189553734370, guid: 2cd37f503ce6e7e4b91b4db0fdbfd6ad, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -188
+      value: 222
       objectReference: {fileID: 0}
     - target: {fileID: 1609135189553734370, guid: 2cd37f503ce6e7e4b91b4db0fdbfd6ad, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -639,6 +639,14 @@ PrefabInstance:
     - target: {fileID: 8453442215311268401, guid: 2cd37f503ce6e7e4b91b4db0fdbfd6ad, type: 3}
       propertyPath: m_text
       value: Restart
+      objectReference: {fileID: 0}
+    - target: {fileID: 8453442215311268401, guid: 2cd37f503ce6e7e4b91b4db0fdbfd6ad, type: 3}
+      propertyPath: m_fontSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8453442215311268401, guid: 2cd37f503ce6e7e4b91b4db0fdbfd6ad, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -721,6 +729,7 @@ MonoBehaviour:
   productiveMax: 100
   productive: 100
   gameTime: 0
+  virusList: []
 --- !u!4 &272924785
 Transform:
   m_ObjectHideFlags: 0
@@ -2270,6 +2279,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2da07c579a1ed341b8507dffeb636b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  image: {fileID: 1428642281}
+  blue: {fileID: 21300000, guid: 6d06360a2625acf478e03bb90575c5dc, type: 3}
+  fired: {fileID: 21300000, guid: 3253d60deb6ffdc43935f35724f69b97, type: 3}
 --- !u!114 &1641636515 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3977948527612826307, guid: ad48568e6edf9ea4eac2552bb6e8c77b, type: 3}
