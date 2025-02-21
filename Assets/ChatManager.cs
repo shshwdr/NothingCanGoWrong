@@ -37,8 +37,10 @@ public class ChatManager : Singleton<ChatManager>
     public List<string> chatCharacters = new List<string>();
    // public Dictionary<string, ChatCharacterStatus> chatCharacterStatusMap = new Dictionary<string, ChatCharacterStatus>();
 
-    public float generateChatTimeMin = 6;
-    public float generateChatTimeMax = 20;
+   public float generateChatTimeMin = 6;
+   public float generateChatTimeMax = 20;
+   public float generateFileTimeMin = 6;
+   public float generateFileTimeMax = 20;
     public float generateChatTime = 3;
     private float generateChatTimer = 0;
 
@@ -75,15 +77,18 @@ public class ChatManager : Singleton<ChatManager>
         if (generateChatTimer > generateChatTime)
         {
             generateChatTimer = 0;
-            generateChatTime  = Random.Range(generateChatTimeMin, generateChatTimeMax);
 
             var id = Random.Range(1, LevelManager.Instance.currentLevelInfo.chatType+1);
             switch (id)
             {
                 case 1:
+                    
+                    generateChatTime  = Random.Range(generateChatTimeMin, generateChatTimeMax);
                     GenerateRespondChat();
                     break;
                     case 2:
+                        
+                    generateChatTime  = Random.Range(generateFileTimeMin, generateFileTimeMax);
                         GenerateDownloadChat();
                     break;
             }

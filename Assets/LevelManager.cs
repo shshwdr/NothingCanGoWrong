@@ -102,6 +102,8 @@ public class LevelManager : Singleton<LevelManager>
         ChatManager.Instance.generateChatTime = currentLevelInfo.chatInterval[0];
         ChatManager.Instance.generateChatTimeMin = currentLevelInfo.chatInterval[1];
         ChatManager.Instance.generateChatTimeMax = currentLevelInfo.chatInterval[2];
+        ChatManager.Instance.generateFileTimeMin = currentLevelInfo.chatInterval[3];
+        ChatManager.Instance.generateFileTimeMax = currentLevelInfo.chatInterval[4];
 
         MeetingManager.Instance.generateChatTime = currentLevelInfo.meeting[0];
         MeetingManager.Instance.generateChatTimeMin = currentLevelInfo.meeting[1];
