@@ -77,10 +77,18 @@ public class WormVirus : MonoBehaviour
         {
             
         }
+
+        if (nextWindow!=null && nextWindow.gameObject && nextWindow.gameObject.activeSelf)
+        {
+            
+            currentWindow = nextWindow;
+        }
+        else
+        {
+            
+            currentWindow = mainWindow;
+        }
         
-        
-        
-        currentWindow = nextWindow;
         
         
         
