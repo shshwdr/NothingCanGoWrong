@@ -41,6 +41,6 @@ public class MeetingManager : Singleton<MeetingManager>
         prefab.GetComponent<MeetingWindowController>().meetingTime = LevelManager.Instance.currentLevelInfo.meeting[0];
         prefab.GetComponent<MeetingWindowController>().maxProgress = LevelManager.Instance.currentLevelInfo.meeting[1];
         prefab.GetComponent<MeetingWindowController>().difficultScale = LevelManager.Instance.currentLevelInfo.meeting[2];
-        WindowManager.Instance.OpenApplication("Meeting","Meeting - With "+characterId,prefab);
+        WindowManager.Instance.OpenApplication("Meeting","Meeting - With "+characterId,prefab,true);
     }
 }
