@@ -56,12 +56,67 @@ public class LevelManager : Singleton<LevelManager>
 
          if (productive <= 0)
          {
-             
-             FindObjectOfType<GameOver>(true).gameObject.SetActive(true);
-             FindObjectOfType<GameOver>(true).image.sprite = FindObjectOfType<GameOver>(true).fired;
+             //
+             // FindObjectOfType<GameOver>(true).gameObject.SetActive(true);
+             // FindObjectOfType<GameOver>(true).image.sprite = FindObjectOfType<GameOver>(true).fired;
              LevelManager.Instance.isFinished = true;
+             LevelManager.Instance.isFailed = true;
+             productiveLose();
              //ChatManager.Instance.GenerateDialogue();
+             
+             
          }
+    }
+
+    void productiveLose()
+    {
+        ChatManager.Instance.ClearDialogue();
+        foreach (var window in FindObjectsOfType<WindowController>())
+        {
+            if (window.id != "Anti Virus" && window.id != "Chat")
+            {
+                window.MinimizeWindow();
+            }
+        }
+
+        if (FindObjectOfType<ChatWindowController>())
+        {
+            FindObjectOfType<ChatWindowController>().GetComponent<RectTransform>().anchoredPosition =
+                new Vector2(-350, 0); 
+            ChatManager.Instance.GenerateDialogue("end_lowProductive");
+        }
+        else
+        {
+            DeskTop.Instance.openIcon("Chat");
+            StartCoroutine(test3());
+        }
+        
+        if (FindObjectOfType<AntiVirusWindowController>())
+        {
+            FindObjectOfType<AntiVirusWindowController>().GetComponent<RectTransform>().anchoredPosition =
+                new Vector2(350, 100); 
+        }
+        else
+        {
+            DeskTop.Instance.openIcon("Anti Virus");
+            StartCoroutine(test4());
+        }
+        
+    }
+    IEnumerator test3()
+    {
+        yield return new WaitForSeconds(0.1f);
+        FindObjectOfType<ChatWindowController>().GetComponent<RectTransform>().anchoredPosition =
+            new Vector2(-350, 0); 
+        
+        ChatManager.Instance.GenerateDialogue("end_lowProductive");
+    }
+    
+    IEnumerator test4()
+    {
+        yield return new WaitForSeconds(0.1f);
+        FindObjectOfType<AntiVirusWindowController>().GetComponent<RectTransform>().anchoredPosition =
+            new Vector2(350, 100); 
     }
     public void LoadLevel(int levelName)
     {
@@ -182,7 +237,7 @@ public class LevelManager : Singleton<LevelManager>
             ChatManager.Instance.ClearDialogue();
             foreach (var window in FindObjectsOfType<WindowController>())
             {
-                if (window.id != "Anti Virus" && window.id != "Chat")
+                if ( window.id != "Chat")
                 {
                     window.MinimizeWindow();
                 }

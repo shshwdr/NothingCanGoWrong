@@ -42,6 +42,7 @@ public class ChatManager : Singleton<ChatManager>
    public void ClearDialogue()
    {
        chatCharacters.Clear();
+       chatDataMap.Clear();
    }
    public float generateChatTimeMin = 6;
    public float generateChatTimeMax = 20;
@@ -285,6 +286,10 @@ public class ChatManager : Singleton<ChatManager>
                 case "startgame":
                     LevelManager.Instance.StartGame();
                     break;
+                case "productiveFail":
+                    FindObjectOfType<GameOver>(true).gameObject.SetActive(true);
+                    FindObjectOfType<GameOver>(true).image.sprite = FindObjectOfType<GameOver>(true).fired;
+                    break;
                 case "installAnti":
                     DeskTop.Instance. AddDesktopIcon("Anti Virus");
                     break;
@@ -339,12 +344,14 @@ public class ChatManager : Singleton<ChatManager>
             }
         }
         
-        LevelManager.Instance.ReduceProductive(reduceProductive);
         
         
         chatDataMap[characterId].Add(data);
         addChat(characterId);
         EventPool.Trigger("UpdateChat");
+        
+        
+        LevelManager.Instance.ReduceProductive(reduceProductive);
     }
 
     public void joinMeeting(string characterId)

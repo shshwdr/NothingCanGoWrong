@@ -1,3 +1,5 @@
+using System.Collections;
+using DG.Tweening;
 using Pool;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -34,8 +36,34 @@ public class ComputerManager : Singleton<ComputerManager>
         {
             Debug.Log("💀 玩家电脑崩溃！");
             LevelManager.Instance.isFinished = true;
-            FindObjectOfType<GameOver>(true).gameObject.SetActive(true);
+            failVirus();
         }
+    }
+
+    void failVirus()
+    {
+        ChatManager.Instance.ClearDialogue();
+        foreach (var window in FindObjectsOfType<WindowController>())
+        {
+            if (!window.GetComponent<VirusWindowController>())
+            {
+                window.MinimizeWindow();
+            }
+        }
+        
+        if (FindObjectOfType<VirusWindowController>())
+        {
+            FindObjectOfType<VirusWindowController>().GetComponent<RectTransform>().anchoredPosition =
+                new Vector2(0, 0);
+            FindObjectOfType<VirusAnimationController>().targetImage.transform.DOScale(5, 1f);
+            StartCoroutine(test());
+        }
+    }
+
+    IEnumerator test()
+    {
+        yield return new WaitForSeconds(1);
+        FindObjectOfType<GameOver>(true).gameObject.SetActive(true);
     }
 
     public float ammoRefillTime = 2;

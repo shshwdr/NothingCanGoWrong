@@ -136,6 +136,8 @@ public class PDFWindowController : MonoBehaviour
             if(!DeskTop.Instance.desktopIcons[GetComponent<WindowController>().titleLabel.text].GetComponent<DesktopIcon>().failedIcon.activeSelf)
             DeskTop.Instance.desktopIcons[GetComponent<WindowController>().titleLabel.text].GetComponent<DesktopIcon>().finishedIcon.SetActive(true);
         }
+        
+        GetComponent<WindowController>().SetToTop();
     }
 
     // Update is called once per frame

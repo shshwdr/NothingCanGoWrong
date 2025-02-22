@@ -21,6 +21,10 @@ public class PopupVirus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!LevelManager.Instance.isStarted || LevelManager.Instance.isFinished)
+        {
+            return;
+        }
          popupTimer += Time.deltaTime;
          if (popupTimer > popupTime)
          {

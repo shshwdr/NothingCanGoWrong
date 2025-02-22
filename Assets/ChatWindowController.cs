@@ -34,6 +34,7 @@ public class ChatWindowController : MonoBehaviour
         {
             input.GetComponent<FakeInputField>().Clear();
             ChatManager.Instance.respond(selectedCharacter);
+            GetComponent<WindowController>().SetToTop();
         });
     }
 
@@ -73,6 +74,8 @@ public class ChatWindowController : MonoBehaviour
             icon.GetComponent<IconButton>().redDot.SetActive(!isRead);//ChatManager.Instance.chatDataMap[characterID].LastItem().isFinished == false);
             icon.GetComponent<IconButton>().button.onClick.AddListener(() =>
             {
+                
+                GetComponent<WindowController>().SetToTop();
                 selectedCharacter = characterID;
                 ChatManager.Instance.chatDataMap[characterID].LastItem().isRead = true;
                 UpdateViewAll();
