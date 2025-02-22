@@ -81,13 +81,13 @@ public class LevelManager : Singleton<LevelManager>
             DeskTop.Instance. AddDesktopIcon("Anti Virus");
             ChatManager.Instance.GenerateDialogue("tutorial2_chat1");
         }
-        // else if (levelName == 3)
-        // {
-        //     
-        //     DeskTop.Instance. AddDesktopIcon("Chat");
-        //     DeskTop.Instance. AddDesktopIcon("Anti Virus");
-        //     ChatManager.Instance.GenerateDialogue("tutorial3_chat1");
-        // }
+        else if (levelName == 3)
+        {
+            
+            DeskTop.Instance. AddDesktopIcon("Chat");
+            DeskTop.Instance. AddDesktopIcon("Anti Virus");
+            ChatManager.Instance.GenerateDialogue("tutorial3_chat1");
+        }
         else
         {
             
