@@ -41,6 +41,10 @@ public class VirusAnimationController : MonoBehaviour
         {
             PlayAnimation("Reappear",false);
         }
+        else
+        {
+            PlayAnimation("Idle",true);
+        }
     }
 
     public bool hasAnimation(string state)
