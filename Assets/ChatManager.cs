@@ -39,6 +39,10 @@ public class ChatManager : Singleton<ChatManager>
     public List<string> chatCharacters = new List<string>();
    // public Dictionary<string, ChatCharacterStatus> chatCharacterStatusMap = new Dictionary<string, ChatCharacterStatus>();
 
+   public void ClearDialogue()
+   {
+       chatCharacters.Clear();
+   }
    public float generateChatTimeMin = 6;
    public float generateChatTimeMax = 20;
    public float generateFileTimeMin = 6;

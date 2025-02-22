@@ -18,6 +18,9 @@ public class VirusData
 public class LevelManager : Singleton<LevelManager>
 {
     public bool isFinished = false;
+    public bool isLastLevel => GameManager.Instance.level == CSVLoader.Instance.LevelInfoDict.Count;
+    public bool isFinalFinished=>isFinished && isLastLevel;
+    public bool isFailed = false;
     public float gameTimer = 0;
     public bool isStarted = false;
     public int level ;
@@ -151,11 +154,8 @@ public class LevelManager : Singleton<LevelManager>
 
         if (gameTimer > gameTime)
         {
-            isFinished = true;
-            if( FindObjectOfType<ClipAnimationController>())
-            FindObjectOfType<ClipAnimationController>().PlayEndOfDay();
-            //GameManager.Instance.NextLevel();
-            StopMusic();
+            endADay();
+
         }
 
         if (virusDataList.Count > 0)
@@ -169,6 +169,57 @@ public class LevelManager : Singleton<LevelManager>
         }
     }
 
+    void endADay()
+    {
+        isFinished = true;
+        if( FindObjectOfType<ClipAnimationController>())
+            FindObjectOfType<ClipAnimationController>().PlayEndOfDay();
+        //GameManager.Instance.NextLevel();
+        StopMusic();
+
+        if (isLastLevel)
+        {
+            ChatManager.Instance.ClearDialogue();
+            foreach (var window in FindObjectsOfType<WindowController>())
+            {
+                if (window.id != "Anti Virus" && window.id != "Chat")
+                {
+                    window.MinimizeWindow();
+                }
+            }
+
+            if (FindObjectOfType<ChatWindowController>())
+            {
+                FindObjectOfType<ChatWindowController>().GetComponent<RectTransform>().anchoredPosition =
+                    new Vector2(0, 0); 
+                ChatManager.Instance.GenerateDialogue("end_win1");
+            }
+            else
+            {
+                DeskTop.Instance.openIcon("Chat");
+                StartCoroutine(test2());
+            }
+            
+            // if (FindObjectOfType<AntiVirusWindowController>())
+            // {
+            //     FindObjectOfType<AntiVirusWindowController>().GetComponent<RectTransform>().anchoredPosition =
+            //         new Vector2(500, 200);
+            // }
+            // else
+            // {
+            //     
+            //     DeskTop.Instance.openIcon("Anti Virus");
+            // }
+        }
+    }
+    IEnumerator test2()
+    {
+        yield return new WaitForSeconds(0.1f);
+        
+        FindObjectOfType<ChatWindowController>().GetComponent<RectTransform>().anchoredPosition =
+            new Vector2(0, 0); 
+        ChatManager.Instance.GenerateDialogue("end_win1");
+    }
     public void StopMusic()
     {
         

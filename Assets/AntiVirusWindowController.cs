@@ -39,6 +39,7 @@ public class AntiVirusWindowController : MonoBehaviour
     void Start()
     {
         
+        noVirusGO.SetActive( FindObjectsOfType<TargetPointSpawner>().ToList().Count==0);
         updateAmmoCount();
         spawnGo.SetActive(LevelManager.Instance.currentLevelInfo.day != 1);
         

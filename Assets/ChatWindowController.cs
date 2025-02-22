@@ -173,6 +173,8 @@ public class ChatWindowController : MonoBehaviour
 
     private void Update()
     {
+        
+        
         foreach (var characterID in ChatManager.Instance.chatCharacters.ToList())
         {
             var canInput = ChatManager.Instance.chatDataMap[characterID].LastItem().isFinished == false;
