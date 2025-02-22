@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMaxHealth: 100
   currentPlayerHealth: 100
-  ammoRefillTime: 2
+  ammoRefillTime: 5
   ammoStart: 0
   ammoCount: 0
   ammoMax: 5
