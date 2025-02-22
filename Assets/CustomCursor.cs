@@ -9,7 +9,7 @@ public class CustomCursor : MonoBehaviour
     void Awake()
     {
         // 隐藏系统指针
-        Cursor.visible = false;
+        Cursor.visible = false; 
     }
 
     void Update()
@@ -21,6 +21,6 @@ public class CustomCursor : MonoBehaviour
             canvas.worldCamera,
             out pos
         );
-        cursorRect.anchoredPosition = pos;
+        cursorRect.anchoredPosition = Input.mousePosition;
     }
 }
