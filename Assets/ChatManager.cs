@@ -305,8 +305,13 @@ public class ChatManager : Singleton<ChatManager>
         //ComputerManager.Instance.InflictDamage(5);
         
         var lastChat = chatDataMap[characterId].LastItem();
+
+
+
+
+        var text = CSVLoader.Instance.DialogueInfoMap[10].RandomItem().text;
         ChatData data = new ChatData()
-            { text = "I'm angry.", sender = lastChat.sender, type = ChatType.respond, isFinished = true };
+            { text = text, sender = lastChat.sender, type = ChatType.respond, isFinished = true };
         
         if(FindObjectOfType<ChatWindowController>())
         data.isRead = lastChat.sender.id == FindObjectOfType<ChatWindowController>().selectedCharacter;
@@ -316,6 +321,20 @@ public class ChatManager : Singleton<ChatManager>
         {
             reduceProductive = 20;
         }
+
+        if (lastChat.type == ChatType.download)
+        {
+            var fileName = "important_" + data.sender.name;
+            if ( DeskTop.Instance.desktopIcons.ContainsKey(fileName))
+            {
+                DeskTop.Instance.desktopIcons[fileName].GetComponent<DesktopIcon>().failedIcon.SetActive(true);
+            }
+            else
+            {
+                Debug.LogError(fileName +" not found");
+            }
+        }
+        
         LevelManager.Instance.ReduceProductive(reduceProductive);
         
         

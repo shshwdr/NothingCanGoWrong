@@ -12,7 +12,7 @@ public class DesktopIcon : MonoBehaviour
 public TMP_Text nameLabel;
 public GameObject finishedIcon;
 public GameObject redDotIcon;
-
+public GameObject failedIcon;
     public void Init( string actualName, string appName)
     {
         nameLabel.text = actualName;
