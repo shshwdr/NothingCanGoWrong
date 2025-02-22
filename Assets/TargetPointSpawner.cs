@@ -25,8 +25,8 @@ public class TargetPointSpawner : MonoBehaviour
     /// </summary>
     public GameObject SpawnPrefab(float destroyTime)
     {
-        
-        
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/sfx_ui_drop_ammo");
+
         if (spawnArea == null || prefabToSpawn == null)
         {
             Debug.LogError("❌ SpawnArea 或 PrefabToSpawn 未设置！");
