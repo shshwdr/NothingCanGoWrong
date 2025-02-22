@@ -40,7 +40,7 @@ public class RansomVirus : MonoBehaviour
                 selectedRansom.Ransom();
                 
                 mainWindow.GetComponent<VirusAnimationController>().PlayAnimation("Lock",false);
-                
+                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/sfx_virus_create_lock");
             }
             
             popupTimer = 0;

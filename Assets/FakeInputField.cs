@@ -11,11 +11,16 @@ public class FakeInputField : MonoBehaviour, ISelectHandler, IDeselectHandler
     private int currentIndex = 0; // 记录当前显示到第几个字符
     private bool isFocused = false; // 是否处于焦点状态
     public ChatWindowController chatWindowController;
+
+    private FMOD.Studio.EventInstance keyboardSound;
+
     void Start()
     {
         inputField.text = ""; // 清空输入框
         inputField.readOnly = false; // 设置为只读，避免真实输入
         inputField.onValueChanged.AddListener(BlockRealInput);
+
+        keyboardSound = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/sfx_ui_type_message_loop");
     }
 
     void Update()
@@ -23,6 +28,11 @@ public class FakeInputField : MonoBehaviour, ISelectHandler, IDeselectHandler
         if (isFocused && AnyKeyPressed()) // 仅在 `InputField` 选中时响应按键
         {
             SimulateTyping();
+            keyboardSound.start();
+        }
+        else
+        {
+            keyboardSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
     }
 

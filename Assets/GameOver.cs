@@ -12,7 +12,10 @@ public class GameOver : MonoBehaviour
 
     public Sprite fired;
     public TMP_Text text;
-    
-    
-    
+
+
+    private void Start()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/sfx_ui_lose_virus");
+    }
 }

@@ -15,6 +15,8 @@ public class ShutdownBlit : MonoBehaviour
 
     public void StartShutdown()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/sfx_ui_shutdown_win");
+
         if (!shuttingDown)
         {
             shuttingDown = true;

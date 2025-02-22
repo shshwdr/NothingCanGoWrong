@@ -80,7 +80,7 @@ public class ChatWindowController : MonoBehaviour
                 ChatManager.Instance.chatDataMap[characterID].LastItem().isRead = true;
                 UpdateViewAll();
                 
-                EventPool.Trigger("UpdateDot");
+                EventPool.Trigger("UpdateDot");      
             });
             chatIconMap[characterID]= icon;
             

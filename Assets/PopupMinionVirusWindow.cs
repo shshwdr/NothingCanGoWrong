@@ -36,7 +36,7 @@ public class PopupMinionVirusWindow : MonoBehaviour
              if (virus&& !virus.isDead)
              {
                  virus.AddProgress(10);
-             }
+            }
              //ComputerManager.Instance.InflictDamage(damage);
              damageTimer = 0;
          }

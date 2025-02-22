@@ -193,6 +193,10 @@ public class LevelManager : Singleton<LevelManager>
 
     private void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/sfx_ui_mouse_click");
+        }
 
         if (Input.GetKeyDown(KeyCode.Home))
         {
@@ -230,7 +234,6 @@ public class LevelManager : Singleton<LevelManager>
         if( FindObjectOfType<ClipAnimationController>())
             FindObjectOfType<ClipAnimationController>().PlayEndOfDay();
         //GameManager.Instance.NextLevel();
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/sfx_ui_shutdown_win");
         StopMusic();
 
         if (isLastLevel)
