@@ -73,6 +73,8 @@ public class Virus : MonoBehaviour
     {
        virusWindow =  WindowManager.Instance. OpenApplication(applicationName, applicationName, virusWindowPrefab,true);
        virusWindow.GetComponent<VirusWindowController>().Init(this);
+
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/sfx_virus_spawn");
     }
 
     
@@ -82,6 +84,7 @@ public class Virus : MonoBehaviour
     /// </summary>
     public virtual void DamageVirus()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/sfx_ui_explode_ammo");
         if (isDead)
         {
             return;
@@ -103,6 +106,7 @@ public class Virus : MonoBehaviour
             if (LevelManager.Instance.virusList.Count <= 0)
             {
                 instance.setParameterByName("Game Mode", 0);
+                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/sfx_virus_die");
             }
         }
     }

@@ -37,9 +37,9 @@ public class ChatManager : Singleton<ChatManager>
 {
     public Dictionary<string, List<ChatData>> chatDataMap = new Dictionary<string, List<ChatData>>();
     public List<string> chatCharacters = new List<string>();
-   // public Dictionary<string, ChatCharacterStatus> chatCharacterStatusMap = new Dictionary<string, ChatCharacterStatus>();
+    // public Dictionary<string, ChatCharacterStatus> chatCharacterStatusMap = new Dictionary<string, ChatCharacterStatus>();
 
-   public void ClearDialogue()
+    public void ClearDialogue()
    {
        chatCharacters.Clear();
        chatDataMap.Clear();
@@ -102,6 +102,7 @@ public class ChatManager : Singleton<ChatManager>
                     
                     generateChatTime  = Random.Range(generateChatTimeMin, generateChatTimeMax);
                     GenerateRespondChat();
+            
                     break;
                 case 2:
                         
@@ -247,6 +248,8 @@ public class ChatManager : Singleton<ChatManager>
         addChat(speaker.id);
         
         EventPool.Trigger("UpdateChat");
+
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/sfx_ui_receive_message");
     }
 
     void addChat(string characterId)
@@ -274,7 +277,9 @@ public class ChatManager : Singleton<ChatManager>
         chatDataMap[characterId].Add(data);
         addChat(characterId);
         EventPool.Trigger("UpdateChat");
-        
+
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/sfx_ui_send_message");
+
         if (lastChat.dialogueInfo.next != "")
         {
             StartCoroutine(chatNext(lastChat.dialogueInfo.next));

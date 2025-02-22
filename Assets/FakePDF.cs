@@ -11,7 +11,9 @@ public class FakePDF : MonoBehaviour
     }
 public IEnumerator OpenPDF()
 {
-    yield return new WaitForSeconds(1);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/sfx_ui_onboarding_message");
+
+        yield return new WaitForSeconds(1);
     FindObjectOfType<UIScreenShake>().StartShake();
     FindObjectOfType<UIScreenFlash>().StartFlash();
     yield return new WaitForSeconds(1);

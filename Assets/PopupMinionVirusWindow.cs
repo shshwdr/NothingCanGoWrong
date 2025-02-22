@@ -17,6 +17,8 @@ public class PopupMinionVirusWindow : MonoBehaviour
     {
         virus = FindObjectOfType<PopupVirus>().GetComponent<Virus>();
         mover = GetComponent<WindowMover>();
+
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/sfx_virus_summon_minion");
     }
 
     // Update is called once per frame

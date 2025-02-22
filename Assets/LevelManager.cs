@@ -230,6 +230,7 @@ public class LevelManager : Singleton<LevelManager>
         if( FindObjectOfType<ClipAnimationController>())
             FindObjectOfType<ClipAnimationController>().PlayEndOfDay();
         //GameManager.Instance.NextLevel();
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/sfx_ui_shutdown_win");
         StopMusic();
 
         if (isLastLevel)
