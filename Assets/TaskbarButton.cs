@@ -24,7 +24,12 @@ public class TaskbarButton : MonoBehaviour
 
     public void Init(string appName)
     {
-        icon.sprite = SpriteUtils.GetIcon(appName);
+        var sprite = SpriteUtils.GetIcon(appName);
+        if (sprite)
+        {
+            
+            icon.sprite = sprite;
+        }
         label.text = appName;
     }
 }
