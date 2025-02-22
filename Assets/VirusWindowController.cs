@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,9 +14,13 @@ public class VirusWindowController : MonoBehaviour
     public HPBar beAttackProgressBar;
     public HPBar hpProgressBar;
     public HPBar progressProgressBar;
+
+    private Vector2 originalImageAnchorPosition;
     // Start is called before the first frame update
     public void Init(Virus virus)
     {
+        originalImageAnchorPosition = GetComponent<VirusAnimationController>().targetImage.GetComponent<RectTransform>()
+            .anchoredPosition;
         this.virus = virus;
         GetComponent<VirusAnimationController>().animationName = virus.animationName;
         GetComponent<VirusAnimationController>().LoadAnimations();
@@ -24,11 +29,15 @@ public class VirusWindowController : MonoBehaviour
 
     public void HideVirus()
     {
-        GetComponent<VirusAnimationController>().targetImage.gameObject.SetActive(false);
+        
+        GetComponent<VirusAnimationController>().targetImage.transform.GetChild(0).gameObject.SetActive(true);
+       // GetComponent<VirusAnimationController>().targetImage.gameObject.SetActive(false);
     }
     public void ShowVirus()
     {
-        GetComponent<VirusAnimationController>().targetImage.gameObject.SetActive(true);
+        GetComponent<VirusAnimationController>().targetImage.GetComponent<RectTransform>().anchoredPosition = originalImageAnchorPosition;
+        GetComponent<VirusAnimationController>().targetImage.transform.GetChild(0).gameObject.SetActive(false);
+        //GetComponent<VirusAnimationController>().targetImage.gameObject.SetActive(true);
     }
 
     public void Die()

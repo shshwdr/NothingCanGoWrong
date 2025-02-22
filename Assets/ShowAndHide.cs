@@ -9,7 +9,7 @@ public class ShowAndHide : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponentInChildren<Image>(true).DOFade(0,0.5f). SetLoops(-1,LoopType.Yoyo);
+        GetComponentInChildren<Image>(true).DOFade(0.5f,0.5f). SetLoops(-1,LoopType.Yoyo);
     }
 
     // Update is called once per frame

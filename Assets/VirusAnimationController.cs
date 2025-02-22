@@ -29,6 +29,10 @@ public class VirusAnimationController : MonoBehaviour
         animations["Death"] = Resources.LoadAll<Sprite>("virus/"+animationName+"/Death");
         animations["PowerUp"] = Resources.LoadAll<Sprite>("virus/"+animationName+"/PowerUp");
         animations["Spawn"] = Resources.LoadAll<Sprite>("virus/"+animationName+"/Spawn");
+        animations["Reappear"] = Resources.LoadAll<Sprite>("virus/"+animationName+"/Reappear");
+        animations["Hide"] = Resources.LoadAll<Sprite>("virus/"+animationName+"/Hide");
+        animations["Minimize"] = Resources.LoadAll<Sprite>("virus/"+animationName+"/Minimize");
+        
         PlayAnimation("Spawn",false);
     }
 

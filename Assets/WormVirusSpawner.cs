@@ -9,6 +9,20 @@ public class WormVirusSpawner : MonoBehaviour
     /// <summary>
     /// 生成 Prefab，并确保不会超出 `RectTransform` 边界
     /// </summary>
+    ///
+
+    public Vector2 spawnPosition(float destroyTime, RectTransform targetTransform)
+    {
+        if (spawnArea == null)
+        {
+            Debug.LogError("❌ SpawnArea 未设置！");
+            return Vector2.zero;
+        }
+        
+        Vector2 safePosition = GetSafeRandomPosition(targetTransform);
+        return safePosition;
+    }
+    
     public GameObject SpawnPrefab(float destroyTime)
     {
         

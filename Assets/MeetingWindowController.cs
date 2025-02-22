@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MeetingWindowController : MonoBehaviour
 {
@@ -19,7 +20,11 @@ public class MeetingWindowController : MonoBehaviour
     
     public GameObject finishedOB;
     public GameObject failedOB;
-    public GameObject finishedHideOB;
+    public GameObject[] finishedHideOBs;
+
+    public Image meetingHolderImage;
+    public Sprite happy;
+    public Sprite angry;
 
     private bool isFinished = false;
     private bool isFailed= false;
@@ -39,20 +44,28 @@ public class MeetingWindowController : MonoBehaviour
         {
             return;
         }
+        
+        
         currentTime += Time.deltaTime;
         if (currentTime >= meetingTime)
         {
             finishedOB.SetActive(true);
-            finishedHideOB.SetActive(false);
+            foreach (var finishedHideOB in finishedHideOBs)
+            {
+                
+                finishedHideOB.SetActive(false);
+            }
             isFinished = true;
             GetComponent<WindowController>().ShowButtons();
         }
         if (IsOnTop())
         {
+            meetingHolderImage.sprite = happy;
             progress += progressIncreaseWhenOnTop * Time.deltaTime;
         }
         else
         {
+            meetingHolderImage.sprite = angry;
              progress += progressDecreaseWhenNotOnTop * difficultScale * Time.deltaTime;
         }
 
