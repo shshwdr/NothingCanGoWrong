@@ -140,6 +140,7 @@ public class AntiVirusWindowController : MonoBehaviour
     void Update()
     {
 
+        shutdownButton.gameObject.SetActive(LevelManager.Instance.isFinished);
         if (!LevelManager.Instance.isStarted || LevelManager.Instance.isFinished)
         {
             return;
@@ -177,7 +178,6 @@ public class AntiVirusWindowController : MonoBehaviour
         }
 
         updateAmmoCount();
-        shutdownButton.gameObject.SetActive(LevelManager.Instance.isFinished);
         
          spawnAntiTimer += Time.deltaTime;
          if (spawnAntiTimer > spawnAntiInterval)

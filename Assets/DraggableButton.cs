@@ -34,7 +34,7 @@ public class DraggableButton : MonoBehaviour, IDragHandler, IBeginDragHandler, I
         chatWindowController = FindObjectOfType<ChatWindowController>();
         if (chatWindowController)
         {
-            targetArea = chatWindowController.input.GetComponent<RectTransform>();
+            targetArea = chatWindowController.dropArea.GetComponent<RectTransform>();
         }
     }
 
@@ -45,7 +45,7 @@ public class DraggableButton : MonoBehaviour, IDragHandler, IBeginDragHandler, I
         
         if (IsPointerOverTarget(eventData))
         {
-            targetArea.GetComponent<Image>().color = Color.blue;
+            targetArea.GetComponent<Image>().color = new Color(0.2f,0.5f,1f,1f);
             
         }
         else

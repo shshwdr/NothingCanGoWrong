@@ -15,7 +15,7 @@ public class ChatWindowController : MonoBehaviour
 
     public Transform content;
     public GameObject chatContentCell;
-    
+    public RectTransform dropArea;
     public TMP_InputField input;
 
     public Button sendButton;

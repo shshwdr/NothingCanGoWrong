@@ -87,7 +87,12 @@ public class VirusAnimationController : MonoBehaviour
         {
             targetImage.sprite = frames[currentFrame];
             currentFrame = (currentFrame + 1) % frames.Length;
-            yield return new WaitForSeconds(frameRate);
+            var fr = frameRate;
+            if (state == "Idle")
+            {
+                fr = frameRate * 2;
+            }
+            yield return new WaitForSeconds(fr);
             if (currentFrame == 0 && !loop)
             {
                 break;

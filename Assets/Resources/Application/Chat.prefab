@@ -902,9 +902,15 @@ MonoBehaviour:
   sideBarIcon: {fileID: 3353192609528284207, guid: 21a2934fa5077744aa73c42632ccff14, type: 3}
   content: {fileID: 7931976862216526862}
   chatContentCell: {fileID: 4489129664660223845, guid: 277dc6f8cfe09cd46a37b8443704ad03, type: 3}
+  dropArea: {fileID: 6816287769816549387}
   input: {fileID: 5528390022423868938}
   sendButton: {fileID: 5003230822049249825}
   selectedCharacter: 
+--- !u!224 &6816287769816549387 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6047055281435768238, guid: d88fc17cd7e017442bd2b4abe0a8c55c, type: 3}
+  m_PrefabInstance: {fileID: 969159171261971877}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7331744039482343818 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7551608013716421679, guid: d88fc17cd7e017442bd2b4abe0a8c55c, type: 3}
@@ -3333,7 +3339,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2714643424981828931, guid: 277dc6f8cfe09cd46a37b8443704ad03, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 780
+      value: 740
       objectReference: {fileID: 0}
     - target: {fileID: 2714643424981828931, guid: 277dc6f8cfe09cd46a37b8443704ad03, type: 3}
       propertyPath: m_SizeDelta.y
