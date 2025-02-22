@@ -268,7 +268,7 @@ MonoBehaviour:
   ammo: {fileID: 616233365849384624}
   ammoMax: 5
   ammoStart: 0
-  ammoRefillTime: 7.5
+  ammoRefillTime: 5
   allBugsAtOnce: 1
   antivirusBugLifeTime: 5
   dayLevel: {fileID: 6380066015679026173}
