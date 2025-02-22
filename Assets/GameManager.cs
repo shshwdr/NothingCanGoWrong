@@ -33,6 +33,10 @@ public class GameManager : Singleton<GameManager>
     public void NextLevel()
     {
         level++;
+        if (level > CSVLoader.Instance.LevelInfoDict.Count)
+        {
+            level = 1;
+        }
         LevelManager.Instance.StopMusic();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

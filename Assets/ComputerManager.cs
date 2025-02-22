@@ -55,7 +55,9 @@ public class ComputerManager : Singleton<ComputerManager>
         {
             FindObjectOfType<VirusWindowController>().GetComponent<RectTransform>().anchoredPosition =
                 new Vector2(0, 0);
-            FindObjectOfType<VirusAnimationController>().targetImage.transform.DOScale(5, 1f);
+            FindObjectOfType<VirusAnimationController>().PlayAnimation("Idle",true);
+            FindObjectOfType<VirusAnimationController>().targetImage.transform.parent = DeskTop.Instance.dragFileArea;
+            FindObjectOfType<VirusAnimationController>().targetImage.transform.DOScale(7, 2f);
             StartCoroutine(test());
         }
     }
