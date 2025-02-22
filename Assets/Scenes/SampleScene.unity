@@ -570,7 +570,7 @@ MonoBehaviour:
   gameTimer: 0
   isStarted: 0
   level: 1
-  productiveMax: 10
+  productiveMax: 100
   productive: 100
   gameTime: 0
   virusList: []
