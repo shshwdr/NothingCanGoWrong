@@ -7,12 +7,12 @@ public class CursorAdjust : MonoBehaviour
     void Start()
     {
         Texture2D cursorTexture = Resources.Load<Texture2D>("CustomCursor"); // Load your cursor texture
-        Vector2 hotSpot = new Vector2(cursorTexture.width / 2, cursorTexture.height / 2);
-    
+        Vector2 hotSpot = new Vector2(0,0);
+        //cursorTexture.width / 2, cursorTexture.height / 2
         // ✅ Check platform and set cursor size properly
         if (Application.platform == RuntimePlatform.WebGLPlayer)
         {
-            Cursor.SetCursor(ResizeTexture(cursorTexture, 32, 32), hotSpot, CursorMode.Auto);
+            Cursor.SetCursor(ResizeTexture(cursorTexture, cursorTexture.width / 2, cursorTexture.height / 2), hotSpot, CursorMode.Auto);
         }
         else
         {

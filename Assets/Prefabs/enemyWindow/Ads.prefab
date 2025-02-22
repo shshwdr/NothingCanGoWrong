@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetImage: {fileID: 502423442557270754}
-  frameRate: 0.2
+  frameRate: 0.1
   animationSprites:
   - {fileID: 21300000, guid: e7e3558886ab7d841912b8ad9807f7be, type: 3}
   - {fileID: 21300000, guid: 4fddcab4a0e07a04493ef92dcbbb86c5, type: 3}
@@ -406,7 +406,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -50
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3799507632836564719, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7758265660499924508, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}

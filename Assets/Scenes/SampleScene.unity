@@ -1006,6 +1006,8 @@ MonoBehaviour:
   generateChatTimeMax: 30
   generateFileTimeMin: 6
   generateFileTimeMax: 20
+  generateMeetingTimeMin: 6
+  generateMeetingTimeMax: 20
   generateChatTime: 3
   hasUnfinishedChat: 0
 --- !u!4 &760350849
@@ -1173,7 +1175,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c544c8f632a9a954a976476c9d80f5f8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 404fc3afb0c5a5648bc1e65ce342bb79, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -80,13 +80,14 @@ public class LevelManager : Singleton<LevelManager>
             DeskTop.Instance. AddDesktopIcon("Chat");
             DeskTop.Instance. AddDesktopIcon("Anti Virus");
             ChatManager.Instance.GenerateDialogue("tutorial2_chat1");
-        }else if (levelName == 3)
-        {
-            
-            DeskTop.Instance. AddDesktopIcon("Chat");
-            DeskTop.Instance. AddDesktopIcon("Anti Virus");
-            ChatManager.Instance.GenerateDialogue("tutorial3_chat1");
         }
+        // else if (levelName == 3)
+        // {
+        //     
+        //     DeskTop.Instance. AddDesktopIcon("Chat");
+        //     DeskTop.Instance. AddDesktopIcon("Anti Virus");
+        //     ChatManager.Instance.GenerateDialogue("tutorial3_chat1");
+        // }
         else
         {
             
@@ -104,10 +105,13 @@ public class LevelManager : Singleton<LevelManager>
         ChatManager.Instance.generateChatTimeMax = currentLevelInfo.chatInterval[2];
         ChatManager.Instance.generateFileTimeMin = currentLevelInfo.chatInterval[3];
         ChatManager.Instance.generateFileTimeMax = currentLevelInfo.chatInterval[4];
+        ChatManager.Instance.generateMeetingTimeMin = currentLevelInfo.chatInterval[5];
+        ChatManager.Instance.generateMeetingTimeMax = currentLevelInfo.chatInterval[6];
+        
 
-        MeetingManager.Instance.generateChatTime = currentLevelInfo.meeting[0];
-        MeetingManager.Instance.generateChatTimeMin = currentLevelInfo.meeting[1];
-        MeetingManager.Instance.generateChatTimeMax = currentLevelInfo.meeting[2];
+        // MeetingManager.Instance.generateChatTime = currentLevelInfo.meeting[0];
+        // MeetingManager.Instance.generateChatTimeMin = currentLevelInfo.meeting[1];
+        // MeetingManager.Instance.generateChatTimeMax = currentLevelInfo.meeting[2];
         for (int i = 0; i < currentLevelInfo.virus.Count; i += 4)
         {
             virusDataList.Add(new VirusData

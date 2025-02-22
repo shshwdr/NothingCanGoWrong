@@ -8,7 +8,8 @@ public enum ChatType
 {
     chat,
     respond,
-    download
+    download,
+    meeting,
     
 }
 public class ChatData
@@ -16,7 +17,8 @@ public class ChatData
     public string text;
     public CharacterInfo sender;
     public ChatType type;
-    
+
+    public bool isDownloaded;
     public bool isFinished;
     public DialogueInfo dialogueInfo;
 
@@ -41,6 +43,8 @@ public class ChatManager : Singleton<ChatManager>
    public float generateChatTimeMax = 20;
    public float generateFileTimeMin = 6;
    public float generateFileTimeMax = 20;
+   public float generateMeetingTimeMin = 6;
+   public float generateMeetingTimeMax = 20;
     public float generateChatTime = 3;
     private float generateChatTimer = 0;
 
@@ -66,6 +70,7 @@ public class ChatManager : Singleton<ChatManager>
         
     }
 
+    private bool isFirst = true;
     // Update is called once per frame
     void Update()
     {
@@ -78,7 +83,13 @@ public class ChatManager : Singleton<ChatManager>
         {
             generateChatTimer = 0;
 
+
             var id = Random.Range(1, LevelManager.Instance.currentLevelInfo.chatType+1);
+            if (isFirst && LevelManager.Instance.currentLevelInfo.chatType == LevelManager.Instance.level)
+            {
+                isFirst = false;
+                id = LevelManager.Instance.currentLevelInfo.chatType;
+            }
             switch (id)
             {
                 case 1:
@@ -86,10 +97,14 @@ public class ChatManager : Singleton<ChatManager>
                     generateChatTime  = Random.Range(generateChatTimeMin, generateChatTimeMax);
                     GenerateRespondChat();
                     break;
-                    case 2:
+                case 2:
                         
                     generateChatTime  = Random.Range(generateFileTimeMin, generateFileTimeMax);
                         GenerateDownloadChat();
+                    break;
+                case 3:
+                    generateChatTime  = Random.Range(generateMeetingTimeMin, generateMeetingTimeMax);
+                    GenerateMeetingChat();
                     break;
             }
         }
@@ -146,6 +161,21 @@ public class ChatManager : Singleton<ChatManager>
         GenerateChat(type, selectChat.text, speaker, selectChat,false);
     }
 
+    void GenerateMeetingChat()
+    {
+        
+        var speaker = randomSpeaker();
+        if (speaker == null)
+        {
+            return;
+        }
+
+        var type = ChatType.meeting;
+        var selectChat = CSVLoader.Instance.DialogueInfoMap[(int)(type)].RandomItem();
+        GenerateChat(ChatType.chat, selectChat.text, speaker, selectChat,true);
+        GenerateChat(ChatType.meeting,"",speaker,selectChat,false);
+    }
+    
     void GenerateDownloadChat()
     {
         var speaker = randomSpeaker();
@@ -182,11 +212,16 @@ public class ChatManager : Singleton<ChatManager>
     }
     
    public void GenerateChat(ChatType type,string text, CharacterInfo speaker, DialogueInfo selectChat,bool isFinished,bool noAngry = false)
-    {
-        var angryTime = type == ChatType.chat ? LevelManager.Instance.currentLevelInfo.angry[0] : LevelManager.Instance.currentLevelInfo.angry[1];
-        if (noAngry)
+   {
+       float angryTime = -1;
+        if (noAngry || type == ChatType.chat)
         {
             angryTime = -1;
+        }
+        else
+        {
+            
+            angryTime = LevelManager.Instance.currentLevelInfo.angry[((int)type) -1 ] ;
         }
         ChatData data = new ChatData()
             { text = text, sender = speaker, type = type, isFinished = isFinished, dialogueInfo = selectChat, angryTime = angryTime};
@@ -274,11 +309,24 @@ public class ChatManager : Singleton<ChatManager>
         
         if(FindObjectOfType<ChatWindowController>())
         data.isRead = lastChat.sender.id == FindObjectOfType<ChatWindowController>().selectedCharacter;
-        LevelManager.Instance.ReduceProductive(10);
+
+        var reduceProductive = 10;
+        if (lastChat.type == ChatType.meeting)
+        {
+            reduceProductive = 20;
+        }
+        LevelManager.Instance.ReduceProductive(reduceProductive);
         
         
         chatDataMap[characterId].Add(data);
         addChat(characterId);
+        EventPool.Trigger("UpdateChat");
+    }
+
+    public void joinMeeting(string characterId)
+    {
+        var lastChat = chatDataMap[characterId].LastItem();
+        lastChat.isFinished = true;
         EventPool.Trigger("UpdateChat");
     }
 

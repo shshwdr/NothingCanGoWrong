@@ -46,7 +46,7 @@ public class AntiVirusWindowController : MonoBehaviour
         updateAmmoCount();
         spawnGo.SetActive(LevelManager.Instance.currentLevelInfo.day != 1);
         
-        DeskTop.Instance.pet.SetActive(true);
+        //DeskTop.Instance.pet.SetActive(true);
         dayLevel.text =   "Day " + LevelManager.Instance.level;
         if (FindObjectOfType<ChatWindowController>())
         {

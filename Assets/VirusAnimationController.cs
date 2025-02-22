@@ -32,8 +32,19 @@ public class VirusAnimationController : MonoBehaviour
         animations["Reappear"] = Resources.LoadAll<Sprite>("virus/"+animationName+"/Reappear");
         animations["Hide"] = Resources.LoadAll<Sprite>("virus/"+animationName+"/Hide");
         animations["Minimize"] = Resources.LoadAll<Sprite>("virus/"+animationName+"/Minimize");
-        
-        PlayAnimation("Spawn",false);
+
+        if (hasAnimation("Spawn"))
+        {
+            PlayAnimation("Spawn",false);
+        }else if (hasAnimation("Reappear"))
+        {
+            PlayAnimation("Reappear",false);
+        }
+    }
+
+    public bool hasAnimation(string state)
+    {
+        return animations.ContainsKey(state) && animations[state].Length > 0;
     }
 
     public float getAnimationTime(string state)

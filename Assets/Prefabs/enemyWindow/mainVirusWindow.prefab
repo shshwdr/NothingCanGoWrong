@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7463395497856674084}
   - component: {fileID: 7160746588741708497}
   - component: {fileID: 3571851414290655984}
+  - component: {fileID: 4325754962564841867}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -76,6 +77,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4325754962564841867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4874997091366536798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0c82b5e3a6e38c4aa691a0b308d8f20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5734329539342393919
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,8 +477,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2683024374181385354, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
+      propertyPath: VirusCommon
+      value: 
+      objectReference: {fileID: 5616213119824748720}
+    - target: {fileID: 2683024374181385354, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
       propertyPath: hideAllButtons
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2880400507229229357, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2880400507229229357, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2880400507229229357, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2880400507229229357, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3721835325463246324, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
       propertyPath: m_AnchorMax.y
@@ -631,6 +664,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -40
       objectReference: {fileID: 0}
+    - target: {fileID: 8397397601495723437, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397397601495723437, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397397601495723437, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397397601495723437, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8602999222144225786, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -644,6 +693,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8602999222144225786, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8885348346721342270, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8885348346721342270, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8885348346721342270, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8885348346721342270, guid: 27b905bc7bb812f42a06eaefdb27f8cf, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -705,7 +770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetImage: {fileID: 3571851414290655984}
-  frameRate: 0.2
+  frameRate: 0.1
   animationName: Trojan
 --- !u!114 &8741713859342360515
 MonoBehaviour:

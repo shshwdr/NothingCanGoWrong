@@ -11,6 +11,8 @@ public class WindowController : MonoBehaviour, IDragHandler, IPointerDownHandler
     public RectTransform content;
 
     public GameObject lockPanel;
+
+    public Transform VirusCommon;
     
     [HideInInspector]
     public string id;
@@ -96,6 +98,21 @@ public TMP_Text titleLabel;
 
     public void CloseWindow()
     {
+        var virusImage = GetComponentInChildren<VirusImage>(true);
+        if (virusImage)
+        {
+            if (GetComponent<VirusAnimationController>() &&
+                GetComponent<VirusAnimationController>().animationName == "Worm")
+            {
+                
+            }
+            else
+            {
+                virusImage.transform.parent =  WindowManager.Instance.desktopArea;
+                FindObjectOfType<WormVirus>().GetHit();
+            }
+        }
+        
         if (windowManager != null)
         {
             windowManager.CloseApplication(id);

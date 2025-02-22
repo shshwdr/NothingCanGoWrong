@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class WormVirus : MonoBehaviour
 {
@@ -35,6 +36,7 @@ public class WormVirus : MonoBehaviour
             {
                 mainWindow = GetComponent<Virus>().virusWindow.GetComponent<WindowController>();
                 currentWindow = mainWindow;
+                mainWindow.GetComponent<VirusAnimationController>().targetImage.transform.GetChild(0).GetComponentInChildren<Button>(true).onClick.AddListener(GetHit);
             }
 
             var allWindows = FindObjectsOfType<WindowController>().ToList();
@@ -60,14 +62,20 @@ public class WormVirus : MonoBehaviour
     public IEnumerator MoveToWindow(WindowController nextWindow)
     {
 
+        mainWindow.GetComponent<VirusAnimationController>().PlayAnimation("Hide",false);
+        var time2 = mainWindow.GetComponent<VirusAnimationController>().getAnimationTime("Hide");
+        yield return new WaitForSeconds(time2);
         if (currentWindow == mainWindow)
         {
-            mainWindow.GetComponent<VirusAnimationController>().PlayAnimation("Hide",false);
-            var time = mainWindow.GetComponent<VirusAnimationController>().getAnimationTime("Hide");
-            yield return new WaitForSeconds(time);
             
             //显示按钮
             mainWindow.GetComponent<VirusWindowController>().HideVirus();
+            
+            
+        }
+        else
+        {
+            
         }
         
         
@@ -78,6 +86,8 @@ public class WormVirus : MonoBehaviour
         
         if (currentWindow == mainWindow)
         {
+            mainWindow.GetComponent<VirusAnimationController>().targetImage.transform.parent =
+                mainWindow.VirusCommon;
             mainWindow.GetComponent<VirusWindowController>().ShowVirus();
             
             mainWindow.GetComponent<VirusAnimationController>().PlayAnimation("Reappear",false);
@@ -89,6 +99,7 @@ public class WormVirus : MonoBehaviour
             
             GetComponent<WormVirusSpawner>().spawnArea = currentWindow.content;
             var position = GetComponent<WormVirusSpawner>().spawnPosition(spawnTime,mainWindow.GetComponent<VirusAnimationController>().targetImage.GetComponent<RectTransform>());
+            mainWindow.GetComponent<VirusAnimationController>().targetImage.transform.parent = currentWindow.content;
             mainWindow.GetComponent<VirusAnimationController>().targetImage.GetComponent<RectTransform>()
                 .anchoredPosition = position;
             
@@ -111,13 +122,24 @@ public class WormVirus : MonoBehaviour
     
     public void GetHit()
     {
+       mainWindow. GetComponent<VirusAnimationController>().targetImage.transform.GetChild(0).gameObject.SetActive(false);
         if (moveCoroutine!=null)
         {
             StopCoroutine(moveCoroutine);
         }
+
+        StartCoroutine(Hide());
+    }
+    
+    IEnumerator Hide()
+    {
+        popupTimer = 0;
+        mainWindow.GetComponent<VirusAnimationController>().PlayAnimation("Hurt",false);
+        var time = mainWindow.GetComponent<VirusAnimationController>().getAnimationTime("Hurt");
+        yield return new WaitForSeconds(time);
         
-        
-        MoveToWindow(mainWindow);
+        StartCoroutine(MoveToWindow(mainWindow));
         popupTimer = 0;
     }
+    
 }
