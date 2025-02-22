@@ -7,6 +7,7 @@ public class Productive : MonoBehaviour
 {
     public HPBar dayRemain;
 
+    public Transform tick;
     public HPBar productiveBar;
     // Start is called before the first frame update
     void Start()
@@ -16,9 +17,10 @@ public class Productive : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() 
     {
         dayRemain.SetHP(LevelManager.Instance.gameTime - LevelManager.Instance.gameTimer, LevelManager.Instance.gameTime);
+        tick.rotation = Quaternion.Euler(0, 0, 360 * -(LevelManager.Instance.gameTimer / LevelManager.Instance.gameTime));
     }
     public void UpdateProductive()
     {

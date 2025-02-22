@@ -39,6 +39,7 @@ public class TargetPointSpawner : MonoBehaviour
         {
             newPrefab.GetComponent<ImageAnimationController>().Play();
             newPrefab.GetComponent<Button>().interactable = false;
+            newPrefab.GetComponent<Image>().raycastTarget = false;
             Time.timeScale = 1;
             GameManager.Instance.finishVirusAttackTutorial = true;
             

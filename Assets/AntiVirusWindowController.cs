@@ -20,12 +20,13 @@ public class AntiVirusWindowController : MonoBehaviour
     public Button shutdownButton;
     public GameObject spawnGo;
     public HPBar ammo;
-
+    public GameObject noVirusGO;
     public int ammoMax = 5;
     public int ammoStart = 0;
     private int ammoCount = 0;
     public float ammoRefillTime = 2;
     private float ammoRefillTimer = 0;
+
 
     public bool allBugsAtOnce = true;
     public float antivirusBugLifeTime = 5;
@@ -152,10 +153,13 @@ public class AntiVirusWindowController : MonoBehaviour
         if (LevelManager.Instance.virusList.Count > 0)
         {
             
+            noVirusGO.SetActive(false);
             if (LevelManager.Instance.level == 1)
             {
                 spawnGo.SetActive(true);
             }
+            
+            noVirusGO.SetActive(false);
 
             bool hasAttackableVirus = false;
             foreach (var virus in LevelManager.Instance.virusList)
@@ -173,6 +177,7 @@ public class AntiVirusWindowController : MonoBehaviour
         else
         {
             spawnButton.interactable = false;
+            noVirusGO.SetActive(true);
             
         }
         
