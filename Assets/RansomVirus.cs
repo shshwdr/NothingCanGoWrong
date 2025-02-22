@@ -38,6 +38,9 @@ public class RansomVirus : MonoBehaviour
             {
                 var selectedRansom = allWindows.RandomItem();
                 selectedRansom.Ransom();
+                
+                mainWindow.GetComponent<VirusAnimationController>().PlayAnimation("Lock",false);
+                
             }
             
             popupTimer = 0;
