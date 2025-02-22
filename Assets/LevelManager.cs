@@ -63,8 +63,8 @@ public class LevelManager : Singleton<LevelManager>
     public void LoadLevel(int levelName)
     {
         isFinished = false;
-        gameTime = CSVLoader.Instance.LevelInfoDict[level].totalTime;
         level = levelName;
+        gameTime = CSVLoader.Instance.LevelInfoDict[level].totalTime;
         currentLevelInfo = CSVLoader.Instance.LevelInfoDict[level];
         gameTimer = 0;
         productive = productiveMax;
