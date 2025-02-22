@@ -26,6 +26,7 @@ public class Lock : MonoBehaviour
             if (value == sum.ToString().Trim())
             {
                 GetComponentInParent<WindowController>().Unlock();
+                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/sfx_virus_unlock");
             }
         });
     }

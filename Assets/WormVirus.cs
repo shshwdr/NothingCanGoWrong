@@ -70,6 +70,7 @@ public class WormVirus : MonoBehaviour
             
             //显示按钮
             mainWindow.GetComponent<VirusWindowController>().HideVirus();
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/sfx_worm_virus_hide");
             
             
         }
@@ -100,6 +101,8 @@ public class WormVirus : MonoBehaviour
             
             mainWindow.GetComponent<VirusAnimationController>().PlayAnimation("Reappear",false);
             var time = mainWindow.GetComponent<VirusAnimationController>().getAnimationTime("Reappear");
+
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/sfx_worm_virus_appear");
             yield return new WaitForSeconds(time);
         }
         else
