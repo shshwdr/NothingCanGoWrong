@@ -21,11 +21,6 @@ public class AntiVirusWindowController : MonoBehaviour
     public GameObject spawnGo;
     public HPBar ammo;
     public GameObject noVirusGO;
-    public int ammoMax = 5;
-    public int ammoStart = 0;
-    private int ammoCount = 0;
-    public float ammoRefillTime = 2;
-    private float ammoRefillTimer = 0;
 
 
     public bool allBugsAtOnce = true;
@@ -53,7 +48,6 @@ public class AntiVirusWindowController : MonoBehaviour
         {
             FindObjectOfType<ChatWindowController>().UpdateInputStates();
         }
-        ammoCount = ammoStart;
         playerHealthBar.SetHP(ComputerManager.Instance.currentPlayerHealth, ComputerManager.Instance.playerMaxHealth);
         EventPool.OptIn("OnPlayerHealthChange", () =>
         {
@@ -66,6 +60,7 @@ public class AntiVirusWindowController : MonoBehaviour
         
         spawnButton.onClick.AddListener(() =>
         {
+            GetComponent<WindowController>().SetToTop();
             tutorialSpawn.SetActive(false);
             addAntiVirusBug(true);
 
@@ -87,7 +82,7 @@ public class AntiVirusWindowController : MonoBehaviour
 
     public void addAntiVirusBug(bool useAmmo)
     {
-        if (ammoCount <= 0)
+        if (ComputerManager.Instance. ammoCount <= 0)
         {
             return;
         }
@@ -99,7 +94,7 @@ public class AntiVirusWindowController : MonoBehaviour
             {
                 TargetPointSpawner mainVirusItem = virus.PickItem();
 
-                for (int i = 0; i < ammoCount; i++)
+                for (int i = 0; i < ComputerManager.Instance. ammoCount; i++)
                 {
                     var go = mainVirusItem.SpawnPrefab(antivirusBugLifeTime);
                     
@@ -115,9 +110,9 @@ public class AntiVirusWindowController : MonoBehaviour
 
                 if (useAmmo)
                 {                
-                    ammoCount -= ammoCount;
-                    ammoCount = Mathf.Clamp(ammoCount, 0, ammoMax);
-                    ammo.SetHP(ammoCount, ammoMax);
+                    ComputerManager.Instance.  ammoCount -= ComputerManager.Instance. ammoCount;
+                    ComputerManager.Instance. ammoCount = Mathf.Clamp(ComputerManager.Instance. ammoCount, 0, ComputerManager.Instance. ammoMax);
+                    ammo.SetHP(ComputerManager.Instance. ammoCount, ComputerManager.Instance. ammoMax);
                 }
             }
 
@@ -132,9 +127,9 @@ public class AntiVirusWindowController : MonoBehaviour
                 if (useAmmo)
                 {
                 
-                    ammoCount -= 1;
-                    ammoCount = Mathf.Clamp(ammoCount, 0, ammoMax);
-                    ammo.SetHP(ammoCount, ammoMax);
+                    ComputerManager.Instance. ammoCount -= 1;
+                    ComputerManager.Instance. ammoCount = Mathf.Clamp(ComputerManager.Instance. ammoCount, 0, ComputerManager.Instance. ammoMax);
+                    ammo.SetHP(ComputerManager.Instance. ammoCount, ComputerManager.Instance. ammoMax);
                 }
             }
 
@@ -171,7 +166,7 @@ public class AntiVirusWindowController : MonoBehaviour
                 }   
             }
 
-            spawnButton.interactable = hasAttackableVirus && ammoCount > 0;
+            spawnButton.interactable = hasAttackableVirus && ComputerManager.Instance. ammoCount > 0;
             
         }
         else
@@ -180,8 +175,8 @@ public class AntiVirusWindowController : MonoBehaviour
             noVirusGO.SetActive(true);
             
         }
-        
-        
+
+        updateAmmoCount();
         shutdownButton.gameObject.SetActive(LevelManager.Instance.isFinished);
         
          spawnAntiTimer += Time.deltaTime;
@@ -192,21 +187,14 @@ public class AntiVirusWindowController : MonoBehaviour
              addAntiVirusBug(false);
          }
          
-         spawnButton.interactable = ammoCount > 0;
+         spawnButton.interactable = ComputerManager.Instance. ammoCount > 0;
          
-         ammoRefillTimer += Time.deltaTime;
-         if (ammoRefillTimer > ammoRefillTime)
-         {
-             ammoRefillTimer = 0;
-             ammoCount += 1;
-             updateAmmoCount();
-         }
+         
     }
 
     void updateAmmoCount()
     {
         
-        ammoCount = Mathf.Clamp(ammoCount, 0, ammoMax);
-        ammo.SetHP(ammoCount, ammoMax);
+        ammo.SetHP(ComputerManager.Instance. ammoCount, ComputerManager.Instance. ammoMax);
     }
 }

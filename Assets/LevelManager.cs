@@ -180,15 +180,38 @@ public class LevelManager : Singleton<LevelManager>
         gameplayMusic.setParameterByName("Game Mode", 1);
 
         var virusData = virusDataList[0];
+
+        if (!FindObjectOfType<AntiVirusWindowController>())
+        {
+            
+            DeskTop.Instance.openIcon("Anti Virus");
+            //WindowManager.Instance.OpenApplication("Anti Virus","Anti Virus");
+            StartCoroutine(test());
+        }
+        else
+        {
+            
+            if (FindObjectOfType<ClipAnimationController>())
+            {
+            
+                FindObjectOfType<ClipAnimationController>().PlayDetectAnim();
+            }
+        }
+        
+        var virus = Instantiate(Resources.Load<GameObject>( "enemy/"+virusId),null);
+        virus.GetComponent<Virus>().virusMaxHealth = virusData.hp;
+        virus.GetComponent<Virus>().corruptionInterval = virusData.stayTime;
+        virusList.Add(virus.GetComponent<Virus>());
+    }
+
+    IEnumerator test()
+    {
+        yield return new WaitForSeconds(0.1f);
         if (FindObjectOfType<ClipAnimationController>())
         {
             
             FindObjectOfType<ClipAnimationController>().PlayDetectAnim();
         }
-        var virus = Instantiate(Resources.Load<GameObject>( "enemy/"+virusId),null);
-        virus.GetComponent<Virus>().virusMaxHealth = virusData.hp;
-        virus.GetComponent<Virus>().corruptionInterval = virusData.stayTime;
-        virusList.Add(virus.GetComponent<Virus>());
     }
 
     public void Restart()

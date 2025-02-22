@@ -85,6 +85,7 @@ public class ChatManager : Singleton<ChatManager>
 
 
             var id = Random.Range(1, LevelManager.Instance.currentLevelInfo.chatType+1);
+            //id = 2;
             if (isFirst && LevelManager.Instance.currentLevelInfo.chatType == LevelManager.Instance.level)
             {
                 isFirst = false;

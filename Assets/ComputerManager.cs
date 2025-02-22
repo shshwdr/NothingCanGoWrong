@@ -14,6 +14,7 @@ public class ComputerManager : Singleton<ComputerManager>
     private void Start()
     {
         currentPlayerHealth = playerMaxHealth;
+        ammoCount = ammoStart;
     }
 
     /// <summary>
@@ -37,6 +38,27 @@ public class ComputerManager : Singleton<ComputerManager>
         }
     }
 
+    public float ammoRefillTime = 2;
+    private float ammoRefillTimer = 0;
+    public int ammoStart = 0;
+    public int ammoCount = 0;
+    public int ammoMax = 5;
+    public void Update()
+    {
+        ammoRefillTimer += Time.deltaTime;
+        if (ammoRefillTimer > ammoRefillTime)
+        {
+            ammoRefillTimer = 0;
+            ammoCount += 1;
+            updateAmmoCount();
+        }
+    }
+
+    void updateAmmoCount()
+    {
+        
+        ComputerManager.Instance.  ammoCount = Mathf.Clamp(ComputerManager.Instance. ammoCount, 0, ComputerManager.Instance. ammoMax);
+    }
     /// <summary>
     /// 玩家使用杀毒软件恢复健康
     /// </summary>

@@ -28,6 +28,7 @@ public class DraggableButton : MonoBehaviour, IDragHandler, IBeginDragHandler, I
     {
         // 让按钮半透明，提升交互体验
         canvasGroup.alpha = 0.6f;
+        transform.parent = DeskTop.Instance.dragFileArea;
         canvasGroup.blocksRaycasts = false; // 让按钮不会阻挡射线
 
         chatWindowController = FindObjectOfType<ChatWindowController>();
@@ -74,6 +75,9 @@ public class DraggableButton : MonoBehaviour, IDragHandler, IBeginDragHandler, I
         }
         else
         {
+            transform.parent = DeskTop.Instance.desktopParent;
+            
+            
            // rectTransform.anchoredPosition = originalPosition; // 复位到原始位置
         }
     }
