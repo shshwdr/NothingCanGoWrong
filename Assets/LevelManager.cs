@@ -231,6 +231,33 @@ public class LevelManager : Singleton<LevelManager>
 
     void endADay()
     {
+        //Save the highscore
+        if(level == 1)
+        {
+            PlayerPrefs.SetInt("level1Highscore", (int) productive);
+        }
+
+        if(level == 2)
+        {
+            PlayerPrefs.SetInt("level2Highscore", (int) productive);
+        }
+
+        if(level == 3)
+        {
+            PlayerPrefs.SetInt("level3Highscore", (int) productive);
+        }
+
+        if(level == 4)
+        {
+            PlayerPrefs.SetInt("level4Highscore", (int) productive);
+        }
+
+        if(level == 5)
+        {
+            PlayerPrefs.SetInt("level5Highscore", (int) productive);
+        }
+
+
         isFinished = true;
         if( FindObjectOfType<ClipAnimationController>())
             FindObjectOfType<ClipAnimationController>().PlayEndOfDay();
