@@ -84,6 +84,8 @@ public class ChatCell : MonoBehaviour
             GetComponent<HorizontalLayoutGroup>().childAlignment = TextAnchor.MiddleRight;
             icon.GetComponent<RectTransform>().SetAsLastSibling();
             dialogueBubbleBK.sprite = playerBK;
+            text.color = Color.white;
+            
         }
     }
 }

@@ -15,6 +15,7 @@ public class ChatWindowController : MonoBehaviour
 
     public Transform content;
     public GameObject chatContentCell;
+    public GameObject systemChatContentCell;
     public RectTransform dropArea;
     public TMP_InputField input;
 
@@ -96,8 +97,17 @@ public class ChatWindowController : MonoBehaviour
         {
             foreach (var chatData in ChatManager.Instance.chatDataMap[selectedCharacter])
             {
-                var chatContent = Instantiate(chatContentCell, content);
-                chatContent.GetComponent<ChatCell>().Init(chatData,this);
+                if (chatData.type == ChatType.system)
+                {
+                    var chatContent = Instantiate(systemChatContentCell, content);
+                    chatContent.GetComponentInChildren<TMP_Text>().text = chatData.text;
+                }
+                else
+                {
+                    
+                    var chatContent = Instantiate(chatContentCell, content);
+                    chatContent.GetComponent<ChatCell>().Init(chatData,this);
+                }
             }
 
            var lastItem=  ChatManager.Instance.chatDataMap[selectedCharacter].LastItem();

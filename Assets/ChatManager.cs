@@ -10,6 +10,7 @@ public enum ChatType
     respond,
     download,
     meeting,
+    system,
     
 }
 public class ChatData
@@ -90,7 +91,7 @@ public class ChatManager : Singleton<ChatManager>
 
 
             var id = Random.Range(1, LevelManager.Instance.currentLevelInfo.chatType+1);
-            id = 2;
+            //id = 2;
             if (isFirst && LevelManager.Instance.currentLevelInfo.chatType == LevelManager.Instance.level)
             {
                 isFirst = false;
@@ -221,7 +222,7 @@ public class ChatManager : Singleton<ChatManager>
    public void GenerateChat(ChatType type,string text, CharacterInfo speaker, DialogueInfo selectChat,bool isFinished,bool noAngry = false)
    {
        float angryTime = -1;
-        if (noAngry || type == ChatType.chat)
+        if (noAngry || type == ChatType.chat || type ==  ChatType.system)
         {
             angryTime = -1;
         }
@@ -251,6 +252,12 @@ public class ChatManager : Singleton<ChatManager>
 
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/sfx_ui_receive_message");
     }
+
+   void addSystemChat(string text,CharacterInfo speaker)
+   {
+       GenerateChat(ChatType.system, text, speaker, null, true);
+
+   }
 
     void addChat(string characterId)
     {
@@ -361,6 +368,7 @@ public class ChatManager : Singleton<ChatManager>
         
         
         LevelManager.Instance.ReduceProductive(reduceProductive);
+        addSystemChat("Productivity -"+reduceProductive,lastChat.sender);
     }
 
     public void joinMeeting(string characterId)
@@ -417,6 +425,7 @@ public class ChatManager : Singleton<ChatManager>
                     data.isRead = lastChat.sender.id == FindObjectOfType<ChatWindowController>().selectedCharacter;
                     chatDataMap[characterId].Add(data);
                     addChat(characterId);
+                    addSystemChat("Productivity -"+20,characterInfo);
                     EventPool.Trigger("UpdateChat");
                 }
             }
@@ -431,6 +440,7 @@ public class ChatManager : Singleton<ChatManager>
                 data.isRead = lastChat.sender.id == FindObjectOfType<ChatWindowController>().selectedCharacter;
                 chatDataMap[characterId].Add(data);
                 addChat(characterId);
+                addSystemChat("Productivity -"+20,characterInfo);
                 EventPool.Trigger("UpdateChat");
             }
         }
