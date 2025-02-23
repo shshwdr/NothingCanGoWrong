@@ -212,6 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d864ed87dc99bd4a8c01e039bd913df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedGO: {fileID: 0}
   image: {fileID: 6043353326435526397}
   nameLabel: {fileID: 6901427370092922614}
   redDot: {fileID: 471124266360740844}

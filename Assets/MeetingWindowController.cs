@@ -35,6 +35,8 @@ public class MeetingWindowController : MonoBehaviour
          progress = maxProgress;
          finishedOB.SetActive(false);
          failedOB.SetActive(false);
+
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/sfx_ui_meeting_start");
     }
 
     // Update is called once per frame
@@ -57,6 +59,7 @@ public class MeetingWindowController : MonoBehaviour
             }
             isFinished = true;
             GetComponent<WindowController>().ShowButtons();
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/sfx_ui_meeting_end");
         }
         if (IsOnTop())
         {
