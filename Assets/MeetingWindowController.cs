@@ -44,7 +44,6 @@ public class MeetingWindowController : MonoBehaviour
     {
         if (isFinished)
         {
-            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/sfx_ui_meeting_end");
             return;
         }
         
@@ -60,6 +59,7 @@ public class MeetingWindowController : MonoBehaviour
             }
             isFinished = true;
             GetComponent<WindowController>().ShowButtons();
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/sfx_ui_meeting_end");
         }
         if (IsOnTop())
         {

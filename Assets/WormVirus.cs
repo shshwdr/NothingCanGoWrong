@@ -61,16 +61,17 @@ public class WormVirus : MonoBehaviour
     
     public IEnumerator MoveToWindow(WindowController nextWindow)
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/sfx_worm_virus_hide");
 
         mainWindow.GetComponent<VirusAnimationController>().PlayAnimation("Hide",false);
         var time2 = mainWindow.GetComponent<VirusAnimationController>().getAnimationTime("Hide");
         yield return new WaitForSeconds(time2);
         if (currentWindow == mainWindow)
         {
-            
+
             //显示按钮
             mainWindow.GetComponent<VirusWindowController>().HideVirus();
-            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/sfx_worm_virus_hide");
+         
             
             
         }
