@@ -342,7 +342,7 @@ public class ChatManager : Singleton<ChatManager>
         if (lastChat.type == ChatType.download)
         {
             var fileName = "important_" + data.sender.name;
-            reduceProductive = 20;
+            reduceProductive = 30;
             if ( DeskTop.Instance.desktopIcons.ContainsKey(fileName))
             {
                 DeskTop.Instance.desktopIcons[fileName].GetComponent<DesktopIcon>().failedIcon.SetActive(true);
