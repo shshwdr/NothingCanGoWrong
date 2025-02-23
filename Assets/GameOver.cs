@@ -6,13 +6,8 @@ using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
 {
-    public Image image;
-
-    public Sprite blue;
-
-    public Sprite fired;
-    public TMP_Text text;
-
+    public GameObject corrupted;
+    public GameObject fire;
 
     private void Start()
     {

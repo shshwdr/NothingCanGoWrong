@@ -300,10 +300,8 @@ public class ChatManager : Singleton<ChatManager>
                     break;
                 case "productiveFail":
                     FindObjectOfType<GameOver>(true).gameObject.SetActive(true);
-                    FindObjectOfType<GameOver>(true).image.sprite = FindObjectOfType<GameOver>(true).fired;
-                    FindObjectOfType<GameOver>(true).text.text =
-                        "You're fired for your snail-paced productivity! If you had replied to your colleagues and finished your tasks faster, things might have turned out differently.";
-                    
+                    FindObjectOfType<GameOver>(true).fire.SetActive(true);
+                    FindObjectOfType<GameOver>(true).corrupted.SetActive(false);
                     break;
                 case "installAnti":
                     DeskTop.Instance. AddDesktopIcon("Anti Virus");
