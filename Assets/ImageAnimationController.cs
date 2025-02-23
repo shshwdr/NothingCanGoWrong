@@ -23,13 +23,13 @@ public class ImageAnimationController : MonoBehaviour
         
     }
 
-    public void Play()
+    public void Play(bool loop = false)
     {
 
         // 停止当前动画
         if (animationCoroutine != null) StopCoroutine(animationCoroutine);
 
-        animationCoroutine = StartCoroutine(PlayAnimationCoroutine(false));
+        animationCoroutine = StartCoroutine(PlayAnimationCoroutine(loop));
     }
     
     IEnumerator PlayAnimationCoroutine(bool  loop)

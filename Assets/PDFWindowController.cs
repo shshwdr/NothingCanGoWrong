@@ -132,6 +132,7 @@ public class PDFWindowController : MonoBehaviour
         {
             isFinished = true;
             finishedOB.SetActive(true);
+            setNumberGame.SetActive(false);
             
             if(!DeskTop.Instance.desktopIcons[GetComponent<WindowController>().titleLabel.text].GetComponent<DesktopIcon>().failedIcon.activeSelf)
             DeskTop.Instance.desktopIcons[GetComponent<WindowController>().titleLabel.text].GetComponent<DesktopIcon>().finishedIcon.SetActive(true);

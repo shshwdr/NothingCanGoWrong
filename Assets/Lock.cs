@@ -9,7 +9,7 @@ public class Lock : MonoBehaviour
 {
     private int add1;
     private int add2;
-
+    public ImageAnimationController animationController;
     private int sum;
 
     public TMP_Text label1;
@@ -18,7 +18,7 @@ public class Lock : MonoBehaviour
 
     private void Start()
     {
-        
+        animationController.Play(true);
         labelSum.onValueChanged.AddListener((string value) =>
         {
             
