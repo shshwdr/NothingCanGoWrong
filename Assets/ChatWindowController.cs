@@ -172,6 +172,7 @@ public class ChatWindowController : MonoBehaviour
         
         input.interactable = canInput;
         sendButton.gameObject.SetActive(canInput);
+        inputArea.gameObject.SetActive(canInput);
         if (canInput)
         {
             input.GetComponent<FakeInputField>().predefinedText = ChatManager.Instance.chatDataMap[selectedCharacter]
