@@ -18,7 +18,7 @@ public class ChatWindowController : MonoBehaviour
     public GameObject systemChatContentCell;
     public RectTransform dropArea;
     public TMP_InputField input;
-
+    public GameObject inputArea;
     public Button sendButton;
 
     public string selectedCharacter = "";
@@ -129,6 +129,7 @@ public class ChatWindowController : MonoBehaviour
             
             input.interactable = canInput;
             sendButton.gameObject.SetActive(canInput);
+            inputArea.gameObject.SetActive(canInput);
             if (canInput)
             {
                 input.GetComponent<FakeInputField>().predefinedText = ChatManager.Instance.chatDataMap[selectedCharacter]
@@ -142,6 +143,7 @@ public class ChatWindowController : MonoBehaviour
             
             sendButton.gameObject. SetActive(false);
             input.interactable = false;
+            inputArea.gameObject.SetActive(false);
         }
     }
 

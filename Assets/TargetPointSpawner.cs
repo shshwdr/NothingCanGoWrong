@@ -43,7 +43,7 @@ public class TargetPointSpawner : MonoBehaviour
             Time.timeScale = 1;
             GameManager.Instance.finishVirusAttackTutorial = true;
             
-            Destroy(newPrefab,1);
+            Destroy(newPrefab,0.4f);
             if (FindObjectOfType<ClipAnimationController>())
             {
                 FindObjectOfType<ClipAnimationController>().PlayAttackAnim();

@@ -135,6 +135,8 @@ public class WormVirus : MonoBehaviour
     
     public void GetHit()
     {
+        
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/sfx_ui_explode_ammo");
         mainWindow.GetComponent<VirusWindowController>().hintText.gameObject.SetActive(false);
        mainWindow. GetComponent<VirusAnimationController>().targetImage.transform.GetChild(0).gameObject.SetActive(false);
         if (moveCoroutine!=null)

@@ -315,16 +315,12 @@ public class ChatManager : Singleton<ChatManager>
                         FindObjectOfType<AntiVirusWindowController>().ShowProductiveTutorial();
                     }
                     break;
-                case "HideTutorial":
+                case "HideProductive":
                     if (FindObjectOfType<AntiVirusWindowController>())
                     {
                         FindObjectOfType<AntiVirusWindowController>().HideProductiveTutorial();
                     }
 
-                    break;
-                case "ShowShutdown":
-                    break;
-                case "HideShutdown":
                     break;
             }
         }

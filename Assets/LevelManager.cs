@@ -160,7 +160,7 @@ public class LevelManager : Singleton<LevelManager>
 
     IEnumerator waitToGenerate(string dialogue)
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         
         ChatManager.Instance.GenerateDialogue(dialogue);
     }

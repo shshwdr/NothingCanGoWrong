@@ -81,7 +81,7 @@ public class AntiVirusWindowController : MonoBehaviour
         
         spawnButton.onClick.AddListener(() =>
         {
-            GetComponent<WindowController>().SetToTop();
+           // GetComponent<WindowController>().SetToTop();
             tutorialSpawn.SetActive(false);
             addAntiVirusBug(true);
 
@@ -115,6 +115,7 @@ public class AntiVirusWindowController : MonoBehaviour
             {
                 TargetPointSpawner mainVirusItem = virus.PickItem();
 
+                mainVirusItem.GetComponent<WindowController>().SetToTop();
                 for (int i = 0; i < ComputerManager.Instance. ammoCount; i++)
                 {
                     var go = mainVirusItem.SpawnPrefab(antivirusBugLifeTime);
@@ -141,8 +142,9 @@ public class AntiVirusWindowController : MonoBehaviour
             else
             {
                 print("None");
-
-                virus.PickItem().SpawnPrefab(antivirusBugLifeTime);
+                var pickedVirus = virus.PickItem();
+                pickedVirus.SpawnPrefab(antivirusBugLifeTime);
+                pickedVirus.GetComponent<WindowController>().SetToTop();
                 spawnAntiTimer = 0;
 
                 if (useAmmo)

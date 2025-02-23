@@ -906,6 +906,7 @@ MonoBehaviour:
   systemChatContentCell: {fileID: 5427510371318359345, guid: b60affbd2ccf8d340937697de56330e6, type: 3}
   dropArea: {fileID: 6816287769816549387}
   input: {fileID: 5528390022423868938}
+  inputArea: {fileID: 8241041759359139824}
   sendButton: {fileID: 5003230822049249825}
   selectedCharacter: 
 --- !u!224 &6816287769816549387 stripped

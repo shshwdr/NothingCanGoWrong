@@ -29,6 +29,13 @@ public class Lock : MonoBehaviour
                 FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/sfx_virus_unlock");
             }
         });
+        labelSum.onSelect.AddListener((string s) =>
+        {
+            if (GetComponentInParent<WindowController>())
+            {
+                GetComponentInParent<WindowController>().SetToTop();
+            }
+        });
     }
 
     // Start is called before the first frame update

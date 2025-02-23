@@ -25,7 +25,7 @@ public class PDFWindowController : MonoBehaviour
     {
         setNumberGame.SetActive(true);
 
-        targetNumber = Random.Range(20, 50);
+        targetNumber = Random.Range(10, 35);
         descriptionText .text = string.Format(description, targetNumber);
         this.number.text = 0.ToString();
         
