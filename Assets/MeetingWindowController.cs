@@ -79,6 +79,12 @@ public class MeetingWindowController : MonoBehaviour
         {
             isFinished = true;
             isFailed = true;
+            
+            foreach (var finishedHideOB in finishedHideOBs)
+            {
+                
+                finishedHideOB.SetActive(false);
+            }
             failedOB.SetActive(true);
 
             GetComponent<WindowController>().ShowButtons();
