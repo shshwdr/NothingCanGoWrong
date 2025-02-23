@@ -44,11 +44,11 @@ public class TargetPointSpawner : MonoBehaviour
             GameManager.Instance.finishVirusAttackTutorial = true;
             
             Destroy(newPrefab,1);
-            GetComponent<VirusWindowController>().virus.DamageVirus();
             if (FindObjectOfType<ClipAnimationController>())
             {
                 FindObjectOfType<ClipAnimationController>().PlayAttackAnim();
             }
+            GetComponent<VirusWindowController>().virus.DamageVirus();
         });
         Destroy(newPrefab, destroyTime);
         RectTransform prefabRect = newPrefab.GetComponent<RectTransform>();

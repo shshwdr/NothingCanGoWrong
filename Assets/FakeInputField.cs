@@ -25,14 +25,14 @@ public class FakeInputField : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     void Update()
     {
-        if (isFocused && AnyKeyPressed()) // 仅在 `InputField` 选中时响应按键
+        if (isFocused && Input.anyKeyDown && !string.IsNullOrEmpty(Input.inputString)) // 仅在 `InputField` 选中时响应按键
         {
             SimulateTyping();
             keyboardSound.start();
         }
         else
         {
-            keyboardSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            keyboardSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
     }
 
@@ -41,7 +41,7 @@ public class FakeInputField : MonoBehaviour, ISelectHandler, IDeselectHandler
     /// </summary>
     private bool AnyKeyPressed()
     {
-        return Input.inputString.Length > 0; // 检测任何键盘输入（不受 `EventSystem` 影响）
+        return Input.inputString.Length > 0 ; // 检测任何键盘输入（不受 `EventSystem` 影响）
     }
 
     /// <summary>

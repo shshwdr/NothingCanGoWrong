@@ -195,7 +195,7 @@ public class LevelManager : Singleton<LevelManager>
 
     IEnumerator startEnumerator()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
         
         isStarted = true;
     }

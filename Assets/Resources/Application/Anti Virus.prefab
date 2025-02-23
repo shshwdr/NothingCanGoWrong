@@ -1509,6 +1509,8 @@ MonoBehaviour:
   antivirusBugLifeTime: 5
   dayLevel: {fileID: 6380066015679026173}
   tutorialSpawn: {fileID: 8359603264652572038}
+  productiveTutorial: {fileID: 3478222408079535261}
+  shutdownTutorial: {fileID: 2324204885552960148}
 --- !u!114 &3461738976441517425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1934,6 +1936,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31d49df04854a404399465e188512e43, type: 3}
+--- !u!1 &3478222408079535261 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1355131600581114290, guid: 31d49df04854a404399465e188512e43, type: 3}
+  m_PrefabInstance: {fileID: 2489160016421541167}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &4972715914808854962 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7460748381820050589, guid: 31d49df04854a404399465e188512e43, type: 3}
@@ -2368,6 +2375,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31d49df04854a404399465e188512e43, type: 3}
+--- !u!1 &2324204885552960148 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1355131600581114290, guid: 31d49df04854a404399465e188512e43, type: 3}
+  m_PrefabInstance: {fileID: 3643228504530070310}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6126793363319683003 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7460748381820050589, guid: 31d49df04854a404399465e188512e43, type: 3}

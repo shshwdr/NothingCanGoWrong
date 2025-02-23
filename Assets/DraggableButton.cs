@@ -71,6 +71,7 @@ public class DraggableButton : MonoBehaviour, IDragHandler, IBeginDragHandler, I
         {
             Destroy(gameObject); // 删除按钮
             
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/sfx_ui_send_message");
             ChatManager.Instance.addFile(GetComponent<DesktopIcon>().actualName,GetComponent<DesktopIcon>().finishedIcon.activeSelf);
         }
         else
