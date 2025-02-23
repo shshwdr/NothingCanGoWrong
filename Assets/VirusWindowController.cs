@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -118,5 +119,13 @@ public class VirusWindowController : MonoBehaviour
         //if (virusHealthText) virusHealthText.text = "病毒血量: " + virusHealth;
         
         hpProgressBar.SetHP(virus.virusHealth, virus.virusMaxHealth);
+    }
+
+    private void OnDestroy()
+    {
+        if (GetComponent<VirusAnimationController>().targetImage!=null)
+        {
+            Destroy(GetComponent<VirusAnimationController>().targetImage);
+        }
     }
 }
