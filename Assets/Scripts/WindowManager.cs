@@ -113,6 +113,11 @@ public class WindowManager : Singleton<WindowManager>
     {
         if (openWindows.ContainsKey(appName))
         {
+            var window = openWindows[appName];
+            if (window.activeSelf && !window.GetComponent<WindowController>().minimizeButton.gameObject.activeSelf)
+            {
+                return;
+            }
             bool isActive = openWindows[appName].activeSelf;
             openWindows[appName].SetActive(!isActive);
 

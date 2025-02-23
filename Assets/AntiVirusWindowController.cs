@@ -188,7 +188,6 @@ public class AntiVirusWindowController : MonoBehaviour
              addAntiVirusBug(false);
          }
          
-         spawnButton.interactable = ComputerManager.Instance. ammoCount > 0;
          
          
     }

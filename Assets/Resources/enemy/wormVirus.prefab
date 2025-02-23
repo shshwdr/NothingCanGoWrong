@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b38e19f734b3c8c438d8a28b138b35f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTime: 10
+  spawnTime: 5
   currentWindow: {fileID: 0}
   mainWindow: {fileID: 0}
 --- !u!114 &2884197020398976164

@@ -814,8 +814,6 @@ GameObject:
   - component: {fileID: 2825874193707386768}
   - component: {fileID: 2475425451914939423}
   - component: {fileID: 5933919062918147566}
-  - component: {fileID: 4494291770638656621}
-  - component: {fileID: 2826192044601522020}
   m_Layer: 5
   m_Name: clip
   m_TagString: Untagged
@@ -911,31 +909,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4494291770638656621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7925187404647188466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23d053a3b228f004ab93f2fedb9dcec1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetArea: {fileID: 0}
---- !u!225 &2826192044601522020
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7925187404647188466}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1 &7950370019230924024
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,9 +1506,6 @@ MonoBehaviour:
   spawnGo: {fileID: 7950370019230924024}
   ammo: {fileID: 616233365849384624}
   noVirusGO: {fileID: 7425376707631259222}
-  ammoMax: 5
-  ammoStart: 0
-  ammoRefillTime: 5
   allBugsAtOnce: 1
   antivirusBugLifeTime: 5
   dayLevel: {fileID: 6380066015679026173}

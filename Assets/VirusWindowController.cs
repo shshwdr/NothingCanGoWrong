@@ -10,6 +10,7 @@ public class VirusWindowController : MonoBehaviour
     public Virus virus;
     // public Text virusHealthText;
 
+    public GameObject hintText;
     public HPBar attackProgressBar;
     public HPBar beAttackProgressBar;
     public HPBar hpProgressBar;

@@ -82,7 +82,6 @@ public class WormVirus : MonoBehaviour
 
         if (nextWindow!=null && nextWindow.gameObject && nextWindow.gameObject.activeSelf)
         {
-            
             currentWindow = nextWindow;
         }
         else
@@ -96,6 +95,7 @@ public class WormVirus : MonoBehaviour
         
         if (currentWindow == mainWindow)
         {
+            mainWindow.GetComponent<VirusWindowController>().hintText.gameObject.SetActive(false);
             mainWindow.GetComponent<VirusAnimationController>().targetImage.transform.parent =
                 mainWindow.VirusCommon;
             mainWindow.GetComponent<VirusWindowController>().ShowVirus();
@@ -109,6 +109,7 @@ public class WormVirus : MonoBehaviour
         else
         {
             
+            mainWindow.GetComponent<VirusWindowController>().hintText.gameObject.SetActive(true);
             GetComponent<WormVirusSpawner>().spawnArea = currentWindow.content;
             var position = GetComponent<WormVirusSpawner>().spawnPosition(spawnTime,mainWindow.GetComponent<VirusAnimationController>().targetImage.GetComponent<RectTransform>());
             mainWindow.GetComponent<VirusAnimationController>().targetImage.transform.parent = currentWindow.content;
@@ -134,6 +135,7 @@ public class WormVirus : MonoBehaviour
     
     public void GetHit()
     {
+        mainWindow.GetComponent<VirusWindowController>().hintText.gameObject.SetActive(false);
        mainWindow. GetComponent<VirusAnimationController>().targetImage.transform.GetChild(0).gameObject.SetActive(false);
         if (moveCoroutine!=null)
         {
