@@ -14,7 +14,7 @@ public class GameManager : Singleton<GameManager>
     // Start is called before the first frame update
     void Start()
     {
-        
+        level = PlayerPrefs.GetInt("lastLevelPlayed");
     }
 
     // Update is called once per frame
@@ -37,6 +37,9 @@ public class GameManager : Singleton<GameManager>
         {
             level = 1;
         }
+
+        PlayerPrefs.SetInt("lastLevelPlayed", level);
+
         LevelManager.Instance.StopMusic();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
@@ -44,7 +47,9 @@ public class GameManager : Singleton<GameManager>
     public void PreviousLevel()
     {
         level--;
-        
+
+        PlayerPrefs.SetInt("lastLevelPlayed", level);
+
         LevelManager.Instance.StopMusic();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
