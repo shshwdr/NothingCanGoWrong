@@ -283,7 +283,7 @@ public class LevelManager : Singleton<LevelManager>
     {
         
         gameplayMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-        gameplayMusic.release();
+        
     }
     public void CreateVirus(string virusId)
     {
