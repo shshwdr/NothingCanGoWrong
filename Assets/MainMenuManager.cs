@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -54,4 +55,11 @@ public class MainMenuManager : MonoBehaviour
         SceneManager.LoadScene(playableScene);
     }
 
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/sfx_ui_mouse_click");
+        }
+    }
 }

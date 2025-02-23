@@ -521,6 +521,10 @@ PrefabInstance:
         Productivity
         - 10'
       objectReference: {fileID: 0}
+    - target: {fileID: 3977948527612826307, guid: ad48568e6edf9ea4eac2552bb6e8c77b, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4288500078
+      objectReference: {fileID: 0}
     - target: {fileID: 5152713168370228648, guid: ad48568e6edf9ea4eac2552bb6e8c77b, type: 3}
       propertyPath: m_Name
       value: failed
@@ -751,6 +755,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -61
       objectReference: {fileID: 0}
+    - target: {fileID: 3967258019878830096, guid: 18a8f6b6efe18cc4cb93f2363c589b98, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -149
+      objectReference: {fileID: 0}
     - target: {fileID: 4352977703773383213, guid: 18a8f6b6efe18cc4cb93f2363c589b98, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -770,6 +778,22 @@ PrefabInstance:
     - target: {fileID: 6449831100749284187, guid: 18a8f6b6efe18cc4cb93f2363c589b98, type: 3}
       propertyPath: m_Name
       value: hp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6548507287850499011, guid: 18a8f6b6efe18cc4cb93f2363c589b98, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6548507287850499011, guid: 18a8f6b6efe18cc4cb93f2363c589b98, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6548507287850499011, guid: 18a8f6b6efe18cc4cb93f2363c589b98, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6548507287850499011, guid: 18a8f6b6efe18cc4cb93f2363c589b98, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6986854288240708499, guid: 18a8f6b6efe18cc4cb93f2363c589b98, type: 3}
       propertyPath: m_Pivot.x
@@ -890,6 +914,10 @@ PrefabInstance:
       value: Focus!
       objectReference: {fileID: 0}
     - target: {fileID: 3977948527612826307, guid: ad48568e6edf9ea4eac2552bb6e8c77b, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4288500078
+      objectReference: {fileID: 0}
+    - target: {fileID: 3977948527612826307, guid: ad48568e6edf9ea4eac2552bb6e8c77b, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
       objectReference: {fileID: 0}
@@ -1003,6 +1031,10 @@ PrefabInstance:
     - target: {fileID: 3977948527612826307, guid: ad48568e6edf9ea4eac2552bb6e8c77b, type: 3}
       propertyPath: m_text
       value: You're invited to a meeting. Keep the window on top to look engaged
+      objectReference: {fileID: 0}
+    - target: {fileID: 3977948527612826307, guid: ad48568e6edf9ea4eac2552bb6e8c77b, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4288500078
       objectReference: {fileID: 0}
     - target: {fileID: 5152713168370228648, guid: ad48568e6edf9ea4eac2552bb6e8c77b, type: 3}
       propertyPath: m_Name

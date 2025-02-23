@@ -455,7 +455,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 3
-  m_Spacing: 0
+  m_Spacing: 10
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -822,6 +822,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3977948527612826307, guid: ad48568e6edf9ea4eac2552bb6e8c77b, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4288500078
+      objectReference: {fileID: 0}
+    - target: {fileID: 3977948527612826307, guid: ad48568e6edf9ea4eac2552bb6e8c77b, type: 3}
       propertyPath: m_VerticalAlignment
       value: 512
       objectReference: {fileID: 0}
@@ -934,6 +938,10 @@ PrefabInstance:
     - target: {fileID: 3977948527612826307, guid: ad48568e6edf9ea4eac2552bb6e8c77b, type: 3}
       propertyPath: m_text
       value: Join Meeting
+      objectReference: {fileID: 0}
+    - target: {fileID: 3977948527612826307, guid: ad48568e6edf9ea4eac2552bb6e8c77b, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4288500078
       objectReference: {fileID: 0}
     - target: {fileID: 3977948527612826307, guid: ad48568e6edf9ea4eac2552bb6e8c77b, type: 3}
       propertyPath: m_VerticalAlignment

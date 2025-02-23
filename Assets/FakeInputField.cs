@@ -32,7 +32,7 @@ public class FakeInputField : MonoBehaviour, ISelectHandler, IDeselectHandler
         }
         else
         {
-            keyboardSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            keyboardSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         }
     }
 

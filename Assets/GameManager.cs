@@ -59,4 +59,9 @@ public class GameManager : Singleton<GameManager>
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         //LevelManager.Instance.LoadLevel(level);
     }
+    
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 }

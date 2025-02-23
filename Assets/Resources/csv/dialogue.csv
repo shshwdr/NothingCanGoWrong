@@ -41,8 +41,8 @@ tutorial1_chat4,What onboarding document?,hr,-1,,tutorial1_chat5,The one on my d
 tutorial1_chat5,"Delete it immediately! You didn't open it, did you?",hr,-1,,tutorial1_chat6,Uh…,
 tutorial1_chat6,"I really hope not. We have a very strict security policy, if something goes wrong, you could get fired.",hr,-1,installAnti,tutorial1_chat7,"Fired?! No, I didn't open it.",
 tutorial1_chat7,"Alright, I've helped you install the antivirus. Please open it when you’re ready.",hr,-1,,tutorial1_chat8,Done.,openAnti
-tutorial1_chat8,You can see when will a day ends and how productive you are in antivirus program.,hr,-1,,tutorial1_chat9,I see.,
-tutorial1_chat9,"By the way, when your colleagues message you, remember to respond promptly.",hr,-1,,tutorial1_chat10,I'll make sure to say hi when they reach out.,
+tutorial1_chat8,You can see when will a day ends and how productive you are in antivirus program.,hr,-1,ShowProductive,tutorial1_chat9,I see.,
+tutorial1_chat9,"By the way, when your colleagues message you, remember to respond promptly.",hr,-1,HideProductive,tutorial1_chat10,I'll make sure to say hi when they reach out.,
 tutorial1_chat10,"Perfect. Welcome again, and have a great first day!",hr,-1,startgame,,Thanks! Looking forward to a productive day ahead.,
 clip_start,Morning. Your computer looks fine so far.,clip,-1,,,,
 clip_detect,Virus detected!,clip,-1,clip_detect2,,,

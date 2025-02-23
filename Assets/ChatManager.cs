@@ -309,6 +309,23 @@ public class ChatManager : Singleton<ChatManager>
                 case "installFake":
                     DeskTop.Instance. AddDesktopIcon("fakePDF","Onboarding");
                     break;
+                case "ShowProductive":
+                    if (FindObjectOfType<AntiVirusWindowController>())
+                    {
+                        FindObjectOfType<AntiVirusWindowController>().ShowProductiveTutorial();
+                    }
+                    break;
+                case "HideTutorial":
+                    if (FindObjectOfType<AntiVirusWindowController>())
+                    {
+                        FindObjectOfType<AntiVirusWindowController>().HideProductiveTutorial();
+                    }
+
+                    break;
+                case "ShowShutdown":
+                    break;
+                case "HideShutdown":
+                    break;
             }
         }
         

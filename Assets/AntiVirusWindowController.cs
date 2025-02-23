@@ -28,8 +28,28 @@ public class AntiVirusWindowController : MonoBehaviour
     public TMP_Text dayLevel;
 
     public GameObject tutorialSpawn;
-    
+    public GameObject productiveTutorial;
+    public GameObject shutdownTutorial;
 
+    public void ShowProductiveTutorial()
+    {
+        productiveTutorial.SetActive(true);
+    }
+
+    public void HideProductiveTutorial()
+    {
+        productiveTutorial.SetActive(false);
+    }
+
+    public void ShowShutdownTutorial()
+    {
+        shutdownTutorial.SetActive(true);
+    }
+    
+    public void HideShutdownTutorial()
+    {
+        shutdownTutorial.SetActive(false);
+    }
     public void ShowTutorialSpawn()
     {
         tutorialSpawn.SetActive(true);

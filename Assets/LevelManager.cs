@@ -131,21 +131,22 @@ public class LevelManager : Singleton<LevelManager>
         if (levelName == 1)
         {
             DeskTop.Instance. AddDesktopIcon("Chat");
-            ChatManager.Instance.GenerateDialogue("tutorial1_chat1");
+            
+            StartCoroutine(waitToGenerate("tutorial1_chat1"));
             //DeskTop.Instance. AddDesktopIcon("fakePDF","Onboarding");
         }else if (levelName == 2)
         {
             
             DeskTop.Instance. AddDesktopIcon("Chat");
             DeskTop.Instance. AddDesktopIcon("Anti Virus");
-            ChatManager.Instance.GenerateDialogue("tutorial2_chat1");
+            StartCoroutine(waitToGenerate("tutorial2_chat1"));
         }
         else if (levelName == 3)
         {
             
             DeskTop.Instance. AddDesktopIcon("Chat");
             DeskTop.Instance. AddDesktopIcon("Anti Virus");
-            ChatManager.Instance.GenerateDialogue("tutorial3_chat1");
+            StartCoroutine(waitToGenerate("tutorial3_chat1"));
         }
         else
         {
@@ -155,6 +156,13 @@ public class LevelManager : Singleton<LevelManager>
             DeskTop.Instance. AddDesktopIcon("Anti Virus");
             StartGame();
         }
+    }
+
+    IEnumerator waitToGenerate(string dialogue)
+    {
+        yield return new WaitForSeconds(2f);
+        
+        ChatManager.Instance.GenerateDialogue(dialogue);
     }
 
     public void StartGame()
@@ -263,6 +271,15 @@ public class LevelManager : Singleton<LevelManager>
             FindObjectOfType<ClipAnimationController>().PlayEndOfDay();
         //GameManager.Instance.NextLevel();
         StopMusic();
+
+
+        if (level == 1)
+        {
+            if (FindObjectOfType<AntiVirusWindowController>())
+            {
+                FindObjectOfType<AntiVirusWindowController>().ShowShutdownTutorial();
+            }
+        }
 
         if (isLastLevel)
         {
