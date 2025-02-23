@@ -48,7 +48,7 @@ public TMP_Text titleLabel;
         
         closeButton.gameObject.SetActive(true);
         minimizeButton.gameObject.SetActive(true);
-        maximizeButton.gameObject.SetActive(true);
+        //maximizeButton.gameObject.SetActive(true);
     }
     public void Unlock()
     {
