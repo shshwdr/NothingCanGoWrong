@@ -38,7 +38,8 @@ public class LevelManager : Singleton<LevelManager>
     private void Start()
     {
         LoadLevel(GameManager.Instance.level);
- 
+
+        gameplayMusic.setParameterByName("Game Over", 0);
         gameplayMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Music/mus_gameplay");
         gameplayMusic.start();
     }
@@ -284,6 +285,11 @@ public class LevelManager : Singleton<LevelManager>
         
         gameplayMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         
+    }
+
+    public void MusicLose()
+    {
+        gameplayMusic.setParameterByName("Game Over", 2);
     }
     public void CreateVirus(string virusId)
     {

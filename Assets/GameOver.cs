@@ -17,5 +17,6 @@ public class GameOver : MonoBehaviour
     private void Start()
     {
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/sfx_ui_lose_virus");
+        LevelManager.Instance.MusicLose();
     }
 }
