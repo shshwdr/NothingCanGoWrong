@@ -41,6 +41,7 @@ public class ChatCell : MonoBehaviour
                 {
                     data.isDownloaded = true;
                     controller.GetComponent<WindowController>().GetComponent<RectTransform>(). SetAsLastSibling();
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/sfx_ui_download_pdf");
                     DeskTop.Instance.AddDesktopIcon("pdf", "important_" + data.sender.name);
                     fileButton.interactable = false;
                 });

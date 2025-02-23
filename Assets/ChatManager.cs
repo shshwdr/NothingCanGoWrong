@@ -378,6 +378,7 @@ public class ChatManager : Singleton<ChatManager>
 
     public void addFile(string fileName,bool isFinished)
     {
+        FMODUnity.RuntimeManager.PlayOneShot("eevent:/SFX/sfx_ui_send_message");
         var characterId = FindObjectOfType<ChatWindowController>().selectedCharacter;
         if (characterId != "")
         {
